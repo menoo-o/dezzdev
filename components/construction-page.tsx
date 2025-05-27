@@ -125,7 +125,7 @@ export default function Component() {
 
       {/* Footer */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-green-600 text-xs">
-        © 2024 DezzDev - Powered by Retro Vibes
+        © 2025 DezzDev - Powered by DezzDev
       </div>
 
       {/* Animated scanlines effect */}
