@@ -1,0 +1,82 @@
+.contact-btn {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding: 1rem 0.1rem;
+}
+
+.btn-body {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background-color: var(--aqua);
+  color: var(--bg-green);
+  padding: 0.7rem 0.7rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-weight: 600;
+}
+
+.icon-profile {
+  /* transition: transform 0.3s; */
+  transform-style: preserve-3d;
+}
+
+.icon-email {
+  position: absolute;
+  left: 0.75rem;
+  opacity: 0;
+  /* transform: translateX(-20px); */
+  pointer-events: none;
+}
+
+
+.icons-bg {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 9999px; /* fully rounded */
+  background-color: #ffffff; /* white background for inner icon */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transition: background-color 0.3s ease; */
+}
+
+.icon-profile,
+.icon-email {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  object-fit: cover;
+  border-radius: 9999px; /* round both images */
+  /* transition: transform 0.3s ease, opacity 0.3s ease; */
+}
+
+/* Profile icon (initially visible) */
+.icon-profile {
+  z-index: 1;
+  /* transform: rotateY(0deg); */
+  backface-visibility: hidden;
+}
+
+/* Email icon (initially hidden) */
+.icon-email {
+  z-index: 0;
+  opacity: 0;
+  transform: scale(0.8); /* scale down slightly until hover */
+}
+
+.span-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  margin-left: 0.1rem;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  white-space: nowrap; /* Prevent breaking */
+  pointer-events: none; /* Optional: keeps it from being clickable separately */
+}

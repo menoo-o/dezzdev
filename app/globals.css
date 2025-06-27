@@ -14,13 +14,48 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-green: #072e23;
+    --text: #EAF4F1;
+    --aqua: #18FFC1;
+    --jungle: #169976;
   }
 }
 
+@font-face {
+  font-family: 'Graphik';
+  src: url('/fonts/Graphik-Regular-Trial.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/fonts/Graphik-Medium-Trial.otf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('/fonts/Graphik-Black-Trial.otf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-green);
+  color: var(--text);
+  font-family: 'Graphik', sans-serif;
+}
+
+h1 {
+  font-family: 'Graphik', sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
 }
