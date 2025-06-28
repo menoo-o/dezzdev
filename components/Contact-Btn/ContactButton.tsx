@@ -13,7 +13,7 @@ export default function ContactButton() {
     onClick={handleClick}
    className="group relative inline-flex h-10 px-3 md:h-8 md:px-2 items-center justify-center bg-[var(--bg-green)] font-normal text-neutral-200">
 
-    <span className="text-[var(--text)] font-light text-sm">Contact Us</span>
+    <span className="text-[var(--text)] font-light text-sm">Contact</span>
     <div className="ml-1 -rotate-45 transition-all duration-200 group-hover:rotate-0">
       <svg 
         width="15" 
