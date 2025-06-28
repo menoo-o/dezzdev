@@ -1,109 +1,33 @@
 'use client'
 
-import { useRef } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
-import Image from "next/image"; // Next.js Image
-import "./styles.css"; // Import external CSS
 
-gsap.registerPlugin(useGSAP); 
-
-// Register GSAP plugin
-gsap.registerPlugin(useGSAP);
-
-function ContactButton() {
-  const buttonRef = useRef<HTMLDivElement>(null);
+export default function ContactButton() {
 
   const handleClick = () => {
     alert('Contact Us button clicked!');
   };
 
-  useGSAP(() => {
-    const btn = buttonRef.current;
-    if (!btn) return;
-
-    const profile = btn.querySelector('.icon-profile');
-    const email = btn.querySelector('.icon-email');
-    const spanText = btn.querySelector('.span-text');
-
-    if (!profile || !email || !spanText) return;
-
-    // Initial state for email icon
-    gsap.set(email, { y: 50, opacity: 0 });
-
-    // On hover animation (slot machine effect)
-    btn.addEventListener('mouseenter', () => {
-      // Profile icon moves up and fades out
-      gsap.to(profile, { y: -50, opacity: 0, duration: 0.3, ease: 'power2.out' });
-      // Email icon slides up from bottom
-      gsap.to(email, { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out', delay: 0.1 });
-      // Span text moves up and back down to simulate slot machine
-      gsap.to(spanText, {
-        y: -10,
-        duration: 0.2,
-        ease: 'power2.in',
-        yoyo: true,
-        repeat: 1,
-      });
-    });
-
-    // On mouse leave revert
-    btn.addEventListener('mouseleave', () => {
-      // Profile icon slides back from top
-      gsap.to(profile, { 
-        y: 0, 
-        opacity: 1, 
-        duration: 0.3, 
-        ease: 'power2.out', 
-        delay: 0.1 
-      });
-      // Email icon slides down and fades out
-      gsap.to(email, { 
-        y: 50, 
-        opacity: 0, 
-        duration: 0.3, 
-        ease: 'power2.out' 
-      });
-      // Span text moves down and back up
-      gsap.to(spanText, {
-         y: 10,
-        duration: 0.2,
-        ease: 'power2.out',
-        yoyo: true,
-        repeat: 1,
-      });
-    });
-  }, { scope: buttonRef });
-
   return (
-    <div className="contact-btn relative inline-block" ref={buttonRef}>
-      <button
-        className="btn-body"
-        onClick={handleClick}
-        aria-label="Contact Us"
-      >
-        <div className="icons-bg">
-          {/* Profile icon */}
-          <Image
-            src="/profile.jpeg"
-            alt="Contact Icon"
-            width={24}
-            height={24}
-            className="icon-profile absolute rounded-full"
-          />
-          {/* Email icon (hidden by default, shown on hover) */}
-          <Image
-            src="/email.png"
-            alt="Email Icon"
-            width={24}
-            height={24}
-            className="icon-email absolute"
-          />
-        </div>
-        <span className="span-text text-lg">Contact Us</span>
-      </button>
-    </div>
-  );
-}
+ <div className="relative inline-block" >
+  <button   
+    onClick={handleClick}
+   className="group relative inline-flex h-10 px-3 md:h-8 md:px-2 items-center justify-center bg-[var(--bg-green)] font-normal text-neutral-200">
 
-export default ContactButton;
+    <span className="text-[var(--text)] font-light text-sm">Contact Us</span>
+    <div className="ml-1 -rotate-45 transition-all duration-200 group-hover:rotate-0">
+      <svg 
+        width="15" 
+        height="15" 
+        viewBox="0 0 15 15" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg" 
+        className="h-5 w-5">
+        <path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" 
+        fill="#18FFC1" fill-rule="evenodd" clip-rule="evenodd">
+        </path>
+      </svg>
+    </div>
+  </button>
+  </div>
+);
+}
