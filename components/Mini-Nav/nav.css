@@ -1,0 +1,110 @@
+/* Navbar.css */
+
+.nav-body {
+  padding: 0.7rem;
+  background-color: #ffffff;
+  position: relative;
+  z-index: 100;
+}
+
+/* Animate when nav is open */
+.nav-body.nav-open .nav-header {
+  padding-inline: 0.8rem; /* slight inward pull */
+  background-color: #EAF4F1;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.nav-logo img {
+  height: auto;
+  width: 95px;
+}
+
+.nav-toggle, .cross-toggle {
+  background: none;
+  border: 0.5px solid #072e23;
+  padding: 0.25rem 0.9rem;
+  cursor: pointer;
+  border-radius: 0.5px;
+}
+
+.nav-logo,
+.nav-toggle {
+  transition: transform 0.3s ease;
+}
+
+.nav-body.nav-open .nav-logo {
+  transform: translateX(3px) scale(0.95);
+  background-color: #EAF4F1;
+}
+.nav-body.nav-open .nav-toggle {
+  transform: translateX(-3px) scale(0.95);
+  background-color: #EAF4F1;
+  }
+
+/* Navigation links - hidden by default on mobile */
+.nav-links {
+  list-style: none;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  padding-left: 0;
+}
+
+.nav-links.open {
+  max-height: 500px; /* Enough space for all items */
+  opacity: 1;
+  visibility: visible;
+  background-color: #EAF4F1;
+  padding-inline: 1.2rem;
+  padding-top: 3.5rem;
+  margin-top: -1rem;
+  border-radius: 10px;
+  font-size: 2.5rem;
+}
+
+.nav-links li {
+  margin: 0.5rem 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    max-height: none;
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+    gap: 1.5rem;
+  }
+
+  .nav-links li {
+    margin: 0;
+  }
+}
+

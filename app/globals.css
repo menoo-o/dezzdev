@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -52,26 +53,6 @@
   }
 }
 
-@font-face {
-  font-family: 'Graphik';
-  src: url('/fonts/Graphik-Regular-Trial.otf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Graphik';
-  src: url('/fonts/Graphik-Medium-Trial.otf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Graphik';
-  src: url('/fonts/Graphik-Black-Trial.otf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-}
 
 *{
   box-sizing: border-box;
@@ -83,10 +64,17 @@ body {
   min-height: 100vh;
   display:flex;
   flex-direction: column;
-  font-family: 'Graphik', sans-serif;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 400;
 }
 
 :root {
+   --bg-green: #072e23;
+    --text: #EAF4F1;
+    --aqua: #18FFC1;
+    --jungle: #169976;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

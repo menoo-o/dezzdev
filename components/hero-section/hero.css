@@ -1,0 +1,53 @@
+/* Hero Section Styling */
+
+.hero-section {
+  position: relative;
+  z-index: 1;
+  background-color: white; /* deep dark green */
+  color: var(--bg-green);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 2rem;
+  height: 80vh;
+  text-align: right;
+  text-transform: uppercase;
+  background-color: #03100c;
+opacity: 0.9;
+background-image: radial-gradient(circle at center center, #18FFC1, #03100c), repeating-radial-gradient(circle at center center, #18FFC1, #18FFC1, 15px, transparent 30px, transparent 15px);
+background-blend-mode: multiply;
+}
+
+.hero-title {
+  font-size: 5.5rem;
+  line-height: 1.2;
+  font-weight: 800;
+  max-width: 1200px;
+}
+
+.hero-title span {
+  color: #34fc77; /* bright minty green */
+  font-weight: 700;
+}
+
+.hero-title strong {
+  color: #98e718; /* lime green for bold emphasis */
+  font-weight: 900;
+}
+
+.hero-subtitle {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #c4e2d2;
+  max-width: 720px;
+}
+
+
+.mini-text{
+  font-size: 1rem;
+  line-height: 1.2;
+  font-weight: 800;
+  max-width: 900px;
+}
