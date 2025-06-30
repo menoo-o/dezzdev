@@ -13,7 +13,7 @@ export default function Navbar() {
     <nav className={`nav-body ${isOpen ? 'nav-open' : ''}`}>
       <div className="nav-header">
         <Link href="/" className="nav-logo">
-          <Image src="/logo1.svg" alt="Logo" width={90} height={50} />
+          <Image src="/logo4.svg" alt="Logo" width={90} height={50} />
         </Link>
 
         <button
@@ -70,10 +70,10 @@ export default function Navbar() {
       </div>
 
       <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
-        <li><Link href="/">Home</Link></li>
-        <li><Link href="/about">About</Link></li>
-        <li><Link href="/services">Services</Link></li>
-        <li><Link href="/contact">Contact</Link></li>
+        <li><Link href="/">Services</Link></li>
+        <li><Link href="/about">Work</Link></li>
+        <li><Link href="/services">About</Link></li>
+        <li><Link href="/contact">Blog</Link></li>
       </ul>
     </nav>
   );
