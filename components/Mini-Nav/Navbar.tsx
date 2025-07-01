@@ -16,7 +16,7 @@ export default function Navbar() {
 
       <div className="nav-header">
         <Link href="/" className="nav-logo">
-          <Image src="/logo6.svg" alt="Logo" width={110} height={50} />
+          <Image src="/logo8.svg" alt="Logo" width={110} height={50} />
         </Link>
 
         <button
