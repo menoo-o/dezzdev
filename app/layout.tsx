@@ -1,3 +1,5 @@
+'use'
+
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Mini-Nav/Navbar";

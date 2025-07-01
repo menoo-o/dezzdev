@@ -10,10 +10,13 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <nav className={`nav-body ${isOpen ? 'nav-open' : ''}`}>
+    <>
+     <nav className={`nav-body ${isOpen ? 'nav-open' : ''}`}>
+   
+
       <div className="nav-header">
         <Link href="/" className="nav-logo">
-          <Image src="/logo4.svg" alt="Logo" width={90} height={50} />
+          <Image src="/logo4.svg" alt="Logo" width={110} height={50} />
         </Link>
 
         <button
@@ -70,11 +73,18 @@ export default function Navbar() {
       </div>
 
       <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
+        
         <li><Link href="/">Services</Link></li>
         <li><Link href="/about">Work</Link></li>
         <li><Link href="/services">About</Link></li>
         <li><Link href="/contact">Blog</Link></li>
       </ul>
+
+      {isOpen && <div className="nav-overlay" onClick={() => setIsOpen(false)} />}
     </nav>
+
+  
+    </>
+   
   );
 }

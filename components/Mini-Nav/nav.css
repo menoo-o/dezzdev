@@ -4,7 +4,7 @@
   padding: 0.7rem;
   background-color: #ffffff;
   position: relative;
-  z-index: 100;
+  z-index: 50;
 }
 
 /* Animate when nav is open */
@@ -13,6 +13,7 @@
   background-color: #EAF4F1;
   padding: 0.5rem;
   border-radius: 10px;
+
 }
 
 .nav-header {
@@ -24,7 +25,7 @@
 
 .nav-logo img {
   height: auto;
-  width: 95px;
+  width: 105px;
 }
 
 .nav-toggle, .cross-toggle {
@@ -62,7 +63,7 @@
 
 .nav-links.open {
   max-height: 500px; /* Enough space for all items */
-  opacity: 1;
+  opacity: 0.97;
   visibility: visible;
   background-color: #EAF4F1;
   padding-inline: 1.2rem;
@@ -76,7 +77,7 @@
   /* the left and right percentages keeps keep up with the padding-inline, is there way to use cal feautre here */
   left: calc(0px + 0.72rem);
   right: calc(0px + 0.72rem);
-  z-index: 20;
+  z-index: 55;
 }
 
 .nav-links li {
@@ -88,6 +89,8 @@
   color: #333;
   font-weight: 500;
 }
+
+
 
 /* Desktop styles */
 @media (min-width: 768px) {
