@@ -9,7 +9,7 @@
 
 /* Animate when nav is open */
 .nav-body.nav-open .nav-header {
-  padding-inline: 0.8rem; /* slight inward pull */
+  padding-inline: 0.8rem; /* slight inward pull for ui look */ 
   background-color: #EAF4F1;
   padding: 0.5rem;
   border-radius: 10px;
@@ -66,14 +66,21 @@
   visibility: visible;
   background-color: #EAF4F1;
   padding-inline: 1.2rem;
-  padding-top: 3.5rem;
-  margin-top: -1rem;
+  padding-top: 4.2rem;
+  margin-top: -1.55rem;
   border-radius: 10px;
   font-size: 2.5rem;
+
+  position: absolute;
+  top: 100%;
+  /* the left and right percentages keeps keep up with the padding-inline, is there way to use cal feautre here */
+  left: calc(0px + 0.72rem);
+  right: calc(0px + 0.72rem);
+  z-index: 20;
 }
 
 .nav-links li {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 
 .nav-links a {
