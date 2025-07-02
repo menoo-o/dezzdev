@@ -16,6 +16,21 @@
 
 }
 
+/* After */
+.nav-body {
+  position: fixed;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1.2rem;
+  width: 100%;
+  max-width: 1600px;
+  background: transparent;
+  border-radius: 50px;
+  z-index: 50;
+  opacity: 1;
+}
+
 .nav-header {
   display: flex;
   justify-content: space-between;
@@ -25,7 +40,7 @@
 
 .nav-logo img {
   height: auto;
-  width: 95px;
+  width: 80px;
 }
 
 .nav-toggle, .cross-toggle {
@@ -35,6 +50,11 @@
   cursor: pointer;
   border-radius: 0.5px;
 }
+
+.nav-toggle{
+  padding: 0.15rem 0.65rem;
+}
+
 
 .nav-logo,
 .nav-toggle {
@@ -62,21 +82,22 @@
 }
 
 .nav-links.open {
-  max-height: 500px; /* Enough space for all items */
-  opacity: 0.97;
+  max-height: 700px; /* Enough space for all items */
+  opacity: 1;
   visibility: visible;
   background-color: #EAF4F1;
-  padding-inline: 1.2rem;
-  padding-top: 4.5rem;
-  margin-top: -1.55rem;
-  border-radius: 10px;
+  padding-inline: 1.5rem;
+  padding-top: 4rem;
+  margin-top: -0.98rem;
+  border-radius: 0 0 10px 10px;
   font-size: 2.5rem;
 
   position: absolute;
   top: 100%;
   /* the left and right percentages keeps keep up with the padding-inline, is there way to use cal feautre here */
-  left: calc(0px + 0.72rem);
-  right: calc(0px + 0.72rem);
+  left: calc(0px + 1.25rem);
+  right: calc(0px + 1.25rem);
+
   z-index: 55;
 }
 
@@ -94,6 +115,12 @@
 
 /* Desktop styles */
 @media (min-width: 768px) {
+
+  .nav-logo img {
+  height: auto;
+  width: 90px;
+ }
+
   .nav-toggle {
     display: none;
   }
@@ -117,4 +144,5 @@
     margin: 0;
   }
 }
+
 
