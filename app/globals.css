@@ -46,10 +46,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-green: #072e23;
+    --bg-green: rgb(7, 46, 35);
     --text: #EAF4F1;
-    --aqua: #18FFC1;
-    --jungle: #1aa882;
+    --aqua: rgb(24, 255, 193);
+    --jungle: rgb(26, 168, 130);
   }
 }
 

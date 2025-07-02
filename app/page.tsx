@@ -6,7 +6,7 @@
 // import Navbar from "@/components/Mini-Nav/Navbar";
 // import ContactButton from '@/components/Contact-Btn/ContactButton';
 import React from "react";
-import Glass from "@/components/Mini-Nav/Glass";
+
 import Hero from "@/components/hero-section/Hero";
 
 export default function App() {
