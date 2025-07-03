@@ -41,6 +41,7 @@ body.lock-scroll {
   border-radius: 50px;
   z-index: 50;
   opacity: 1;
+  
 }
 
 .nav-header {
@@ -49,6 +50,7 @@ body.lock-scroll {
   align-items: center;
   transition: all 0.3s ease;
 }
+
 
 .nav-logo img {
   height: auto;
@@ -75,12 +77,17 @@ body.lock-scroll {
 
 .nav-body.nav-open .nav-logo {
   transform: translateX(3px) scale(0.95);
-  background-color: #EAF4F1;
+  
+ 
 }
 .nav-body.nav-open .nav-toggle {
   transform: translateX(-3px) scale(0.95);
-  background-color: #EAF4F1;
+  
   }
+
+.nav-body.nav-open{
+  background-color: transparent !important;
+}
 
 /* Navigation links - hidden by default on mobile */
 .nav-links {
@@ -94,21 +101,22 @@ body.lock-scroll {
 }
 
 .nav-links.open {
-  max-height: 700px; /* Enough space for all items */
+  max-height: 800px; /* Enough space for all items */
   opacity: 1;
   visibility: visible;
   background-color: #EAF4F1;
   padding-inline: 1.5rem;
-  padding-top: 4rem;
-  margin-top: -0.98rem;
-  border-radius: 0 0 10px 10px;
+  padding-top: 8rem;
+  border-radius: 10px;
   font-size: 2.5rem;
   position: absolute;
   top: 100%;
   /* the left and right percentages keeps keep up with the padding-inline, is there way to use cal feautre here */
-  left: calc(0px + 1.25rem);
-  right: calc(0px + 1.25rem);
+  left: calc(0px + 1.32rem);
+  right: calc(0px + 1.32rem);
   z-index: 55;
+  
+ 
 }
 
 .nav-links li {

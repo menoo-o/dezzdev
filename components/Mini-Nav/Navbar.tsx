@@ -47,6 +47,7 @@ export default function Navbar() {
       borderRadius: '0px',
       backdropFilter: 'blur(0px)',
       backgroundColor: 'transparent',
+      
       border: 'none',
       boxShadow: 'none',
       ease: 'power2.out',
