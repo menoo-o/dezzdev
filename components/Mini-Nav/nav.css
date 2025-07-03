@@ -1,5 +1,11 @@
 /* Navbar.css */
 
+/* Global style in your CSS */
+body.lock-scroll {
+  overflow: hidden;
+}
+
+
 .nav-body {
   padding: 0.7rem;
   background-color: #ffffff;
@@ -9,10 +15,16 @@
 
 /* Animate when nav is open */
 .nav-body.nav-open .nav-header {
-  padding-inline: 0.8rem; /* slight inward pull for ui look */ 
-  background-color: #EAF4F1;
+  position: absolute;
+  background-color: var(--text);
   padding: 0.5rem;
-  border-radius: 10px;
+  z-index: 1000;
+  border-radius: 10px 10px 0 0;
+  top: 100%;
+  margin-top: -0.5rem;
+  /* the left and right percentages keeps keep up with the padding-inline, is there way to use cal feautre here */
+  left: calc(0px + 1.32rem);
+  right: calc(0px + 1.32rem);
 
 }
 
@@ -91,13 +103,11 @@
   margin-top: -0.98rem;
   border-radius: 0 0 10px 10px;
   font-size: 2.5rem;
-
   position: absolute;
   top: 100%;
   /* the left and right percentages keeps keep up with the padding-inline, is there way to use cal feautre here */
   left: calc(0px + 1.25rem);
   right: calc(0px + 1.25rem);
-
   z-index: 55;
 }
 
@@ -115,11 +125,6 @@
 
 /* Desktop styles */
 @media (min-width: 768px) {
-
-  .nav-logo img {
-  height: auto;
-  width: 90px;
- }
 
   .nav-toggle {
     display: none;
