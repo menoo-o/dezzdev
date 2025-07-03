@@ -47,7 +47,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-green: rgb(7, 46, 35);
-    --text: #fe9a00;
+    --text: #EAF4F1;
     --aqua: rgb(24, 255, 193);
     --jungle: rgb(26, 168, 130);
   }
@@ -72,7 +72,7 @@ body {
 
 :root {
    --bg-green: #072e23;
-    --text: #fe9a00;
+    --text: #EAF4F1;
     --aqua: #18FFC1;
     --jungle: #169976;
   --radius: 0.625rem;

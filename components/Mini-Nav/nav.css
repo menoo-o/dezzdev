@@ -1,8 +1,10 @@
 /* Navbar.css */
 
 /* Global style in your CSS */
-body.lock-scroll {
+
+.lock-scroll {
   overflow: hidden;
+  height: 100vh;
 }
 
 

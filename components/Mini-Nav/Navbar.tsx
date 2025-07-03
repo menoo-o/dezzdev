@@ -70,23 +70,70 @@ export default function Navbar() {
     });
   };
 
+  const collapseNavMenu = () => {
+  if (!navRef.current) return;
+
+  const nav = navRef.current;
+
+  // Remove the 'nav-open' class
+  nav.classList.remove('nav-open');
+
+  // Reset styles on nav-header
+  const header = nav.querySelector('.nav-header') as HTMLElement;
+  if (header) {
+    header.style.padding = '';
+    header.style.borderRadius = '';
+    header.style.backgroundColor = '';
+  }
+
+  // Reset styles on nav-links
+  const navLinks = nav.querySelector('.nav-links') as HTMLElement;
+  if (navLinks) {
+    navLinks.style.maxHeight = '';
+    navLinks.style.opacity = '';
+    navLinks.style.visibility = '';
+    navLinks.style.padding = '';
+    navLinks.style.marginTop = '';
+    navLinks.style.borderRadius = '';
+    navLinks.style.left = '';
+    navLinks.style.right = '';
+  }
+};
+
+
 const toggleMenu = () => {
   const willOpen = !isOpen;
   setIsOpen(willOpen);
 
   if (willOpen) {
-    // Nav is opening
-    revertGlass(); // ⛔ remove morph effect
-    expandNavForOpenMenu(); // 🧩 custom styles for menu open
-    document.body.classList.add('lock-scroll'); // 🔒 disable scroll
+    // 🟢 Opening the menu
+    revertGlass();                        // ⛔ Remove glass morph
+    expandNavForOpenMenu();              // 🧩 Expand nav/header
+    document.body.classList.add('lock-scroll');
   } else {
-    // Nav is closing
-    // collapseNavMenu(); // optional cleanup
-    document.body.classList.remove('lock-scroll'); // ✅ re-enable scroll
-    morphToGlass(); // ✅ restore glassmorphism effect
+    // 🔴 Closing the menu
+    collapseNavMenu();
+    document.body.classList.remove('lock-scroll');
+
+    // ✅ Skip revertGlass if we're mid-scroll — directly morph to glass
+    if (window.scrollY > 20 && navRef.current && !hasGlassified.current) {
+      gsap.killTweensOf(navRef.current); // 🔪 Kill any pending animations
+      hasGlassified.current = true;      // Mark it as glassified manually
+      gsap.set(navRef.current, {
+        width: 'clamp(330px, 70%, 700px)',
+        borderRadius: '16px',
+        backdropFilter: 'blur(35px)',
+        backgroundColor: 'rgba(188, 230, 154, 0.35)',
+        border: '2px solid rgba(188, 230, 154, 0.45)',
+        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+        ease: 'power2.out',
+        duration: 0.8,
+      });
+    } else {
+      revertGlass(); // Only revert if user is near the top
+    }
   }
 };
-
 
 
 
@@ -118,24 +165,7 @@ const toggleMenu = () => {
     });
   };
 
-  // Turn the navbar into a rounded, glassy UI pill
-  // const morphToGlass = () => {
-  //   if (hasGlassified.current || isOpen) return; // ✅ skip if menu is open
-  //   hasGlassified.current = true;
-  //   // the problem occurs here, it modifies the whole nav ! scrolling down works fine, but when nav is opened midway screen, it still applies this css which overrides my css written in another file
-  //   gsap.to(nav, {
-  //     width: 'clamp(330px, 70%, 700px)',
-  //     borderRadius: '16px',
-  //     backdropFilter: 'blur(35px)',
-  //     backgroundColor: 'rgba(188, 230, 154, 0.35)',
-  //     border: '2px solid rgba(188, 230, 154, 0.45)',
-  //     boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-  //     ease: 'power2.out',
-  //     duration: 0.6,
-      
-  //   });
-  // };
-
+  
   
 
 // Watch how the user scrolls — and decide what animations to trigger
