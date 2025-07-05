@@ -1,29 +1,143 @@
-/* styles/hero.css */
+/* style.css */
 
-.hero-section {
-  padding: 4rem 1.5rem;
-  background-color: #f4f4f4; /* or your brand bg */
-  text-align: left;
+/* General body styles to center the content and set a base font. */
+body {
+  margin: 0; /* Remove default body margin */
+  font-family: 'Inter', sans-serif; /* Use 'Inter' font as specified */
+  background-color: #f0f0f0; /* Light grey background to match the image */
+  display: flex; /* Use flexbox to center the main container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-.hero-title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  line-height: 1.2;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 1.5rem;
-  max-width: 20ch;
+/* Main container for the layout, utilizing CSS Grid. */
+.container {
+  display: grid; /* Enable CSS Grid layout */
+  /* Define two columns: each takes an equal fraction of available space. */
+  grid-template-columns: 1fr 1fr;
+  /* Define three rows:
+     - auto: height determined by content (for RAIN/description)
+     - auto: height determined by content (for the horizontal line)
+     - 1fr: takes remaining available space (for DELAY) */
+  grid-template-rows: auto auto 1fr;
+  /* Define named grid areas for easier placement of elements. */
+  grid-template-areas:
+    "rain-area description-area" /* Top row: RAIN on left, description on right */
+    "line-area line-area"      /* Middle row: horizontal line spans both columns */
+    "empty-area delay-area";   /* Bottom row: empty space on left, DELAY on right */
+  width: 90%; /* Responsive width, taking 90% of parent's width */
+  max-width: 1200px; /* Maximum width to prevent layout from becoming too wide on large screens */
+  gap: 20px; /* Space between grid items */
+  padding: 40px; /* Inner padding for the container */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+  /* Add a subtle border-radius for rounded corners, though not prominent in the source image,
+     it adheres to general instructions for modern UI. */
+  border-radius: 8px;
 }
 
-.hero-title span,
-.hero-title strong {
-  display: inline-block;
-  margin-right: 0.4rem;
+/* Styling for the "RAIN" text. */
+.rain-text {
+  grid-area: rain-area; /* Place in the 'rain-area' grid area */
+  font-size: 8vw; /* Responsive font size based on viewport width */
+  font-weight: bold; /* Bold text */
+  color: #333; /* Dark grey color */
+  align-self: end; /* Align to the bottom of its grid cell */
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
-.hero-subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  line-height: 1.5;
-  color: #444;
-  max-width: 35ch;
+/* Styling for the descriptive text block. */
+.description-text {
+  grid-area: description-area; /* Place in the 'description-area' grid area */
+  font-size: 1.5vw; /* Responsive font size */
+  color: #333; /* Dark grey color */
+  text-align: right; /* Align text to the right */
+  align-self: end; /* Align to the bottom of its grid cell */
+  padding-left: 20px; /* Add some left padding to separate it from "RAIN" */
+  /* Use flexbox for internal alignment, though text-align is sufficient here. */
+  display: flex;
+  flex-direction: column; /* Stack content vertically if it wraps */
+  justify-content: flex-end; /* Align content to the bottom */
+  align-items: flex-end; /* Align content to the right (for multi-line text) */
+}
+
+/* Styling for the horizontal line. */
+.horizontal-line {
+  grid-area: line-area; /* Place in the 'line-area' grid area, spanning both columns */
+  width: 100%; /* Ensure the line spans the full width of its grid area */
+  height: 2px; /* Thin line */
+  background-color: #333; /* Dark grey color */
+  margin: 40px 0; /* Add vertical margin for spacing above and below the line */
+}
+
+/* Styling for the "DELAY" text. */
+.delay-text {
+  grid-area: delay-area; /* Place in the 'delay-area' grid area */
+  font-size: 8vw; /* Responsive font size */
+  font-weight: bold; /* Bold text */
+  color: #333; /* Dark grey color */
+  text-align: right; /* Align text to the right */
+  align-self: start; /* Align to the top of its grid cell */
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Media queries for responsiveness on smaller screens. */
+
+/* Tablet and smaller screens (max-width 768px) */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr; /* Change to a single column layout */
+    /* Adjust grid rows for a stacked layout: RAIN, description, line, DELAY */
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "rain-area"        /* RAIN at the top */
+      "description-area" /* Description below RAIN */
+      "line-area"        /* Line below description */
+      "delay-area";      /* DELAY at the bottom */
+    padding: 20px; /* Reduce padding for smaller screens */
+    gap: 15px; /* Reduce gap between items */
+  }
+
+  /* Adjust font sizes and alignment for a single-column layout. */
+  .rain-text {
+    font-size: 15vw; /* Larger font size for better visibility on small screens */
+    text-align: center; /* Center text */
+    align-self: center; /* Center vertically in its cell */
+  }
+
+  .description-text {
+    font-size: 3vw; /* Adjust font size */
+    text-align: center; /* Center text */
+    padding-left: 0; /* Remove left padding */
+    align-items: center; /* Center content horizontally within flexbox */
+  }
+
+  .horizontal-line {
+    margin: 20px 0; /* Adjust vertical margin for the line */
+  }
+
+  .delay-text {
+    font-size: 15vw; /* Larger font size */
+    text-align: center; /* Center text */
+    align-self: center; /* Center vertically in its cell */
+  }
+}
+
+/* Mobile screens (max-width 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px; /* Further reduce padding */
+    gap: 10px; /* Further reduce gap */
+  }
+
+  .rain-text,
+  .delay-text {
+    font-size: 20vw; /* Even larger font for very small screens */
+  }
+
+  .description-text {
+    font-size: 4vw; /* Adjust font size */
+  }
 }

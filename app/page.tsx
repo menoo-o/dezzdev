@@ -5,6 +5,7 @@
 // import Image from 'next/image';
 // import Navbar from "@/components/Mini-Nav/Navbar";
 // import ContactButton from '@/components/Contact-Btn/ContactButton';
+
 import React from "react";
 
 import Hero from "@/components/hero-section/Hero";
@@ -12,18 +13,10 @@ import Hero from "@/components/hero-section/Hero";
 export default function App() {
   return (
     <div>
-
+  
       <Hero />
       <Hero />
-      <Hero />
-      <Hero />
-      <Hero />
-      <Hero />
-      <Hero />
-      <Hero />
-      <Hero />
-      <Hero />
-
+     
 
       
     </div>

@@ -46,9 +46,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-green: rgb(7, 46, 35);
+    --bg-green: #072e23;
     --text: #EAF4F1;
-    --aqua: rgb(24, 255, 193);
+    --aqua: #18ffc1;
     --jungle: rgb(26, 168, 130);
   }
 }
@@ -61,13 +61,15 @@
 }
 
 body {
-  min-height: 100vh;
-  display:flex;
-  flex-direction: column;
   font-family: "Hanken Grotesk", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 400;
+  background-color: #ffffff;
+}
+
+footer{
+  margin-top: auto;
 }
 
 :root {
