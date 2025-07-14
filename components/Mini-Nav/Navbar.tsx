@@ -270,6 +270,7 @@ const handleClickOutside = (event: MouseEvent) => {
             
   }
         </button>
+
       </div>
 
       <div className="nav-links-wrapper">
@@ -280,6 +281,11 @@ const handleClickOutside = (event: MouseEvent) => {
           <li><Link href="/contact">Blog</Link></li>
         </ul>
       </div>
+
+      <button className="btn-77">Contact</button>
+
+
+     
       
 
     

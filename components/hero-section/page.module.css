@@ -1,0 +1,131 @@
+:root {
+  font-size: 16px;
+  /* assuming you already have font-family variables like: */
+  --font-main: 'PPFormula', sans-serif;
+  --font-accent: 'RadioGrotesk', sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1350px;
+  padding: 20px;
+  position: relative;
+}
+
+.contentWrapper {
+  display: flex;
+  background-color: #ffffff;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+/* ✅ HERO TEXT (e.g. GROW) */
+.heroText {
+  font-family: var(--font-accent);
+  font-size: 11.25rem; /* 100px (was 10vw) */
+  font-weight: 900;
+  color: #333;
+  line-height: 1em;
+  flex-shrink: 0;
+  color: var(--bg--green);
+ 
+}
+
+/* ✅ DESCRIPTION */
+.description {
+  font-family: var(--font-main);
+  font-size: 1.25rem; /* 20px (was 1.45vw ≈ 19-22px) */
+  font-weight: 400;
+  color: rgb(89, 110, 14);
+  line-height: 1.6;
+  margin-top: 2rem;
+  max-width: 350px;
+  text-align: left;
+  margin-left: 15rem;
+  align-self: flex-start;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #333;
+  width: 100%;
+  margin: 2.5rem 0;
+}
+
+/* ✅ DELAY TEXT (e.g. ONLINE) */
+.delayText {
+  font-family: var(--font-accent);
+  font-size: 11.25rem;
+  font-weight: 900;
+  color: var(--jungle);
+  margin: 0;
+  line-height: 1;
+  align-self: flex-end;
+}
+
+/* ==================== MEDIA QUERIES ==================== */
+
+@media (max-width: 768px) {
+  .contentWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .heroText {
+    font-size: 9.375rem; /* 150px (was 15vw) */
+  }
+
+  .description {
+    font-size: 1.125rem; /* 18px (was 3vw) */
+    margin-left: 0;
+    max-width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .delayText {
+    font-size: 9.375rem; /* 150px */
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 1rem 0.5rem;
+    
+    max-width: 400px;
+  }
+
+  .container {
+    min-height: 85vh;
+  }
+
+  .heroText {
+    font-size: 7.1rem; /* 180px */
+  }
+
+  .description {
+    font-size: 1rem; /* 16px */
+  }
+
+  .delayText {
+    font-size: 7.1rem; /* 180px */
+  }
+
+  .divider {
+    width: 100%;
+    margin: 1.5rem 0;
+  }
+}

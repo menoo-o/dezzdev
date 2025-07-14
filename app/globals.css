@@ -53,6 +53,45 @@
   }
 }
 
+/* styles/fonts.css */
+@font-face {
+  font-family: 'PPFormula';
+  src: url('/fonts/PPFormula-ExtendedBold.otf') format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'PPFormula';
+  src: url('/fonts/PPFormula-Medium.otf') format('opentype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'PPFormula';
+  src: url('/fonts/PPFormula-NarrowRegular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'RadioGrotesk';
+  src: url('/fonts/RadioGrotesk-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+
+:root {
+  --font-main: 'PPFormula', monospace;
+  --font-accent: 'RadioGrotesk', monospace
+
+  --font-size-lg: 2.25rem;   /* Hero / H1 */
+  --font-size-md: 1.5rem;    /* Subheadings / H2 */
+  --font-size-sm: 1rem;      /* Body / Paragraph */
+
+  --font-weight-bold: 700;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+}
+
 
 *{
   box-sizing: border-box;
@@ -61,10 +100,10 @@
 }
 
 body {
-  font-family: "Hanken Grotesk", sans-serif;
+  font-family: var(--font-main);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
   font-optical-sizing: auto;
-  font-style: normal;
-  font-weight: 400;
   background-color: #ffffff;
 }
 

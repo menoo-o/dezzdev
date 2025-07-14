@@ -1,63 +1,108 @@
-import React from 'react';
+// app/contact/page.tsx
+'use client';
 
-function Contact() {
+import styles from './page.module.css';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+
+const services = [
+  'UGC',
+  'Brand Photography',
+  'Short-Form Video',
+  'Content Strategy',
+  'Identity',
+  'Account Management',
+  'Other'
+];
+
+const budgets = [
+  'Under $500',
+  '$500–$1k',
+  '$1k–$2.5k',
+  '$2.5k–$5k',
+  '$5k+'
+];
+
+export default function ContactPage() {
+  const { register, handleSubmit } = useForm();
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [selectedBudget, setSelectedBudget] = useState<string>('');
+
+  const toggleService = (service: string) => {
+    setSelectedServices(prev =>
+      prev.includes(service)
+        ? prev.filter(s => s !== service)
+        : [...prev, service]
+    );
+  };
+
+  const onSubmit = (data: any) => {
+    console.log({ ...data, selectedServices, selectedBudget });
+  };
+
   return (
-    <div className="contact-wrapper">
-      <h1><span className="highlight">Get</span> in <strong>touch</strong></h1>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <h1 className={styles.heading}>Get <span>in touch</span></h1>
 
-      <div className="form-grid">
-        <div className="form-block">
-          <label>Full name</label>
-          <p>Fiona Wong</p>
-        </div>
+        <div className={styles.grid}>
+          <div className={styles.card}>
+            <label>Full name</label>
+            <input {...register('name')} placeholder="Your name" />
+          </div>
 
-        <div className="form-block">
-          <label>Email</label>
-          <p>fionawong@gmail.com</p>
-        </div>
+          <div className={styles.card}>
+            <label>Email</label>
+            <input {...register('email')} placeholder="you@example.com" />
+          </div>
 
-        <div className="form-block">
-          <label>Company</label>
-          <p>Fifi Vintage</p>
-        </div>
+          <div className={styles.card}>
+            <label>Company</label>
+            <input {...register('company')} placeholder="Company name" />
+          </div>
 
-        <div className="form-block full-width">
-          <label>Project details</label>
-          <p>Tell me your goals</p>
-        </div>
+          <div className={styles.cardLarge}>
+            <label>Project details</label>
+            <textarea {...register('details')} placeholder="Tell me your goals" />
+          </div>
 
-        <div className="form-block">
-          <label>What can I do for you?</label>
-          <div className="tags">
-            <span>UGC</span>
-            <span>Brand Photography</span>
-            <span>Short-Form Video</span>
-            <span>Content Strategy</span>
-            <span>Identity</span>
-            <span>Account Management</span>
-            <span>Other</span>
+          <div className={styles.card}>
+            <label>What can I do for you?</label>
+            <div className={styles.tagList}>
+              {services.map(service => (
+                <button
+                  type="button"
+                  key={service}
+                  onClick={() => toggleService(service)}
+                  className={`${styles.tag} ${selectedServices.includes(service) ? styles.active : ''}`}
+                >
+                  {service}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.card}>
+            <label>Do you have a budget range?</label>
+            <div className={styles.tagList}>
+              {budgets.map(budget => (
+                <button
+                  type="button"
+                  key={budget}
+                  onClick={() => setSelectedBudget(budget)}
+                  className={`${styles.tag} ${selectedBudget === budget ? styles.active : ''}`}
+                >
+                  {budget}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="form-block">
-          <label>Do you have a budget range?</label>
-          <div className="tags">
-            <span>Under $500</span>
-            <span>$500–$1k</span>
-            <span>$1k–$2.5k</span>
-            <span>$2.5k–$5k</span>
-            <span>$5k+</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="submit-button">
-        <button>
-          <span>➤</span> Submit
+        <button type="submit" className={styles.submit}>
+          <span>Submit</span>
         </button>
-      </div>
+      </form>
     </div>
   );
 }
-
-export default Contact;

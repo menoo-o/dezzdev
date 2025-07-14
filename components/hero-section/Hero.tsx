@@ -1,34 +1,35 @@
 'use client';
 
 
-import './hero.css'
 
-
-// src/HomePage.tsx
 import React from 'react';
 
-const Hero: React.FC = () => {
+import Head from 'next/head';
+import styles from './page.module.css';
+
+export default function HomePage() {
   return (
-    // The main container for the entire layout.
-    // It uses CSS Grid to arrange its children into distinct areas.
-    <div className="container">
-      {/* The "RAIN" text, positioned in the top-left grid area. */}
-      <div className="rain-text">RAIN</div>
+    <div className={styles.container}>
+      <Head>
+        <title>Rain Delay</title>
+        <meta name="description" content="Award-winning sports content" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-      {/* The descriptive text block, positioned in the top-right grid area. */}
-      {/* Uses Flexbox internally to ensure content is aligned to the right and bottom. */}
-      <div className="description-text">
-        Award-winning sports content that connects audiences across podcasts,
-        video, and social media.
-      </div>
+      <main className={styles.main}>
+        <div className={styles.contentWrapper}>
+          <h1 className={styles.heroText}>GROW</h1>
+          <p className={styles.description}>
+           We build easy-to-manage websites that help small businesses grow, look professional, and get found online.
+          </p>
+        </div>
+        <hr className={styles.divider} />
+        {/* <div className={styles.underDivider}> */}
+         <span>Custom Designs, Custom Coded</span>
+        <h1 className={styles.delayText}>ONLINE</h1>
+        {/* </div> */}
 
-      {/* The horizontal line, spanning across both columns in the middle grid row. */}
-      <div className="horizontal-line"></div>
-
-      {/* The "DELAY" text, positioned in the bottom-right grid area. */}
-      <div className="delay-text">DELAY</div>
+      </main>
     </div>
   );
-};
-
-export default Hero;
+}

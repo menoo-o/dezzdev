@@ -7,12 +7,22 @@
   height: 100vh;
 }
 
-
 .nav-body {
-  padding: 0.7rem;
-  background-color: #ffffff;
-  position: relative;
+  font-family: var(--font-main);
+  font-size: var(--font-size-sm); /* 1rem */
+  font-weight: var(--font-weight-regular); /* 400 */
+
   z-index: 50;
+  position: fixed;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1.2rem;
+  width: 100%;
+  max-width: 1600px;
+  background: transparent;
+  border-radius: 50px;
+  opacity: 1;
 }
 
 /* Animate when nav is open */
@@ -30,29 +40,12 @@
 
 }
 
-/* After */
-.nav-body {
-  position: fixed;
-  top: 0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0.5rem 1.2rem;
-  width: 100%;
-  max-width: 1600px;
-  background: transparent;
-  border-radius: 50px;
-  z-index: 50;
-  opacity: 1;
-  
-}
-
 .nav-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
 }
-
 
 .nav-logo img {
   height: auto;
@@ -65,6 +58,11 @@
   padding: 0.25rem 0.9rem;
   cursor: pointer;
   border-radius: 0.5px;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-medium); /* 500 */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .nav-toggle{
@@ -84,8 +82,7 @@
 }
 .nav-body.nav-open .nav-toggle {
   transform: translateX(-3px) scale(0.95);
-  
-  }
+}
 
 .nav-body.nav-open{
   background-color: transparent !important;
@@ -117,8 +114,6 @@
   left: calc(0px + 1.32rem);
   right: calc(0px + 1.32rem);
   z-index: 55;
-  
- 
 }
 
 .nav-links li {
@@ -127,11 +122,27 @@
 
 .nav-links a {
   text-decoration: none;
-  color: #333;
   font-weight: 500;
+  font-family: var(--font-main);
+  font-size: 1rem; /* consistent with --font-size-sm */
+  font-weight: var(--font-weight-medium); /* 500 */
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: #1f1f1f;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #000000; /* Slightly darker for hover */
 }
 
 
+/* Desktop styles */
+@media (max-width: 520px) {   
+ .btn-77{
+  display: none;
+ }  
+}
 
 /* Desktop styles */
 @media (min-width: 768px) {
@@ -158,6 +169,42 @@
   .nav-links li {
     margin: 0;
   }
+
+  .btn-77 {
+  display: none; 
+  }
 }
 
 
+/* get in touch btns css properties imported */
+
+/* From Uiverse.io by barisdogansutcu */ 
+.btn-77 {
+  display: none;
+  padding: 10px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  background-color: var(--text);
+  box-shadow: rgba(19, 24, 16, 0.05) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all 0.5s ease;
+}
+
+.btn-77:hover {
+  letter-spacing: 3px;
+  background-color: hsl(155, 83%, 16%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(17, 143, 74) 0px 7px 29px 0px;
+}
+
+.btn-77:active {
+  letter-spacing: 1px;
+  background-color: hsl(157, 80%, 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(19, 218, 125) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
