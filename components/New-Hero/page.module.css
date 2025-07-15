@@ -1,18 +1,9 @@
-:root {
-  font-size: 16px;
-  --font-main: 'PPFormula', sans-serif;
-  --font-accent: 'RadioGrotesk', sans-serif;
-  --bg-light: #ffffff;
-  --text-dark: #111;
-  --accent-color: #4e7c0a;
-}
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: var(--bg-light);
+  background-color: #ffffff;
   padding: 2rem;
   box-sizing: border-box;
   text-align: center;
@@ -42,44 +33,35 @@
 }
 
 .word {
-  font-family: var(--font-accent);
+  font-family: 'RadioGrotesk', sans-serif;
   font-size: 7rem;
   font-weight: 900;
   line-height: 1;
-  color: var(--text-dark);
+  color: #111;
 }
 
 .highlight {
-  color: var(--accent-color);
+  color: #4e7c0a;
 }
 
 .highlight {
   background: linear-gradient(90deg, #4e7c0a, #a1cf00, #4e7c0a);
   background-size: 500%;
   background-clip: text;
-
   background-clip: text;
-
   /* ✅ Core gradient text effect */
   color: transparent;
-
    -webkit-background-clip: text; /* For Chrome, Safari */
   background-clip: text; /* Standard property */
   -webkit-text-fill-color: transparent; /* For Chrome, Safari to make text transparent */
-  color: red; /* Fallback for other browsers */
- 
-
 }
 
 
-
-
-
 .description {
-  font-family: var(--font-main);
+  font-family: 'PPFormula', sans-serif;
   font-size: 1.375rem;
   font-weight: 400;
-  color: var(--accent-color);
+  color: #4e7c0a;
   max-width: 600px;
   line-height: 1.6;
 }
@@ -112,7 +94,6 @@
 @media (max-width: 480px) {
   .main {
     padding: 1rem 0.5rem;
-    
     max-width: 400px;
   }
 
