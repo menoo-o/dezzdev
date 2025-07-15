@@ -2,47 +2,48 @@
 'use client';
 
 import styles from './page.module.css';
-import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+// import { useForm } from 'react-hook-form';
+// import { useState } from 'react';
 
-const services = [
-  'UGC',
-  'Brand Photography',
-  'Short-Form Video',
-  'Content Strategy',
-  'Identity',
-  'Account Management',
-  'Other'
-];
+// const services = [
+//   'UGC',
+//   'Brand Photography',
+//   'Short-Form Video',
+//   'Content Strategy',
+//   'Identity',
+//   'Account Management',
+//   'Other'
+// ];
 
-const budgets = [
-  'Under $500',
-  '$500–$1k',
-  '$1k–$2.5k',
-  '$2.5k–$5k',
-  '$5k+'
-];
+// const budgets = [
+//   'Under $500',
+//   '$500–$1k',
+//   '$1k–$2.5k',
+//   '$2.5k–$5k',
+//   '$5k+'
+// ];
 
 export default function ContactPage() {
-  const { register, handleSubmit } = useForm();
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [selectedBudget, setSelectedBudget] = useState<string>('');
+  // const { register, handleSubmit } = useForm();
+  // const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  // const [selectedBudget, setSelectedBudget] = useState<string>('');
 
-  const toggleService = (service: string) => {
-    setSelectedServices(prev =>
-      prev.includes(service)
-        ? prev.filter(s => s !== service)
-        : [...prev, service]
-    );
-  };
+  // const toggleService = (service: string) => {
+  //   setSelectedServices(prev =>
+  //     prev.includes(service)
+  //       ? prev.filter(s => s !== service)
+  //       : [...prev, service]
+  //   );
+  // };
 
-  const onSubmit = (data: any) => {
-    console.log({ ...data, selectedServices, selectedBudget });
-  };
+  // const onSubmit = (data: unknown) => {
+  //   console.log({ ...data, selectedServices, selectedBudget });
+  // };
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <p>hello</p>
+      {/* <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <h1 className={styles.heading}>Get <span>in touch</span></h1>
 
         <div className={styles.grid}>
@@ -102,7 +103,7 @@ export default function ContactPage() {
         <button type="submit" className={styles.submit}>
           <span>Submit</span>
         </button>
-      </form>
+      </form> */}
     </div>
   );
 }
