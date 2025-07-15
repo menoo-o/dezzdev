@@ -53,6 +53,28 @@
   color: var(--accent-color);
 }
 
+.highlight {
+  background: linear-gradient(90deg, #4e7c0a, #a1cf00, #4e7c0a);
+  background-size: 500%;
+  background-clip: text;
+
+  background-clip: text;
+
+  /* ✅ Core gradient text effect */
+  color: transparent;
+
+   -webkit-background-clip: text; /* For Chrome, Safari */
+  background-clip: text; /* Standard property */
+  -webkit-text-fill-color: transparent; /* For Chrome, Safari to make text transparent */
+  color: red; /* Fallback for other browsers */
+ 
+
+}
+
+
+
+
+
 .description {
   font-family: var(--font-main);
   font-size: 1.375rem;
