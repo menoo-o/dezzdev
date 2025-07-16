@@ -72,8 +72,8 @@
 .nav-toggle,
 .cross-toggle {
   background: none;
-  border: 0.5px solid #072e23;
-  padding: 0.25rem 0.9rem;
+  
+  padding: 0.25rem 1.2rem;
   cursor: pointer;
   border-radius: 0.5px;
   font-family: var(--font-main);
@@ -201,5 +201,13 @@
 @media (max-width: 767px) {
   .btn-77 {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo img {
+  width: 60px;
+  height: auto;
+  transition: transform 0.3s ease;
   }
 }

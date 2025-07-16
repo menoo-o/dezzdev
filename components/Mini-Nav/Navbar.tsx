@@ -15,6 +15,9 @@ export default function Navbar() {
   const lastScrollY = useRef(0);
   const isHidden = useRef(false);
   const hasGlassified = useRef(false);
+  const blurRef = useRef<HTMLDivElement>(null);
+
+  
 
     // Turn the navbar into a rounded, glassy UI pill
 const morphToGlass = () => {
@@ -24,7 +27,7 @@ const morphToGlass = () => {
   hasGlassified.current = true;
 
   gsap.to(nav, {
-    width: 'clamp(320px, 70%, 720px)',
+    width: 'clamp(220px, 60%, 720px)',
     borderRadius: '2rem',
     backdropFilter: 'blur(20px)',
     WebkitBackdropFilter: 'blur(20px)',
@@ -116,19 +119,19 @@ const toggleMenu = () => {
     // 🔴 Closing the menu
     collapseNavMenu();
     document.body.classList.remove('lock-scroll');
-
     // ✅ Skip revertGlass if we're mid-scroll — directly morph to glass
     if (window.scrollY > 20 && navRef.current && !hasGlassified.current) {
       gsap.killTweensOf(navRef.current); // 🔪 Kill any pending animations
       hasGlassified.current = true;      // Mark it as glassified manually
       gsap.set(navRef.current, {
-       width: 'clamp(320px, 70%, 720px)',
+       width: 'clamp(220px, 60%, 720px)',
        borderRadius: '2rem',
        backdropFilter: 'blur(20px)',
        WebkitBackdropFilter: 'blur(20px)',
        backgroundColor: 'rgba(255, 255, 255, 0.07)', // ⬅️ universal glass tone
        border: '1px solid rgba(255, 255, 255, 0.18)',
        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+
         duration: 0.6,
         ease: 'power2.out',
   });
@@ -284,6 +287,10 @@ const handleClickOutside = (event: MouseEvent) => {
           <li><Link href="/contact">Blog</Link></li>
         </ul>
       </div>
+      
+       {/* 👇 Only render when nav is open */}
+      {isOpen && <div className="nav-blur-overlay" ref={blurRef} onClick={toggleMenu} />}
+
 
       <button className="btn-77">Contact</button>
 
@@ -293,6 +300,9 @@ const handleClickOutside = (event: MouseEvent) => {
 
     
     </nav>
+
+    {isOpen && <div className="nav-blur-overlay" ref={blurRef} onClick={toggleMenu} />}
+
 
   
     </>
