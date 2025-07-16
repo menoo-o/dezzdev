@@ -28,6 +28,7 @@ export default function NewHeroPage() {
       const designSplit = new SplitText(designEl, { type: 'chars,words' });
       const buildSplit = new SplitText(buildEl, { type: 'chars,words' });
       const growSplit = new SplitText(growRef.current, { type: 'chars,words' });
+      
 
       // Initial styles - set elements off-screen or scaled down for a more dramatic entrance
       gsap.set([designSplit.chars, buildSplit.chars, growSplit.chars], {
@@ -91,7 +92,7 @@ export default function NewHeroPage() {
         gsap.to(growRef.current, {
           backgroundPositionX: '200%',
           duration: 10,
-          ease: 'linear',
+          ease: 'linear', 
           repeat: -1,
           yoyo: true,
           immediateRender: false,
@@ -115,6 +116,7 @@ export default function NewHeroPage() {
         growSplit.revert();
       };
     },
+    
     { scope: containerRef }
   );
 
@@ -135,6 +137,7 @@ export default function NewHeroPage() {
           <h1 className={`${styles.word} ${styles.highlight}`} ref={growRef}>
             Grow.
           </h1>
+          
         </section>
       </main>
     </div>
