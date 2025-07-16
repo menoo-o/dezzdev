@@ -206,7 +206,7 @@
 
 @media (max-width: 480px) {
   .nav-logo img {
-  width: 60px;
+  width: 70px;
   height: auto;
   transition: transform 0.3s ease;
   }
