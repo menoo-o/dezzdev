@@ -90,7 +90,7 @@ export default function NewHeroPage() {
         // Animate background gradient on "Grow." headline
         gsap.to(growRef.current, {
           backgroundPositionX: '200%',
-          duration: 3,
+          duration: 10,
           ease: 'linear',
           repeat: -1,
           yoyo: true,
