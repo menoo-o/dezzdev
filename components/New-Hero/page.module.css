@@ -84,6 +84,9 @@
     padding: 1rem 0.5rem;
     max-width: 400px;
   }
+   .word {
+  font-size: 8rem;
+}
 
  
 }
