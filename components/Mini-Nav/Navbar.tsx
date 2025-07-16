@@ -122,15 +122,16 @@ const toggleMenu = () => {
       gsap.killTweensOf(navRef.current); // 🔪 Kill any pending animations
       hasGlassified.current = true;      // Mark it as glassified manually
       gsap.set(navRef.current, {
-        width: 'clamp(330px, 70%, 700px)',
-        borderRadius: '16px',
-        backdropFilter: 'blur(35px)',
-        backgroundColor: 'rgba(188, 230, 154, 0.35)',
-        border: '2px solid rgba(188, 230, 154, 0.45)',
-        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
+       width: 'clamp(320px, 70%, 720px)',
+       borderRadius: '2rem',
+       backdropFilter: 'blur(20px)',
+       WebkitBackdropFilter: 'blur(20px)',
+       backgroundColor: 'rgba(255, 255, 255, 0.07)', // ⬅️ universal glass tone
+       border: '1px solid rgba(255, 255, 255, 0.18)',
+       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+        duration: 0.6,
         ease: 'power2.out',
-        duration: 0.8,
-      });
+  });
     } else {
       revertGlass(); // Only revert if user is near the top
     }
