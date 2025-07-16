@@ -7,6 +7,7 @@
   padding: 2rem;
   box-sizing: border-box;
   text-align: center;
+
 }
 
 .main {
@@ -80,12 +81,15 @@
 }
 
 @media (max-width: 480px) {
+  .container {
+  padding: 1.5rem;
+}
   .main {
-    padding: 1rem 0.5rem;
-    max-width: 400px;
+    padding: 1rem 0rem;
+    max-width: 100%;
   }
    .word {
-  font-size: 8rem;
+  font-size: 6.5rem;
 }
 
  
