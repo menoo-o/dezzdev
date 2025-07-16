@@ -76,21 +76,7 @@
   font-size: 8rem;
 }
 
-  .heroText {
-    font-size: 9.375rem; /* 150px (was 15vw) */
-  }
-
-  .description {
-    font-size: 1.125rem; /* 18px (was 3vw) */
-    margin-left: 0;
-    max-width: 100%;
-    margin-top: 1.5rem;
-  }
-
-  .delayText {
-    font-size: 9.375rem; /* 150px */
-    align-self: flex-start;
-  }
+ 
 }
 
 @media (max-width: 480px) {
@@ -103,22 +89,7 @@
     min-height: 85vh;
   }
 
-  .heroText {
-    font-size: 7.1rem; /* 180px */
-  }
-
-  .description {
-    font-size: 1rem; /* 16px */
-  }
-
-  .delayText {
-    font-size: 7.1rem; /* 180px */
-  }
-
-  .divider {
-    width: 100%;
-    margin: 1.5rem 0;
-  }
+ 
 }
 
 /* LG SCREENS */
