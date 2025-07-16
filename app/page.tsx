@@ -17,6 +17,8 @@ export default function App() {
   
       <NewHeroPage />
       <What />
+      <What />
+      <What />
      
 
       

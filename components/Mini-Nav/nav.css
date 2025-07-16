@@ -1,17 +1,20 @@
 /* Navbar.css */
 
-/* Global style in your CSS */
-
+/* ----------------------------------
+   Global: Lock Scroll
+---------------------------------- */
 .lock-scroll {
   overflow: hidden;
   height: 100vh;
 }
 
+/* ----------------------------------
+   Base Navbar Styles
+---------------------------------- */
 .nav-body {
-  font-family: var(--font-main);
-  font-size: var(--font-size-sm); /* 1rem */
-  font-weight: var(--font-weight-regular); /* 400 */
-
+ font-family: var(--font-main);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
   z-index: 50;
   position: fixed;
   top: 0.5rem;
@@ -23,9 +26,21 @@
   background: transparent;
   border-radius: 50px;
   opacity: 1;
+  
 }
 
-/* Animate when nav is open */
+/* When nav is open */
+.nav-body.nav-open {
+  background-color: transparent !important;
+}
+
+.nav-body.nav-open .nav-logo {
+  transform: translateX(3px) scale(0.95);
+}
+.nav-body.nav-open .nav-toggle {
+  transform: translateX(-3px) scale(0.95);
+}
+
 .nav-body.nav-open .nav-header {
   position: absolute;
   background-color: var(--text);
@@ -33,13 +48,14 @@
   z-index: 1000;
   border-radius: 10px 10px 0 0;
   top: 100%;
-  margin-top: -0.5rem;
-  /* the left and right percentages keeps keep up with the padding-inline, is there way to use cal feautre here */
   left: calc(0px + 1.32rem);
   right: calc(0px + 1.32rem);
-
+  margin-top: -0.5rem;
 }
 
+/* ----------------------------------
+   Logo & Toggle
+---------------------------------- */
 .nav-header {
   display: flex;
   justify-content: space-between;
@@ -48,11 +64,13 @@
 }
 
 .nav-logo img {
-  height: auto;
   width: 80px;
+  height: auto;
+  transition: transform 0.3s ease;
 }
 
-.nav-toggle, .cross-toggle {
+.nav-toggle,
+.cross-toggle {
   background: none;
   border: 0.5px solid #072e23;
   padding: 0.25rem 0.9rem;
@@ -60,57 +78,40 @@
   border-radius: 0.5px;
   font-family: var(--font-main);
   font-size: 0.85rem;
-  font-weight: var(--font-weight-medium); /* 500 */
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-}
-
-.nav-toggle{
-  padding: 0.15rem 0.65rem;
-}
-
-
-.nav-logo,
-.nav-toggle {
   transition: transform 0.3s ease;
 }
 
-.nav-body.nav-open .nav-logo {
-  transform: translateX(3px) scale(0.95);
-  
- 
-}
-.nav-body.nav-open .nav-toggle {
-  transform: translateX(-3px) scale(0.95);
+.nav-toggle {
+  padding: 0.15rem 0.65rem;
 }
 
-.nav-body.nav-open{
-  background-color: transparent !important;
-}
-
-/* Navigation links - hidden by default on mobile */
+/* ----------------------------------
+   Navigation Links (Mobile Default)
+---------------------------------- */
 .nav-links {
   list-style: none;
-  overflow: hidden;
+  padding-left: 0;
   max-height: 0;
   opacity: 0;
   visibility: hidden;
+  overflow: hidden;
   transition: all 0.3s ease-in-out;
-  padding-left: 0;
 }
 
 .nav-links.open {
-  max-height: 800px; /* Enough space for all items */
+  max-height: 800px;
   opacity: 1;
   visibility: visible;
-  background-color: #EAF4F1;
+  background-color: #eaf4f1;
   padding-inline: 1.5rem;
   padding-top: 8rem;
   border-radius: 10px;
   font-size: 2.5rem;
   position: absolute;
   top: 100%;
-  /* the left and right percentages keeps keep up with the padding-inline, is there way to use cal feautre here */
   left: calc(0px + 1.32rem);
   right: calc(0px + 1.32rem);
   z-index: 55;
@@ -122,63 +123,21 @@
 
 .nav-links a {
   text-decoration: none;
-  font-weight: 500;
   font-family: var(--font-main);
-  font-size: 1rem; /* consistent with --font-size-sm */
-  font-weight: var(--font-weight-medium); /* 500 */
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
   letter-spacing: 0.02em;
-  text-decoration: none;
   color: #1f1f1f;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #000000; /* Slightly darker for hover */
+  color: #000;
 }
 
-
-/* Desktop styles */
-@media (max-width: 520px) {   
- .btn-77{
-  display: none;
- }  
-}
-
-/* Desktop styles */
-@media (min-width: 768px) {
-
-  .nav-toggle {
-    display: none;
-  }
-
-  .nav-body {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .nav-links {
-    display: flex;
-    max-height: none;
-    opacity: 1;
-    visibility: visible;
-    margin-top: 0;
-    gap: 1.5rem;
-  }
-
-  .nav-links li {
-    margin: 0;
-  }
-
-  .btn-77 {
-  display: none; 
-  }
-}
-
-
-/* get in touch btns css properties imported */
-
-/* From Uiverse.io by barisdogansutcu */ 
+/* ----------------------------------
+   Get In Touch Button (.btn-77)
+---------------------------------- */
 .btn-77 {
   display: none;
   padding: 10px 30px;
@@ -196,15 +155,51 @@
 .btn-77:hover {
   letter-spacing: 3px;
   background-color: hsl(155, 83%, 16%);
-  color: hsl(0, 0%, 100%);
-  box-shadow: rgb(17, 143, 74) 0px 7px 29px 0px;
+  color: #fff;
+  box-shadow: rgba(17, 143, 74, 0.2) 0px 7px 29px 0px;
 }
 
-.btn-77:active {
-  letter-spacing: 1px;
-  background-color: hsl(157, 80%, 48%);
-  color: hsl(0, 0%, 100%);
-  box-shadow: rgb(19, 218, 125) 0px 0px 0px 0px;
-  transform: translateY(10px);
-  transition: 100ms;
+
+
+/* ----------------------------------
+   Media Queries
+---------------------------------- */
+
+/* Hide nav toggle on desktop */
+@media (min-width: 768px) {
+
+  .nav-body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    max-height: none;
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+    gap: 1.5rem;
+  }
+
+  .nav-links li {
+    margin: 0;
+  }
+
+  /* Show .btn-77 only on desktop */
+  .btn-77 {
+    display: inline-block;
+  }
+}
+
+/* Hide .btn-77 on mobile and tablet (below 768px) */
+@media (max-width: 767px) {
+  .btn-77 {
+    display: none;
+  }
 }
