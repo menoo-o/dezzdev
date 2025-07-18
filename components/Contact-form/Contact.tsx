@@ -4,7 +4,8 @@
 
 // import { useForm } from 'react-hook-form';
 // import { useState } from 'react';
-
+// import Link from 'next/link';
+// import Image from 'next/image';
 // const services = [
 //   'UGC',
 //   'Brand Photography',
@@ -110,21 +111,13 @@
 
 // components/ContactOverlay.tsx
 
-import { useContactOverlay } from '@/stores/useContactOverlay';
-
 
 export default function ContactOverlay() {
-  const { isOpen, closeOverlay } = useContactOverlay();
 
-  if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[999] bg-white p-8">
-      <button onClick={closeOverlay} className="absolute top-4 right-4">
-        Close
-      </button>
-      <h2>Contact Us</h2>
-      <p>This is the contact overlay content.</p>
+    <div className="fixed inset-0 z-[999] bg-black p-8">
+     this is contact page form!
     </div>
   );
 }
