@@ -6,6 +6,8 @@ import Image from 'next/image';
 import './nav.css'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+// zustand store for contact page overlay
+import { useContactOverlay } from '@/stores/useContactOverlay';
 
 gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
 
@@ -16,6 +18,7 @@ export default function Navbar() {
   const isHidden = useRef(false);
   const hasGlassified = useRef(false);
   const blurRef = useRef<HTMLDivElement>(null);
+  const openOverlay = useContactOverlay((state) => state.openOverlay);
 
   
 
@@ -291,9 +294,10 @@ const handleClickOutside = (event: MouseEvent) => {
        {/* 👇 Only render when nav is open */}
       {isOpen && <div className="nav-blur-overlay" ref={blurRef} onClick={toggleMenu} />}
 
-
-      <button className="btn-77">Contact</button>
-
+      {/* Contact page overlay */}
+       <button className="btn-77" onClick={openOverlay}>
+        Contact
+      </button>
 
      
       
@@ -301,7 +305,7 @@ const handleClickOutside = (event: MouseEvent) => {
     
     </nav>
 
-    {isOpen && <div className="nav-blur-overlay" ref={blurRef} onClick={toggleMenu} />}
+  
 
 
   

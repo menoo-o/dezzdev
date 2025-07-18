@@ -3,6 +3,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Mini-Nav/Navbar";
+import NavbarNew from "@/components/New-Navbar/Navbar-New";
+import ContactOverlay from "@/components/Contact-form/Contact";
 
 
 export const metadata: Metadata = {
@@ -18,7 +20,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
+        <NavbarNew />
+         <ContactOverlay /> {/* Always mounted, but conditionally rendered */}
         {children}
    
       </body>
