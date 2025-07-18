@@ -91,7 +91,7 @@ function NavbarNew() {
                 Contact Me
             </Link>
 
-        {/* svg icon hamburger btn */}
+        {/* svg icon  btn */}
             <button
             className="nav-toggle "
             onClick={openOverlay}
