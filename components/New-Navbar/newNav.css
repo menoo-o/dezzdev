@@ -27,13 +27,6 @@
   align-items: center;
 }
 
-/* When nav is open */
-.nav-body.nav-open .nav-logo {
-  transform: translateX(3px) scale(0.95);
-}
-.nav-body.nav-open .nav-toggle {
-  transform: translateX(-3px) scale(0.95);
-}
 
 /* Left: Logo */
 .nav-header {
