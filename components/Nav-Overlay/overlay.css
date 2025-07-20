@@ -19,12 +19,15 @@
   height: 100vh;
   padding: var(--space-6);
   padding-top: var(--space-8);
+  opacity: 0;
+  transition: opacity 0.3s ease;
   background-color: var(--bg-green);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
+}
+
+.overlay-container.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Header inside overlay */
@@ -33,13 +36,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
 
 /* Left: Logo */
 .overlay-logo img {
-  width: 90px;
+  width: 95px;
   height: auto;
   transition: transform 0.3s ease;
+  
 }
 
 /* Right: Contact + Close */
@@ -47,6 +52,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  
 }
 
 /* Contact Me CTA */
@@ -68,13 +74,16 @@
 }
 
 /* Close Icon Button */
-.nav-toggle {
+/* .nav-toggle {
   background: none;
   border: none;
   padding: 0.25rem 0.75rem;
   cursor: pointer;
   transition: transform 0.3s ease;
-}
+  position: relative;
+  z-index: 2000;
+  
+} */
 
 /* Lock scroll when overlay is active */
 .lock-scroll {
@@ -87,27 +96,108 @@
 /* ----------------------------------
    Responsive Behavior
 ---------------------------------- */
-
-/* Keep same layout across all sizes — nothing to override in media queries */
-@media (max-width: 480px) {
-
-  .overlay-container {
-    padding: var(--space-4);
-    padding-top: var(--space-6);
-  }
-  .overlay-logo img {
-    width: 70px;
-  }
-  .overlay-actions {
-   gap: var(--space-1); /* You can increase to space-6 if needed */
- }
-  /* Contact Me CTA */
-.contact-btn {
-  font-size: var(--font-size-xs);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
-  background-color: var(--text);
+/* ----------------------------------
+   Overlay Content Container
+---------------------------------- */
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-10);
+  padding: var(--space-6);
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: var(--space-16);
 }
 
+/* Two-column layout on desktop */
+@media (min-width: 768px) {
+  .overlay-content {
+    flex-direction: row;
+    align-items: end;
+    padding: var(--space-6) 0;
 }
+}
+
+/* ----------------------------------
+   Left Section: Navigation
+---------------------------------- */
+.overlay-content__left {
+  flex: 1;
+  
+}
+
+.overlay-content__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.overlay-content__item {
+  font-size: var(--font-size-lg);
+  color: var(--text);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.overlay-content__item:hover {
+  color: var(--aqua);
+}
+
+/* ----------------------------------
+   Right Section: Social + Email
+---------------------------------- */
+.overlay-content__right {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  color: var(--text);
+}
+
+.overlay-content__bg-svg {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 120px;
+  height: 120px;
+  opacity: 0.08;
+  z-index: 0;
+}
+
+.overlay-content__email {
+  position: relative;
+  z-index: 1;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  color: var(--text);
+}
+
+.overlay-content__social-links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  color: var(--text);
+}
+
+.overlay-content__social-link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.overlay-content__social-link:hover {
+  color: var(--aqua);
+}
+
+
+

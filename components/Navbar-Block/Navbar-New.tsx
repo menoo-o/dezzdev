@@ -2,7 +2,7 @@
 
 import React, { useRef} from 'react';
 // zustand store for contact page overlay
-import { useContactOverlay } from '@/stores/useContactOverlay';
+import NavToggle from '../Buttons/NavToggle';
 import Link from 'next/link';
 import Image from 'next/image';
 import './newNav.css'
@@ -17,7 +17,6 @@ function NavbarNew() {
       const navRef = useRef<HTMLElement | null>(null);
       const lastScrollY = useRef(0);
       const isHidden = useRef(false);
-      const openOverlay = useContactOverlay((state) => state.openOverlay);
     
       useGSAP(()=>{
         const nav = navRef.current;
@@ -91,53 +90,8 @@ function NavbarNew() {
                 Contact Me
             </Link>
 
-        {/* svg icon  btn */}
-            <button
-            className="nav-toggle "
-            onClick={openOverlay}
-            aria-label="Toggle navigation"
-            >
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="28"
-                height="28"
-                preserveAspectRatio="xMidYMid meet"
-                style={{
-                    width: '100%',
-                    height: '100%',
-                    transform: 'translate3d(0px, 0px, 0px)',
-                    contentVisibility: 'visible',
-                }}
-                className="lottie-svg">
-                <defs>
-                <clipPath id="__lottie_element_48">
-                    <rect width="28" height="28" x="0" y="0" />
-                </clipPath>
-                </defs>
-                <g clipPath="url(#__lottie_element_48)">
-                <g transform="matrix(1,0,0,1,0,0)" opacity="1">
-                    <g opacity="1" transform="matrix(1,0,0,1,12,12)">
-                    <g opacity="1" transform="matrix(1,0,0,1,0,2.5)">
-                        <path
-                        fill="#072e23"
-                        fillOpacity="1"
-                        d="M7,-0.75 C7,-0.75 7,0.75 7,0.75 C7,0.75 -7,0.75 -7,0.75 C-7,0.75 -7,-0.75 -7,-0.75 C-7,-0.75 7,-0.75 7,-0.75z"
-                        />
-                    </g>
-                    <g opacity="1" transform="matrix(1,0,0,1,0,-2.5)">
-                        <path
-                        fill="#072e23"
-                        fillOpacity="1"
-                        d="M7,-0.75 C7,-0.75 7,0.75 7,0.75 C7,0.75 -7,0.75 -7,0.75 C-7,0.75 -7,-0.75 -7,-0.75 C-7,-0.75 7,-0.75 7,-0.75z"
-                        />
-                    </g>
-                    </g>
-                </g>
-                </g>
-            </svg>      
-
-            </button>
+        {/* Nav-toggle btn */}
+         <NavToggle />
         </div>
 
         

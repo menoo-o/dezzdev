@@ -21,7 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NavbarNew />
-        <NavOverlay /> {/* Always mounted, but conditionally rendered */}
+        <NavOverlay />
+        {/* <Overlay /> */}
         {children}
    
       </body>

@@ -1,17 +1,22 @@
 'use client';
 
-
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRef, useEffect } from 'react';
+import { useNavStore } from '@/stores/useContactOverlay';
+import NavToggle from '../Buttons/NavToggle';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 import './overlay.css'
 
-import { useEffect } from 'react';
-import { useContactOverlay } from '@/stores/useContactOverlay';
-
-
 export default function NavOverlay() {
-  const { isOpen, closeOverlay } = useContactOverlay();
+  const isOpen = useNavStore((s) => s.isOpen);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+  const navListRef = useRef<HTMLUListElement | null>(null);
+  const socialRef = useRef<HTMLDivElement | null>(null);
+  const tl = useRef<gsap.core.Timeline | null>(null);
 
+  // Lock body scroll on open
   useEffect(() => {
     const body = document.body;
 
@@ -21,52 +26,85 @@ export default function NavOverlay() {
       body.classList.remove('lock-scroll');
     }
 
-    // Cleanup when component unmounts (just in case)
     return () => body.classList.remove('lock-scroll');
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
+ useGSAP(() => {
+  if (!isOpen) return; // ← this is safe!
   
+  const navItems = navListRef.current?.querySelectorAll('li') ?? [];
+  const socialLinks = socialRef.current;
+
+  gsap.set(navItems, { opacity: 0, x: -30 });
+  gsap.set(socialLinks, { opacity: 0, y: 20 });
+
+  tl.current = gsap.timeline()
+    .fromTo(overlayRef.current,
+      { left: '100%' },
+      { left: '0%', duration: 0.5, ease: 'power3.out' }
+    )
+    .to(navItems, {
+      opacity: 1,
+      x: 0,
+      stagger: 0.1,
+      duration: 0.4,
+      ease: 'power2.out',
+    }, '-=0.3')
+    .to(socialLinks, {
+      opacity: 1,
+      y: 0,
+      duration: 0.3,
+      ease: 'back.out(1.7)',
+    }, '-=0.2');
+}, [isOpen]);
+
 
   return (
-    <>
-    <section className='overlay-container'>
-      <div className='overlay-header'>
-         {/* Left: Logo */}
-          <Link href='/' className='overlay-logo'>
-            <Image 
-              src='/logodezzdevlight.svg'
-              alt='overlay-logo'
-              width={110}
-              height={50}
-            />
-          </Link>
+    <section 
+    className={`overlay-container ${isOpen ? 'active' : ''}`}
+    ref={overlayRef}>
+      {/* Header: Logo + CTA + Close */}
+      <div className="overlay-header">
+        <Link href="/" className="overlay-logo">
+          <Image 
+            src="/logodezzdevlight.svg"
+            alt="overlay-logo"
+            width={110}
+            height={50}
+          />
+        </Link>
 
-          {/* Right: Contact + Close Icon */}
-        <div className='overlay-actions'>
-          <Link
-            className="contact-btn btn"
-            href='/contact'
-          >
+        <div className="overlay-actions">
+          <Link className="contact-btn btn" href="/contact">
             Contact Me
           </Link>
-          <button
-            className="nav-toggle "
-            onClick={closeOverlay}
-            aria-label="Toggle navigation"
-          >
-            <Image 
-              src='/icons/cross.svg'
-              alt='close menu'
-              width={24}
-              height={24}
-            />
-          </button>
+          <NavToggle />
         </div>
-       
+      </div>
+
+      {/* Content: Nav Left + Social Right */}
+      <div className="overlay-content">
+        <nav className="overlay-content__left">
+          <ul className="overlay-content__list" ref={navListRef}>
+            <li className="overlay-content__item">Work</li>
+            <li className="overlay-content__item">Services</li>
+            <li className="overlay-content__item">About</li>
+            <li className="overlay-content__item">Insights</li>
+            <li className="overlay-content__item">FAQs</li>
+          </ul>
+        </nav>
+
+        <div className="overlay-content__right" ref={socialRef}>
+          <span>dezzdev</span>
+          <p className="overlay-content__email">hello@dezzdev.com</p>
+
+          <div className="overlay-content__social-links">
+            <a href="#" className="overlay-content__social-link">Twitter</a>
+            <a href="#" className="overlay-content__social-link">LinkedIn</a>
+            <a href="#" className="overlay-content__social-link">GitHub</a>
+          </div>
+        </div>
       </div>
     </section>
-    </>
   );
 }
