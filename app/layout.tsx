@@ -5,6 +5,7 @@ import "./globals.css";
 //import Navbar from "@/components/Mini-Nav/Navbar";
 import NavbarNew from "@/components/Navbar-Block/Navbar-New";
 import NavOverlay from "@/components/Nav-Overlay/NavOverlay";
+import ContactOverlay from "@/components/ContactOverlay/Contact-form";
 
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body>
         <NavbarNew />
         <NavOverlay />
+        <ContactOverlay />
         {/* <Overlay /> */}
         {children}
    

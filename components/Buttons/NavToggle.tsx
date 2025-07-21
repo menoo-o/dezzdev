@@ -1,10 +1,10 @@
 // components/NavToggle.tsx
-import { useNavStore } from "@/stores/useContactOverlay";
+import { useOverlayStore } from "@/stores/useOverlay";
 import './hamburger.css'
 
-export default function NavToggle() {
-  const isOpen = useNavStore((s) => s.isOpen);
-  const toggle = useNavStore((s) => s.toggle);
+function NavToggle() {
+  const isOpen = useOverlayStore((s) => s.isNavOpen);
+  const toggle = useOverlayStore((s) => s.toggleNav);
 
   return (
     <button
@@ -16,3 +16,7 @@ export default function NavToggle() {
     </button>
   );
 }
+
+
+
+export  {NavToggle}

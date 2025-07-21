@@ -2,12 +2,15 @@
 
 import React, { useRef} from 'react';
 // zustand store for contact page overlay
-import NavToggle from '../Buttons/NavToggle';
+import { NavToggle } from '../Buttons/NavToggle';
 import Link from 'next/link';
 import Image from 'next/image';
 import './newNav.css'
+import { useOverlayStore } from '@/stores/useOverlay';
+
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+
 
 gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
 
@@ -17,6 +20,7 @@ function NavbarNew() {
       const navRef = useRef<HTMLElement | null>(null);
       const lastScrollY = useRef(0);
       const isHidden = useRef(false);
+      const openContact = useOverlayStore((s) => s.openContact);
     
       useGSAP(()=>{
         const nav = navRef.current;
@@ -83,12 +87,12 @@ function NavbarNew() {
         {/* Right: Contact + Hamburger */}
         <div className="nav-actions">
             {/* contact-page link */}
-        <Link
+        <button
             className="contact-btn btn"
-            href='/contact'
+            onClick={openContact}
             >
                 Contact Me
-            </Link>
+            </button>
 
         {/* Nav-toggle btn */}
          <NavToggle />

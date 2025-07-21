@@ -8,6 +8,7 @@ import What from "@/components/What-We-Do-Block/What";
 import NewHeroPage from "@/components/Hero-Block/NewHero";
 import React from "react";
 
+
 export default function App() {
   return (
     <div>
@@ -24,6 +25,7 @@ export default function App() {
       <What />
       <What />
       <What />
+    
      
 
       

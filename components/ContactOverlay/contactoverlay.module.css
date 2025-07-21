@@ -1,0 +1,139 @@
+/* 🔹 Fullscreen blurred background */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-contact-overlay);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-6);
+  pointer-events: none;
+  font-family: var(--font-main);
+ 
+}
+
+.overlay.active {
+  pointer-events: auto;
+}
+
+/* 🔹 White panel (main form box) */
+.panel {
+  background: var(--bg-green);
+  color: var(--text);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  width: min(100%, 900px);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+  font-family: var(--font-main);
+}
+
+/* 🔹 Close button */
+.closeBtn {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  font-size: var(--font-size-md);
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* 🔹 Title & Subtitle */
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-4);
+  font-family: var(--font-accent);
+}
+
+.subtitle {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-5);
+}
+
+/* 🔹 Services tag buttons */
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.serviceBtn {
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--text);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 9999px;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.serviceBtn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.serviceBtn.active {
+  background-color: var(--aqua);
+  border-color: var(--aqua);
+  color: var(--bg-green);
+  font-weight: var(--font-weight-medium);
+}
+
+/* 🔹 Form layout */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.inputRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.input,
+.textarea {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-main);
+  background: #fff;
+  color: #000;
+}
+
+.textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* 🔹 Submit button */
+.submitBtn {
+  margin-top: var(--space-4);
+  background: var(--aqua);
+  color: var(--bg-green);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  transition: background 0.25s ease;
+}
+
+.submitBtn:hover {
+  background: var(--jungle);
+  color: var(--text);
+}
+

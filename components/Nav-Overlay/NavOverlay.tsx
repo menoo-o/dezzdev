@@ -2,32 +2,26 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRef, useEffect } from 'react';
-import { useNavStore } from '@/stores/useContactOverlay';
-import NavToggle from '../Buttons/NavToggle';
+import { useRef} from 'react';
+import { useOverlayStore } from '@/stores/useOverlay';
+import { NavToggle } from '../Buttons/NavToggle';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import './overlay.css'
+import useLockScroll from '@/lib/hooks/useLockScroll';
+import useEscapeKey from '@/lib/hooks/useEscapeKey';
 
 export default function NavOverlay() {
-  const isOpen = useNavStore((s) => s.isOpen);
+  const isOpen = useOverlayStore((s) => s.isNavOpen);
+  const toClose = useOverlayStore((s)=> s.closeNav);
+  const openContact = useOverlayStore((s)=> s.openContact);
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const navListRef = useRef<HTMLUListElement | null>(null);
   const socialRef = useRef<HTMLDivElement | null>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
 
   // Lock body scroll on open
-  useEffect(() => {
-    const body = document.body;
-
-    if (isOpen) {
-      body.classList.add('lock-scroll');
-    } else {
-      body.classList.remove('lock-scroll');
-    }
-
-    return () => body.classList.remove('lock-scroll');
-  }, [isOpen]);
+  useLockScroll(isOpen);
 
  useGSAP(() => {
   if (!isOpen) return; // ← this is safe!
@@ -58,6 +52,10 @@ export default function NavOverlay() {
     }, '-=0.2');
 }, [isOpen]);
 
+  // 🔹 Escape key to close
+  useEscapeKey(isOpen, toClose);
+
+
 
   return (
     <section 
@@ -75,10 +73,16 @@ export default function NavOverlay() {
         </Link>
 
         <div className="overlay-actions">
-          <Link className="contact-btn btn" href="/contact">
+
+          <button 
+            className="contact-btn btn"
+            onClick={openContact}
+            >
             Contact Me
-          </Link>
+          </button>
+
           <NavToggle />
+
         </div>
       </div>
 
