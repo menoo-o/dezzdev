@@ -2,7 +2,7 @@
 
 import styles from './contactoverlay.module.css'
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useForm, Controller } from "react-hook-form"
 
 import { useOverlayStore } from '@/stores/useOverlay';
@@ -36,22 +36,15 @@ const services = [
 
 
 export default function ContactOverlay() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMsg, setStatusMsg] = useState(''); 
+  const [statusType, setStatusType] = useState<'success' | 'error'>('success');
+  // 🔹 React Hook Form setup
   const { register, handleSubmit, reset , control } = useForm<ContactFormData>();
-  // const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const isContactOpen = useOverlayStore((s) => s.isContactOpen);
   const closeContact = useOverlayStore((s) => s.closeContact);
   const contactOverlayRef = useRef<HTMLDivElement | null>(null);
   useClickOutside(contactOverlayRef, isContactOpen, closeContact);
-  
-
-  // const toggleService = (service: string) => {
-  //   setSelectedServices((prev) =>
-  //     prev.includes(service)
-  //       ? prev.filter((s) => s !== service)
-  //       : [...prev, service]
-  //   );
-  // };
-
 
 const onSubmit = (data: ContactFormData) => {
   const templateParams = {
@@ -72,13 +65,18 @@ const onSubmit = (data: ContactFormData) => {
     .then(
       (result) => {
         console.log('Email sent:', result.text);
+        setIsSubmitting(true);
         alert('Message sent successfully!');
+        setStatusMsg('✅ Message sent successfully!');
+        // setStatusMsg(null); // clear previous
         reset(); // Reset form fields
         closeContact(); // Optionally reset form here
       },
       (error) => {
         console.error('Email error:', error);
         alert('Something went wrong. Try again later.');
+        setStatusType('error');
+        setStatusMsg('❌ Something went wrong. Please try again.');
         closeContact(); // Close overlay on error
       }
     );
@@ -98,7 +96,11 @@ const onSubmit = (data: ContactFormData) => {
       
     >
       <div className={styles.panel} ref={contactOverlayRef}>
-        <button className={styles.closeBtn} onClick={closeContact}>
+        <button 
+          className={styles.closeBtn} 
+          onClick={closeContact}
+          aria-label="Close contact form"
+          >
           &times;
         </button>
 
@@ -118,6 +120,8 @@ const onSubmit = (data: ContactFormData) => {
                 <button
                   key={service}
                   type="button"
+                   aria-pressed={field.value.includes(service)}
+                  aria-label={`Select service ${service}`}
                   onClick={() => {
                     const updated = field.value.includes(service)
                       ? field.value.filter((s: string) => s !== service)
@@ -148,6 +152,7 @@ const onSubmit = (data: ContactFormData) => {
                 maxLength: 50
               })}
               placeholder="Your name"
+              aria-label="Your name"
               className={styles.input}
             />
           <input
@@ -156,6 +161,7 @@ const onSubmit = (data: ContactFormData) => {
               pattern: /^\S+@\S+\.\S+$/i, // simple email pattern
             })}
             placeholder="Your email"
+            aria-label="Your Email"
             className={styles.input}
           />
           </div>
@@ -165,6 +171,7 @@ const onSubmit = (data: ContactFormData) => {
               maxLength: 50,
             })}
             placeholder="Your company (optional)"
+            aria-label="Your Company"
             className={styles.input}
           />
           <textarea
@@ -174,12 +181,29 @@ const onSubmit = (data: ContactFormData) => {
               maxLength: 500,
             })}
             placeholder="Tell about your project"
+            aria-label="Your Message"
             className={styles.textarea}
           />
-          <button type="submit" className={styles.submitBtn}>
-            Send
+          <button 
+            type="submit" 
+            className={styles.submitBtn}
+            aria-label="Send contact message"
+            disabled={isSubmitting}
+            >
+             {isSubmitting ? 'Sending...' : 'Send'}
           </button>
         </form>
+        
+        {statusMsg && (
+        <p 
+          className={
+            statusType === 'success' ? styles.successMsg : styles.errorMsg
+          }
+        >
+          {statusMsg}
+        </p>
+        )}
+
       </div>
     </section>
   );

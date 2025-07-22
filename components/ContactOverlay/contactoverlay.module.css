@@ -137,3 +137,19 @@
   color: var(--text);
 }
 
+.successMsg {
+  color: green;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.errorMsg {
+  color: red;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
