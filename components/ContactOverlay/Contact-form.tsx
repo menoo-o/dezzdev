@@ -75,7 +75,7 @@ const onSubmit = (data: ContactFormData) => {
       (result) => {
         console.log('Email sent:', result.text);
         setIsSubmitting(true);
-        alert('Message sent successfully!');
+       
         setStatusMsg('✅ Message sent successfully!');
         // setStatusMsg(null); // clear previous
         reset({
@@ -89,7 +89,7 @@ const onSubmit = (data: ContactFormData) => {
       },
       (error) => {
         console.error('Email error:', error);
-        alert('Something went wrong. Try again later.');
+       
         setStatusType('error');
         setStatusMsg('❌ Something went wrong. Please try again.');
         closeContact(); // Close overlay on error
