@@ -72,8 +72,7 @@ const onSubmit = (data: ContactFormData) => {
       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
     )
     .then(
-      (result) => {
-        console.log('Email sent:', result.text);
+      () => {
         setIsSubmitting(true);
        
         setStatusMsg('✅ Message sent successfully!');
@@ -87,9 +86,7 @@ const onSubmit = (data: ContactFormData) => {
         }); // Reset form fields
         closeContact(); // Optionally reset form here
       },
-      (error) => {
-        console.error('Email error:', error);
-       
+      () => {   
         setStatusType('error');
         setStatusMsg('❌ Something went wrong. Please try again.');
         closeContact(); // Close overlay on error
