@@ -14,6 +14,7 @@ import emailjs from '@emailjs/browser';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import SpinnerLoader from '@/ui/SpinnerGSAP/Spinner';
 
 gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
 
@@ -40,7 +41,15 @@ export default function ContactOverlay() {
   const [statusMsg, setStatusMsg] = useState(''); 
   const [statusType, setStatusType] = useState<'success' | 'error'>('success');
   // 🔹 React Hook Form setup
-  const { register, handleSubmit, reset , control } = useForm<ContactFormData>();
+  const { register, handleSubmit, reset , control, formState:{errors}, } = useForm<ContactFormData>({
+    defaultValues:{
+      name: '',
+      email: '',
+      company: '',
+      message: '',
+      selectedServices: [], 
+    }
+  });
   const isContactOpen = useOverlayStore((s) => s.isContactOpen);
   const closeContact = useOverlayStore((s) => s.closeContact);
   const contactOverlayRef = useRef<HTMLDivElement | null>(null);
@@ -69,7 +78,13 @@ const onSubmit = (data: ContactFormData) => {
         alert('Message sent successfully!');
         setStatusMsg('✅ Message sent successfully!');
         // setStatusMsg(null); // clear previous
-        reset(); // Reset form fields
+        reset({
+          name: '',
+          email: '',
+          company: '',
+          message: '',
+          selectedServices: [],
+        }); // Reset form fields
         closeContact(); // Optionally reset form here
       },
       (error) => {
@@ -115,7 +130,11 @@ const onSubmit = (data: ContactFormData) => {
         }}
         render={({ field, fieldState }) => (     // the custom rendering logic
           <>
-            <div className={styles.services}>
+            <div 
+              className={`${styles.services} ${
+             fieldState.error ? styles.servicesError : ''
+            }`}
+             >
               {services.map((service) => (
                 <button
                   key={service}
@@ -153,7 +172,8 @@ const onSubmit = (data: ContactFormData) => {
               })}
               placeholder="Your name"
               aria-label="Your name"
-              className={styles.input}
+              aria-invalid={errors.name ? "true" : "false"}
+              className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
             />
           <input
             {...register('email', {
@@ -162,7 +182,8 @@ const onSubmit = (data: ContactFormData) => {
             })}
             placeholder="Your email"
             aria-label="Your Email"
-            className={styles.input}
+            aria-invalid={errors.email ? "true" : "false"}
+            className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
           />
           </div>
           <input
@@ -182,7 +203,8 @@ const onSubmit = (data: ContactFormData) => {
             })}
             placeholder="Tell about your project"
             aria-label="Your Message"
-            className={styles.textarea}
+            aria-invalid={errors.message ? "true" : "false"}
+            className={`${styles.textarea} ${errors.message ? styles.textareaError : ''}`}
           />
           <button 
             type="submit" 
@@ -190,7 +212,7 @@ const onSubmit = (data: ContactFormData) => {
             aria-label="Send contact message"
             disabled={isSubmitting}
             >
-             {isSubmitting ? 'Sending...' : 'Send'}
+             {isSubmitting ? <SpinnerLoader /> : 'Send'}
           </button>
         </form>
         

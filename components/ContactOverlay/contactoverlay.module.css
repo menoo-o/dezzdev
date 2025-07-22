@@ -25,7 +25,7 @@
   border-radius: var(--radius-lg);
   padding: var(--space-8);
   width: min(100%, 900px);
-  max-height: 90vh;
+  max-height: 95vh;
   overflow-y: auto;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   position: relative;
@@ -137,19 +137,63 @@
   color: var(--text);
 }
 
+
+/* Error state for input and textarea */
+.inputError,
+.textareaError {
+  border-color: #e74c3c;
+  background-color: #fff0f0;
+  outline: none;
+}
+
+/* Focus state still shows red border on error */
+.inputError:focus,
+.textareaError:focus {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+/* Error message text */
+.error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Optional: success state border */
+.inputSuccess,
+.textareaSuccess {
+  border-color: #2ecc71;
+  background-color: #f6fffa;
+}
+
+/* Disabled button */
+.submitBtn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Error highlight for unselected services */
+.servicesError {
+  border: 1px solid #e74c3c;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: #fff6f6;
+}
+
+
 .successMsg {
-  color: green;
+  color: #2ecc71;
+  font-weight: 500;
   margin-top: 1rem;
-  font-size: 0.95rem;
+  text-align: center;
 }
 
 .errorMsg {
-  color: red;
+  color: #e74c3c;
+  font-weight: 500;
   margin-top: 1rem;
-  font-size: 0.95rem;
-}
-
-.submitBtn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+  text-align: center;
 }
