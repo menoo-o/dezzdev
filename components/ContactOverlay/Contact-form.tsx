@@ -7,6 +7,7 @@ import styles from './contactoverlay.module.css'
 import useEscapeKey from '@/lib/hooks/useEscapeKey';
 import useLockScroll from '@/lib/hooks/useLockScroll';
 import useClickOutside from '@/lib/hooks/useClickOutside';
+import emailjs from '@emailjs/browser';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -16,8 +17,8 @@ gsap.registerPlugin(useGSAP); // register the hook to avoid React version discre
 type ContactFormData = {
   name: string;
   email: string;
-  company?: string;
-  message?: string;
+  company: string;
+  message: string;
 };
 
 const services = [
@@ -29,8 +30,11 @@ const services = [
   'Other',
 ];
 
+
+
+
 export default function ContactOverlay() {
-  const { register, handleSubmit } = useForm<ContactFormData>();
+  const { register, handleSubmit, reset } = useForm<ContactFormData>();
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const isContactOpen = useOverlayStore((s) => s.isContactOpen);
   const closeContact = useOverlayStore((s) => s.closeContact);
@@ -45,11 +49,37 @@ export default function ContactOverlay() {
         : [...prev, service]
     );
   };
-  const onSubmit = (data: ContactFormData) => {
-    // On close contact add a loading state or similar-submitting....
-    closeContact();
-    console.log({ ...data, selectedServices });
+
+
+const onSubmit = (data: ContactFormData) => {
+  const templateParams = {
+    name: data.name,
+    email: data.email,
+    company: data.company || 'N/A',
+    message: data.message,
+    selectedServices: selectedServices.join(', '), // <- include this!
   };
+
+  emailjs
+    .send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+      templateParams,
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+    )
+    .then(
+      (result) => {
+        console.log('Email sent:', result.text);
+        alert('Message sent successfully!');
+        reset(); // Reset form fields
+        closeContact(); // Optionally reset form here
+      },
+      (error) => {
+        console.error('Email error:', error);
+        alert('Something went wrong. Try again later.');
+      }
+    );
+};
 
   useLockScroll(isContactOpen);
   useEscapeKey(isContactOpen, closeContact);
