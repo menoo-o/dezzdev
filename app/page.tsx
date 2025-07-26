@@ -7,6 +7,7 @@
 import What from "@/components/What-We-Do-Block/What";
 import NewHeroPage from "@/components/Hero-Block/NewHero";
 import React from "react";
+import FaqBlock from "@/components/FAQs/FaqBlock";
 
 
 export default function App() {
@@ -22,6 +23,11 @@ export default function App() {
       <What />
       <What />
       <What />
+      <What />
+      <What />
+      <What />
+      <FaqBlock />
+       <What />
       <What />
       <What />
       <What />

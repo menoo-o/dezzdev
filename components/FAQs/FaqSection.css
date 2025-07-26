@@ -1,0 +1,123 @@
+.faq-block {
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--space-10);
+  background-color: var(--text);
+  font-family: var(--font-main);
+  color: var(--bg-green);
+  z-index: var(--z-base);
+}
+
+.faq-inner {
+  display: flex;
+  flex-direction: column;
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: var(--space-10);
+}
+
+.faq-left {
+  width: 100%;
+}
+
+.faq-title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+}
+
+.faq-list {
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.faq-right::-webkit-scrollbar {
+  display: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--aqua);
+  padding-bottom: var(--space-3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: var(--space-3);
+  background: transparent;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-main);
+  color: var(--bg-green);
+}
+
+
+.faq-answer-wrapper {
+  max-height: 0;
+  transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+  overflow: hidden;
+}
+
+.faq-item.open .faq-answer-wrapper {
+  max-height: 400px;
+  padding: 0 var(--space-4) var(--space-4);
+}
+
+.faq-answer p {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  font-weight: var(--font-weight-regular);
+  color: #3E4A28;
+}
+
+.icon {
+  transition: transform 0.3s ease;
+  font-size: 1.25rem;
+  color: var(--jungle);
+}
+
+.rotate {
+  transform: rotate(45deg);
+}
+
+/* === Desktop Split Layout === */
+@media (min-width: 768px) {
+  .faq-inner {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .faq-left {
+    width: 50%;
+    position: sticky;
+    top: var(--space-10);
+    align-self: flex-start;
+    height: fit-content;
+    padding-right: var(--space-6);
+  }
+
+  .faq-right {
+    width: 50%;
+    height: 100vh;
+    overflow-y: auto;
+    padding-right: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+}

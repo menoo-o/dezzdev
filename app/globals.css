@@ -111,18 +111,11 @@
   --z-base: 1;
   --z-sticky: 10;
   --z-dropdown: 50;
-  --z-fixed: 100;
-  --z-overlay: 1000;
-  --z-modal: 1100;
-  --z-contact-overlay: 1150;
+  --z-fixed: 100; /* Navbar */
+  --z-overlay: 1000; /* Nav Overlay */
+  --z-contact-overlay: 1150; /* Contact overlay */
 
   /* Colors (set your palette early) */
-  --color-bg: #ffffff;
-  --color-text: #111111;
-  --color-accent: #ff6b6b;
-  --color-muted: #888;
-  --color-border: #eaeaea;
-
   --bg-green: #072e23;
   --text: #EAF4F1;
   --aqua: #18FFC1;

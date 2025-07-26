@@ -19,6 +19,7 @@
   height: 100vh;
   padding: var(--space-6);
   padding-top: var(--space-8);
+  pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
   background-color: var(--bg-green);

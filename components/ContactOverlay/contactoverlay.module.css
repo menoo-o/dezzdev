@@ -9,13 +9,16 @@
   justify-content: center;
   align-items: center;
   padding: var(--space-6);
-  pointer-events: none;
   font-family: var(--font-main);
- 
+  
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .overlay.active {
   pointer-events: auto;
+  opacity: 1;
 }
 
 /* 🔹 White panel (main form box) */
@@ -179,8 +182,10 @@
 .servicesError {
   border: 1px solid #e74c3c;
   border-radius: 0.5rem;
+  background-color: rgba(255, 48, 24, 0.6);
   padding: 0.5rem;
-  background-color: #fff6f6;
+  margin-bottom: var(--space-4);
+  
 }
 
 

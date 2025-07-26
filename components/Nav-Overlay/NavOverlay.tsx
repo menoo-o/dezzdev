@@ -7,7 +7,7 @@ import { useOverlayStore } from '@/stores/useOverlay';
 import { NavToggle } from '../Buttons/NavToggle';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import './overlay.css'
+import './nav-overlay.css'
 import useLockScroll from '@/lib/hooks/useLockScroll';
 import useEscapeKey from '@/lib/hooks/useEscapeKey';
 
