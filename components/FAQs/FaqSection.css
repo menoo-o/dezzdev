@@ -6,6 +6,7 @@
   font-family: var(--font-main);
   color: var(--bg-green);
   z-index: var(--z-base);
+   overflow-x: hidden; /* ✅ Add this */
 }
 
 .faq-inner {
