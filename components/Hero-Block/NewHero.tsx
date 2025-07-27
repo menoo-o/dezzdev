@@ -9,6 +9,9 @@ import { SplitText } from "gsap/SplitText"
 // Register the plugin
 gsap.registerPlugin(SplitText, useGSAP)
 
+
+
+
 import styles from './page.module.css';
 
 export default function NewHeroPage() {
@@ -28,7 +31,9 @@ export default function NewHeroPage() {
       const designSplit = new SplitText(designEl, { type: 'chars,words' });
       const buildSplit = new SplitText(buildEl, { type: 'chars,words' });
       const growSplit = new SplitText(growRef.current, { type: 'chars,words' });
-      
+      growSplit.chars.forEach((char) => {
+        char.classList.add(styles.highlight); // give each char gradient styles
+      });  
 
       // Initial styles - set elements off-screen or scaled down for a more dramatic entrance
       gsap.set([designSplit.chars, buildSplit.chars, growSplit.chars], {
@@ -43,13 +48,14 @@ export default function NewHeroPage() {
 
       const tl = gsap.timeline({ delay: 0.3 });
 
-      tl.to(containerRef.current, {
+      tl.to (containerRef.current, {
         autoAlpha: 1,
         scale: 1,
         duration: 0.8,
         ease: 'power3.out',
       })
-        .to(
+
+      .to(
           designSplit.chars,
           {
             opacity: 1,
@@ -61,7 +67,7 @@ export default function NewHeroPage() {
           },
           '<0.2' // Start slightly after the container animation begins
         )
-        .to(
+      .to(
           buildSplit.chars,
           {
             opacity: 1,
@@ -89,25 +95,15 @@ export default function NewHeroPage() {
         )
 
         // Animate background gradient on "Grow." headline
-        gsap.to(growRef.current, {
-          backgroundPositionX: '200%',
-          duration: 10,
-          ease: 'linear', 
-          repeat: -1,
-          yoyo: true,
-          immediateRender: false,
-        })
-
-      // Enhanced subtle floating effect with more complex movement
-      gsap.to(containerRef.current, {
-        y: -15, // Slightly more pronounced vertical movement
-        x: 5, // Introduce a slight horizontal sway
-        rotationZ: 0.5, // Subtle rotation
-        duration: 4,
-        ease: 'sine.inOut', // Smoother, more natural wave
-        yoyo: true,
+        gsap.to(growSplit.chars, {
+        '--bg-position': '200%',
+        duration: 6,
+        ease: 'linear',
         repeat: -1,
+        yoyo: true,
+        immediateRender: false,
       });
+
 
       // Cleanup for SplitText
       return () => {
@@ -134,9 +130,9 @@ export default function NewHeroPage() {
             <h1 className={styles.word}>Design.</h1>
             <h1 className={styles.word}>Build.</h1>
           </div>
-          <h1 className={`${styles.word} ${styles.highlight}`} ref={growRef}>
-            Grow.
-          </h1>
+          <div className={styles.highlight} ref={growRef}>
+            <h1 className={styles.word} >Grow.</h1>
+          </div>
           
         </section>
       </main>

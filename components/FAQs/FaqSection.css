@@ -83,7 +83,7 @@ ul {
   font-size: var(--font-size-sm);
   line-height: 1.6;
   font-weight: var(--font-weight-regular);
-  color: #3E4A28;
+  color: var(--moss);
 }
 
 .icon {

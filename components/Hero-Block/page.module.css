@@ -41,26 +41,26 @@
 }
 
 .highlight {
-  color: #4e7c0a;
-}
-
-.highlight {
   background: linear-gradient(90deg, #072e23, #18ffc1, #1aa882);
   background-size: 500%;
   background-clip: text;
   /* ✅ Core gradient text effect */
+   -webkit-background-clip: text;
   color: transparent;
-   -webkit-background-clip: text; /* For Chrome, Safari */
-  background-clip: text; /* Standard property */
-  -webkit-text-fill-color: transparent; /* For Chrome, Safari to make text transparent */
+   --bg-position: 0%;
+  background-position: var(--bg-position);
+  display: inline-block;
 }
 
-.word {
-  font-family: 'RadioGrotesk', sans-serif;
-  font-size: 9.5rem;
-  font-weight: 900;
-  line-height: 1;
-  color:var(--bg-green);
+.highlight h1 {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+/* Fallback for browsers without background-clip support */
+@supports not (background-clip: text) {
+  .highlight h1 {
+    color: #18ffc1;
+  }
 }
 
 
