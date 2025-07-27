@@ -8,6 +8,7 @@ import What from "@/components/What-We-Do-Block/What";
 import NewHeroPage from "@/components/Hero-Block/NewHero";
 import React from "react";
 import FaqBlock from "@/components/FAQs/FaqBlock";
+import WhoAreWe from "@/components/Who-Block/WhoAreWe";
 
 
 export default function App() {
@@ -15,22 +16,8 @@ export default function App() {
     <div>
   
       <NewHeroPage />
-      <What />
-      <What />
-      <What />
-      <What />
-      <What />
-      <What />
-      <What />
-      <What />
-      <What />
-      <What />
-      <What />
+      <WhoAreWe />
       <FaqBlock />
-       <What />
-      <What />
-      <What />
-      <What />
       
      
 

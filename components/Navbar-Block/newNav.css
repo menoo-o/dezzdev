@@ -23,7 +23,8 @@
   width: 100%;
   max-width: 1600px;
 
-  padding: var(--space-6);
+
+  padding: var(--space-12);
   padding-top: var(--space-8);
   
   background-color: transparent;

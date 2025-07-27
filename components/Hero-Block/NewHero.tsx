@@ -31,6 +31,7 @@ export default function NewHeroPage() {
       const designSplit = new SplitText(designEl, { type: 'chars,words' });
       const buildSplit = new SplitText(buildEl, { type: 'chars,words' });
       const growSplit = new SplitText(growRef.current, { type: 'chars,words' });
+      
       growSplit.chars.forEach((char) => {
         char.classList.add(styles.highlight); // give each char gradient styles
       });  

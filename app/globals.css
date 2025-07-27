@@ -143,7 +143,7 @@ html, body {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   color: var(--color-text);
-  background-color: var(--color-bg);
+  background-color: var(--text);
   scroll-behavior: smooth;
   line-height: 1.6;
 }
