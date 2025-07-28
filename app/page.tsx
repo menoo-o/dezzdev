@@ -1,15 +1,8 @@
-// import Component from "@/components/construction-page";
-// import ContactButton from "@/components/Contact-Btn/ContactButton";
-// import Contact from "@/components/Contact-form/Contact";
-// import Logo from '@/public/logo.svg';
-// import Image from 'next/image';
-// import ContactButton from '@/components/Contact-Btn/ContactButton';
-
 import NewHeroPage from "@/components/Hero-Block/NewHero";
 import React from "react";
 import FaqBlock from "@/components/FAQs/FaqBlock";
 import WhoAreWe from "@/components/Who-Block/WhoAreWe";
-
+import ServicesCarousel from "@/components/Services-Block/Service";
 
 export default function App() {
   return (
@@ -17,6 +10,9 @@ export default function App() {
   
       <NewHeroPage />
       <WhoAreWe />
+      <ServicesCarousel />
+      
+      {/* Assuming FaqBlock is a component that renders FAQs */}
       <FaqBlock />
       
      

@@ -90,6 +90,7 @@
    --font-size-xs: clamp(0.75rem, 0.85vw, 1.05rem);      /* Body / Paragraph */
 
   /* Font Weights */
+  --font-weight-extrabold: 900;
   --font-weight-bold: 700;
   --font-weight-medium: 500;
   --font-weight-regular: 400;

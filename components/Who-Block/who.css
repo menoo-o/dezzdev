@@ -5,7 +5,7 @@
   padding: var(--space-12);
   color: var(--bg-green);
   font-family: var(--font-main);
-  min-height: 70vh;
+  min-height: 55vh;
   align-items: flex-start;
   justify-content: center;
   overflow-x: hidden;
@@ -42,6 +42,6 @@
 
   .who-intro {
     flex: 2;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
   }
 }
