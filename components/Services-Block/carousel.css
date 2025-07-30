@@ -1,0 +1,46 @@
+.carousel-container {
+  overflow: hidden;
+  width: 100%;
+  padding: var(--space-8) 0;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: var(--space-8);
+  width: max-content;
+}
+
+.carousel-slide {
+  display: flex;
+  align-items: center;
+  margin-right: 4rem; /* adjust spacing */
+}
+
+
+.carousel-text {
+  /* font-size: var(--font-size-lg); */
+  font-size: clamp(4rem, 10vw, 12rem);
+  font-weight: var(--font-weight-extrabold);
+  font-family: var(--font-main);
+  white-space: nowrap;
+  color: transparent;
+  margin-right: 4rem;
+  background: var(--bg-green);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.2rem;
+}
+
+.carousel-image {
+  height: 145px;
+  width: auto;
+  margin-bottom: var(--space-8);
+  object-fit: cover;
+}
+
+/* /////////////////////// */
+
