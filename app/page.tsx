@@ -3,7 +3,7 @@ import React from "react";
 import FaqBlock from "@/components/FAQs/FaqBlock";
 import WhoAreWe from "@/components/Who-Block/WhoAreWe";
 import Services from "@/components/Services-Block/Service";
-import StackCards from "@/components/Check";
+import StackCardsObserver from "@/components/Check";
 
 export default function App() {
   return (
@@ -12,7 +12,7 @@ export default function App() {
       <NewHeroPage />
       <WhoAreWe />
       <Services />
-      <StackCards />     
+      <StackCardsObserver />  
       
       {/* Assuming FaqBlock is a component that renders FAQs */}
       <FaqBlock />

@@ -1,20 +1,14 @@
-"use client";
+'use client'
 
-import React, { useRef } from "react";
+import './Scroll.css'; // Ensure you have the necessary styles for the cards
 
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
-gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
+import ScrollTrigger from "gsap/ScrollTrigger";
+
 gsap.registerPlugin(ScrollTrigger);
-
-
-
-    
-
-import styles from "./StackCards.module.css";
-
 
 export type ServiceSlide = {
   id: number;
@@ -69,75 +63,76 @@ export const serviceSlides: ServiceSlide[] = [
   },
 ];
 
-const offset = 40;
-const duration = 4;
 
-export default function StackCards() {
-  const containerRef = useRef<HTMLElement>(null);
+export default function StackCardsObserver() {
+  const containerRef = useRef<HTMLElement | null>(null);
 
   useGSAP(() => {
     if (!containerRef.current) return;
 
-    const cards = containerRef.current.querySelectorAll(`.${styles.card}`);
-    const cardsArray = Array.from(cards).reverse();
+    // Select all card-wrapper and card elements inside this section
+    const cardWrappers = gsap.utils.toArray<HTMLDivElement>(
+      containerRef.current.querySelectorAll(".card-wrapper")
+    );
+    const cards = gsap.utils.toArray<HTMLDivElement>(
+      containerRef.current.querySelectorAll(".card")
+    );
 
-    gsap.set(cardsArray, {
-      y: (i) => offset * i,
-      scale: (i) => gsap.utils.mapRange(0, cardsArray.length - 1, 1, 0.95)(i),
-      zIndex: (i) => i,
-      // opacity: 0,
-      transformOrigin: "center top",
-    });
+  // Get the .wrapper element safely
+    const wrapperElement = containerRef.current.querySelector(".wrapper");
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: `+=${window.innerHeight * 3}`,
-        scrub: 0.5,
-        pin: true,
-      },
-    });
+    cardWrappers.forEach((wrapper, i) => {
+      const card = cards[i];
+      if (!card || !wrapper) return;
 
-    tl.to(cardsArray, {
-      y: 0,
-      scale: 1,
-      // opacity: 1,
-      ease: "power3.out",
-      stagger: {
-        each: duration / cardsArray.length,
-      },
-      duration,
-    }).to(cardsArray, {
-      y: (i) => -offset * i,
-      rotation: () => gsap.utils.random(-2, 2),
-      scale: (i) => gsap.utils.mapRange(0, cardsArray.length - 1, 1, 0.9)(i),
-      ease: "power2.inOut",
-      stagger: {
-        each: 0.1,
-      },
+      let scale = 1;
+      let rotation = 0;
+
+      if (i !== cards.length - 1) {
+        scale = 0.9 + 0.025 * i;
+        rotation = 0;
+      }
+
+      gsap.to(card, {
+        scale: scale,
+        rotationX: rotation,
+        transformOrigin: "top center",
+        ease: "none",
+        scrollTrigger: {
+          trigger: wrapper,
+          start: `top ${70 + 60 * i}`,
+          end: "bottom 550",
+          endTrigger: wrapperElement || ".wrapper", // Fallback to selector string if null
+          scrub: true,
+          pin: wrapper,
+          pinSpacing: false,
+          id: (i + 1).toString(),
+        },
+      });
     });
-  }, [containerRef.current]);
+  }, []);
 
   return (
-    <section ref={containerRef} className={styles.section}>
-      <ul className={styles.cards}>
-        {serviceSlides.map(({ id, title, headline, description, tags }) => (
-          <li key={id} className={`${styles.card}`}>
-            <h2 className={styles.title}>{title}</h2>
-            <h3 className={styles.headline}>{headline}</h3>
-            <p className={styles.description}>{description}</p>
-            <ul className={styles.tags}>
-              {tags.map((tag, i) => (
-                <li key={i} className={styles.tag}>
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
-    </section>
+  <section ref={containerRef} className="section">
+  
+  <div className="wrapper">
+    {serviceSlides.map(({ id, title, headline, description, tags }) => (
+      <div key={id} className="card-wrapper">
+        <div className="card">
+          <h2 className="title">{title}</h2>
+          <h3 className="headline">{headline}</h3>
+          <p className="description">{description}</p>
+          <ul className="tags">
+            {tags.map((tag, i) => (
+              <li key={i} className="tag">{tag}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+  <div className="spacer"></div>
+</section>
+
   );
 }
-

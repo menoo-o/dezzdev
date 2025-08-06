@@ -14,8 +14,7 @@ gsap.registerPlugin(SplitText, useGSAP)
 
 const Services = () => {
   const serviceContainerRef = useRef<HTMLDivElement>(null)
-  // const trackRef = useRef<HTMLDivElement>(null)
-  // const textRef = useRef<HTMLHeadingElement>(null)
+  
   return (
     <div className="services-container" ref={serviceContainerRef}>
       <ServicesCarousel />
