@@ -1,13 +1,15 @@
+
 'use client'
 
-// components/ServicesCarousel.tsx
+
+import ServicesCarousel from './carousel-bloc/carousel'
+import StackCardsObserver from './slides/Scroll-Slides'
 
 import { useRef } from 'react'
-import ServicesCarousel from './carousel'
 import { gsap } from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { useGSAP } from '@gsap/react'
-import './services.css'
+
 
 
 gsap.registerPlugin(SplitText, useGSAP)
@@ -18,9 +20,7 @@ const Services = () => {
   return (
     <div className="services-container" ref={serviceContainerRef}>
       <ServicesCarousel />
-      <div className="services-content">
-      
-      </div>
+      <StackCardsObserver />
     </div>
   )
 }
