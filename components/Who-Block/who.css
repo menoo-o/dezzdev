@@ -1,47 +1,105 @@
 .who-container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-  padding: var(--space-12);
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile: stack */
+  padding: 0 var(--space-6);
   color: var(--bg-green);
   font-family: var(--font-main);
   min-height: 55vh;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: start;
+  justify-items: start;
   overflow-x: hidden;
 }
 
+.left-content {
+  padding-left: var(--space-16);
+  position: relative; /* Essential for positioning the vertical label */
+}
+
 .who-question {
-  display: list-item;
-  list-style-type: disc;
-  font-size: var(--font-size-sm);;
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
-  font-family: var(--font-main);
+  font-family: var(--font-accent);
   color: var(--moss);
+  opacity: 0.6;
+}
+
+.vertical-label {
+  position: absolute;
+  top: 0rem;
+  left: 0;
+  /* Rotate the text */
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: top left; /* Ensures the rotation starts from the top-left corner */
+  white-space: nowrap; /* Prevents the text from wrapping */
 }
 
 .who-intro {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
-  line-height: 1.6;
+  line-height: var(--leading-normal, 1.5);
+  color: var(--bg-green);
+
 }
 
+.right-content {
+  justify-self: end; /* Aligns the right content to the end of its grid cell */
+  text-align: right;
+}
+
+.who-text {
+  font-size: var(--font-size-base);
+  line-height: var(--leading-loose, 1.75);
+  color: var(--moss);
+  max-width: 50ch;
+
+}
+
+
+
 @media (min-width: 768px) {
-  .who-container {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: var(--space-16);
-  }
+   .who-container {
+     grid-template-columns: 1fr 1fr;
+     max-width: var(--max-width, 1440px);
+     margin: 0 auto;
+     grid-template-areas: 
+      "intro text"
+      "intro text";
+    }
+  
+  .left-content { grid-area: intro; }
+  .right-content { grid-area: text; }
+
+  
+  
 
   .who-question {
-    flex: 1;
-    font-size: var(--font-size-sm);
-    margin-top: var(--space-2);
+    margin-top: var(--space-6);
+    font-size: var(--font-size-xs);
+  
   }
 
   .who-intro {
-    flex: 2;
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-xl);
+    line-height: var(--leading-normal, 1.5);
+        
+  }
+
+  .who-text {
+    font-size: var(--font-size-reg);
+    margin-top: var(--space-3);
+    
+    line-height: var(--leading-loose, 1.75);
   }
 }
+
+
+
+
+
+
+/* 
+@media (min-width: 1600px) {
+  
+
+
+} */

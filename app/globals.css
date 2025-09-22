@@ -84,10 +84,12 @@
   --font-accent: 'RadioGrotesk', monospace;
 
   /* Font Sizes */
-   --font-size-lg: clamp(2rem, 4vw, 3rem);   /* Hero / H1 */
-  --font-size-md: clamp(1.25rem, 2vw, 2rem);    /* Subheadings / H2 */
-   --font-size-sm: clamp(1rem, 1.10vw, 1.125rem);      /* Body / Paragraph */
-   --font-size-xs: clamp(0.75rem, 0.85vw, 1.05rem);      /* Body / Paragraph */
+  --font-size-xl: clamp(3rem, 5vw, 4rem);   /* Hero / Landing headlines */
+  --font-size-lg: clamp(2rem, 3vw, 2.5rem); /* H1 */
+  --font-size-md: clamp(1.5rem, 2vw, 2rem); /* H2 */
+  --font-size-reg: clamp(1.125rem, 1.5vw, 1.375rem); /* H3 / subtext / buttons */
+  --font-size-sm: clamp(1rem, 1.1vw, 1.125rem); /* Body */
+  --font-size-xs: clamp(0.75rem, 0.85vw, 1rem); /* Captions, footnotes */
 
   /* Font Weights */
   --font-weight-extrabold: 900;
@@ -117,17 +119,32 @@
   --z-contact-overlay: 1150; /* Contact overlay */
 
   /* Colors (set your palette early) */
-  --bg-green: #072e23;
-  --text: #EAF4F1;
-  --aqua: #18FFC1;
-  --jungle: #169976;
-  --moss: #3E4A28;
+  --bg-green: #072e23; /*used most */
+  --text: #EAF4F1; /*used most */
+  --aqua: #04ffbc; /*less use */
+  --jungle: #169976; /*less use  */
+  --moss: #3E4A28; /*used moderate */
 
   /* Border radius (if you plan to use rounded elements) */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
   --radius-xl: 28px;
+
+  /* Shadow tokens */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.15);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.2);
+  --shadow-2xl: 0 25px 50px rgba(0,0,0,0.25);
+
+  /* Line-height tokens */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-loose: 1.75;
+
+  --max-width: 1440px;
+
 
   /* Transition easing */
   --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);

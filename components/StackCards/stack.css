@@ -1,0 +1,54 @@
+.services {
+  width: 90%;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+
+.service {
+  display: grid;
+  grid-template-columns: 100px 1fr 2fr; /* number | title | desc */
+  grid-template-rows: auto auto;        /* row1 | row2 */
+  position: relative;
+}
+
+.service-row1 {
+  grid-column: 1 / span 3;
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  align-items: center;
+  position: sticky;
+  top: 0; /* breadcrumb effect */
+  
+  padding: 10px 0;
+  z-index: 5;
+  border-bottom: 1px solid #eee;
+}
+
+.service-number {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #888;
+}
+
+.service-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.sub-heading {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #666;
+}
+
+.service-row2 {
+  grid-column: 3 / 4;
+  margin-top: 40px;
+  opacity: 0;  /* start hidden */
+  transform: translateY(30px);
+}
+
+/* Stack each row1 below the previous */
+.service:nth-child(n) .service-row1 {
+  top: 0;
+}
