@@ -15,26 +15,24 @@
   position: relative; /* Essential for positioning the vertical label */
 }
 
-.who-question {
+.service-question {
+  font-size: var(--font-size-xs);
   font-family: var(--font-accent);
   color: var(--moss);
-  font-size: var(--font-size-xs);
+  margin-top: var(--space-2);
   opacity: 0.5;
-  margin-top: var(--space-2) !important;
-}
-
-.vertical-label {
-  position: absolute;
+   position: absolute;
   top: 0rem;
   left: 0;
   font-weight: var(--font-weight-medium);
-
   /* Rotate the text */
   transform: rotate(-90deg) translateX(-100%);
   transform-origin: top left; /* Ensures the rotation starts from the top-left corner */
   white-space: nowrap; /* Prevents the text from wrapping */
   letter-spacing: 0.5em; /* Adjust letter spacing for better readability */
 }
+
+
 
 .who-intro {
   font-size: var(--font-size-md);
@@ -74,7 +72,13 @@
   .right-content { grid-area: text; }
 
   
+  
 
+  .who-question {
+    margin-top: var(--space-6);
+    font-size: var(--font-size-xs);
+  
+  }
 
   .who-intro {
     font-size: var(--font-size-xl);

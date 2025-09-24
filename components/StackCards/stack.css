@@ -1,54 +1,135 @@
-.services {
-  width: 90%;
+.services-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  padding: var(--space-12) var(--space-6);
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 100px 0;
-}
-
-.service {
-  display: grid;
-  grid-template-columns: 100px 1fr 2fr; /* number | title | desc */
-  grid-template-rows: auto auto;        /* row1 | row2 */
-  position: relative;
-}
-
-.service-row1 {
-  grid-column: 1 / span 3;
-  display: grid;
-  grid-template-columns: 100px 1fr 1fr;
-  align-items: center;
-  position: sticky;
-  top: 0; /* breadcrumb effect */
   
-  padding: 10px 0;
-  z-index: 5;
-  border-bottom: 1px solid #eee;
+  
+}
+
+.service-block {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  min-height: 80vh;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-col1 {
+  font-family: var(--font-main);
+  color: var(--bg-green);
+  position: relative; 
+  margin-left: var(--space-12) !important; 
 }
 
 .service-number {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #888;
+  display: block;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-accent);
+  opacity: 0.6;
+  position: absolute;
+  top: 0rem;
+  margin-top: var(--space-1) !important;
+  left: 0;
+  font-weight: var(--font-weight-medium);
+  /* Rotate the text */
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: top left; /* Ensures the rotation starts from the top-left corner */
+  white-space: nowrap; /* Prevents the text from wrapping */
+  letter-spacing: 0.5em; /* Adjust letter spacing for better readability */
 }
 
 .service-title {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--bg-green);
 }
 
-.sub-heading {
-  font-size: 1rem;
-  font-weight: 400;
-  color: #666;
+.service-col2 {
+  color: var(--moss);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-loose, 1.75);
 }
 
-.service-row2 {
-  grid-column: 3 / 4;
-  margin-top: 40px;
-  opacity: 0;  /* start hidden */
-  transform: translateY(30px);
+.service-text {
+  margin-bottom: var(--space-4);
 }
 
-/* Stack each row1 below the previous */
-.service:nth-child(n) .service-row1 {
-  top: 0;
+.service-col2 ul {
+  border-top: 1px solid var(--aqua, #ccc);   /* Top border */
+  border-bottom: 1px solid var(--aqua, #ccc);/* Bottom border */
+  padding: var(--space-3) 0;                 /* Space inside the borders */
+  margin: var(--space-4) 0;                  /* Space around the block */
+  list-style: none;                          /* Remove default bullets */
+}
+
+.service-col2 li {
+  padding: var(--space-2) 0;   /* Vertical spacing between items */
+  font-size: var(--font-size-reg); 
+  color: var(--moss);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.1); /* Optional subtle divider */
+}
+
+.service-col2 li:last-child {
+  border-bottom: none; /* Remove line after last item */
+}
+
+/* Image Block Wrapper */
+.image-bloc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  justify-content: flex-start;
+}
+
+/* Individual Image Wrapper */
+.image-wrapper {
+  flex: 1 1 calc(50% - var(--space-4));
+  max-width: calc(50% - var(--space-4));
+  border-radius: var(--radius-xl, 1rem);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Next.js Image fills parent wrapper */
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}
+
+/* Hover effect */
+.image-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+
+/* Desktop */
+@media (min-width: 768px) {
+  .service-block {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: var(--space-10);
+  }
+
+  .service-title {
+    font-size: var(--font-size-lg);
+    margin-left: var(--space-12);
+  }
+
+
+  .image-wrapper {
+    flex: 1 1 calc(50% - var(--space-4));
+    max-width: calc(50% - var(--space-4));
+  }
 }

@@ -1,119 +1,122 @@
 "use client";
-
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRef } from "react";
-import "./stack.css"; // import vanilla CSS
+import ScrollTrigger from "gsap/ScrollTrigger";
+import "./stack.css";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function WebDev() {
-  const containerRef = useRef<HTMLDivElement>(null);
+const services = [
+  {
+    number: "/01/",
+    title: "Web Design",
+    content: `
+     In today's digital-first world, a website's design is crucial for making impactful first impressions. Through strategic visual communication and user-centered design principles, transform ideas into engaging digital experiences that resonate with target audiences.
+    `,
+    bullets: ["User Interface Design", "Brand Integration", "User Experience Strategy", "Interactive Prototyping", "Visual Communication"],
+    images: [ "/placeholder.png", "/placeholder.png", "/placeholder.png" , "/placeholder.png" ],
+  },
+  {
+    number: "/02/",
+    title: "Web Development",
+    content: `
+      Transform design concepts into high-performing digital realities. Using cutting-edge technologies like the Astro framework and modern development practices to build lightning-fast, partially hydrated websites that excel in both functionality and technical performance.
+    `,
+    bullets: ["Custom Development", "Single Page Applications", "Responsive Implementation", "Performance Optimization", "Technical SEO"],
+    images: [ "/placeholder.png", "/placeholder.png", "/placeholder.png" , "/placeholder.png" ],
+  },
+  {
+    number: "/03/",
+    title: "SEO Profiling",
+    content: `
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      Pellentesque euismod ligula nec tortor hendrerit, at faucibus nisl ultrices.
+    `,
+    bullets: ["SEO Audits", "Keyword Strategy", "Performance Reports"],
+    images: [ "/placeholder.png", "/placeholder.png", "/placeholder.png" , "/placeholder.png" ],
+  },
+];
+
+export default function StackService() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
-    const sections = gsap.utils.toArray<HTMLElement>(".service");
+    const ctx = gsap.context(() => {
+      services.forEach((_, i) => {
+        const section = `.service-block-${i}`;
+        const col1 = `${section} .service-col1`;
+        const col2 = `${section} .service-col2`;
 
-    sections.forEach((section, index) => {
-      const desc = section.querySelector<HTMLElement>(".service-row2");
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top 20%",
+          end: "bottom 80%",
+          pin: col1,
+          pinSpacing: false,
+        });
 
-      if (desc) {
-        gsap.fromTo(
-          desc,
-          { opacity: 0, y: 30 },
-          {
-            scrollTrigger: {
-              trigger: section,
-              start: "top 80%",
-              end: "bottom 30%",
-              scrub: 0.5,
-            },
-            opacity: 1,
-            y: 0,
-            stagger: 0.1 * index,
-            ease: "power2.out",
-          }
-        );
-      }
-    });
-  }, { scope: containerRef });
+        // Reveal animations for col2
+        gsap.from(`${col2} p, ${col2} ul li`, {
+          scrollTrigger: {
+            trigger: col2,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+          y: 40,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power2.out",
+        });
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div ref={containerRef}>
-      <section className="services">
-        {/* Service 1 */}
-        <div className="service">
-          <div className="service-row1">
-            <div className="service-number">/01/</div>
-            <div className="service-title">Web Development</div>
-            <div className="service-title sub-heading">
-              Smooth, animated, responsive and SEO optimized
-            </div>
-          </div>
-          <div className="service-row2">
-            <p>
-              Your website’s first impression is crucial. People leave when it is
-              slow, plain, or has bad UX. We make websites according to your
-              preferences and business goals and supercharge them with stunning
-              visuals, smooth animations, and a user-friendly design. Of course,
-              we make sure it is responsive and looks great across devices.
-              Depending on complexity, we can deliver a finished website in as
-              little as 2 weeks.
-            </p>
-            <ul>
-              <li>Static and Dynamic Websites</li>
-              <li>Animations with GSAP</li>
-              <li>Dashboards for management</li>
-              <li>Rapid Prototyping</li>
-            </ul>
-          </div>
-        </div>
+    <section className="services-container" ref={containerRef}>
+      {services.map((service, i) => (
+        <div className={`service-block service-block-${i}`} key={i}>
+          {/* Left Column */}
+          <div className="service-col1">
 
-        {/* Service 2 */}
-        <div className="service">
-          <div className="service-row1">
-            <div className="service-number">/02/</div>
-            <div className="service-title">App Development</div>
-            <div className="service-title sub-heading">
-              Mobile-first, modern and intuitive
-            </div>
-          </div>
-          <div className="service-row2">
-            <p>
-              We design and build mobile applications that are fast, modern, and
-              provide smooth user experiences. From MVPs to full-scale apps, we
-              cover both iOS and Android.
-            </p>
-            <ul>
-              <li>Cross-platform apps</li>
-              <li>React Native & Expo</li>
-              <li>App store optimization</li>
-            </ul>
-          </div>
-        </div>
+            <span className="service-number">{service.number}</span>
+            <h2 className="service-title">{service.title}</h2>
 
-        {/* Service 3 */}
-        <div className="service">
-          <div className="service-row1">
-            <div className="service-number">/03/</div>
-            <div className="service-title">Website Maintenance</div>
-            <div className="service-title sub-heading">
-              Keep your site secure, fast, and updated
-            </div>
           </div>
-          <div className="service-row2">
-            <p>
-              We handle bug fixes, updates, and performance optimization to keep
-              your business website running smoothly.
-            </p>
+
+       
+
+          {/* Right Column */}
+          <div className="service-col2">
+
+            {/* 4 Images with curved borders-flexbox */}
+            <div className="image-bloc">
+              {service.images && service.images.map((imgSrc, idx) => (
+                <div className="image-wrapper" key={idx}>
+                  <Image
+                    src={imgSrc}
+                    height={200}
+                    alt={`Service Image ${idx + 1}`}
+                    width={300} 
+                    />
+              </div>
+              ))}
+            </div>
+
+            <p className="service-text">{service.content}</p>
+            
             <ul>
-              <li>Security patches</li>
-              <li>Speed optimization</li>
-              <li>Content updates</li>
+              {service.bullets.map((b, idx) => (
+                <li key={idx}>{b}</li>
+              ))}
             </ul>
           </div>
         </div>
-      </section>
-    </div>
+      ))}
+    </section>
   );
 }

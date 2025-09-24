@@ -52,7 +52,7 @@ const ServicesCarousel = () => {
         {/* repeat the content twice for seamless loop */}
         {[...Array(2)].map((_, i) => (
           <div key={i} className="carousel-slide">
-            <h2 className="carousel-text">SERVICES</h2>
+            <h2 className="carousel-text">TRANSFORM YOUR DIGITAL PRESENCE</h2>
             <Image
               src="/services.webp"
               alt="services"

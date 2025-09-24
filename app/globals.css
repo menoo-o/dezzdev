@@ -144,6 +144,8 @@
   --leading-loose: 1.75;
 
   --max-width: 1440px;
+  --max-width-sections: 1300px;
+  
 
 
   /* Transition easing */
