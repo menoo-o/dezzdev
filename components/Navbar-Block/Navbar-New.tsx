@@ -16,92 +16,90 @@ gsap.registerPlugin(useGSAP); // register the hook to avoid React version discre
 
 
 function NavbarNew() {
-    //   const [isOpen, setIsOpen] = useState(false);
-      const navRef = useRef<HTMLElement | null>(null);
-      const lastScrollY = useRef(0);
-      const isHidden = useRef(false);
-      const openContact = useOverlayStore((s) => s.openContact);
-    
-      useGSAP(()=>{
-        const nav = navRef.current;
-          // Slide the navbar back down into view (if it was hidden).
-        const showNavbar = () => {
-            if (!isHidden.current) return;
-            isHidden.current = false;
-            gsap.to(nav, {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: 'power2.out',
-            });
-        };
+  const navRef = useRef<HTMLElement | null>(null);
+  const lastScrollY = useRef(0);
+  const isHidden = useRef(false);
+  const openContact = useOverlayStore((s) => s.openContact);
 
-        // Slide the navbar up and out of sight.
-        const hideNavbar = () => {
-            if (isHidden.current) return;
-            isHidden.current = true;
-            gsap.to(nav, {
-            opacity: 0,
-            y: -60,
-            duration: 0.4,
-            ease: 'power2.in',
-            });
-        };
+  useGSAP(() => {
+    if (!navRef.current) return;
+    const nav = navRef.current;
 
-        // Watch how the user scrolls — and decide what animations to trigger
-        const handleScroll = () => {
-        // if (isOpen) return;
+    // 🔹 Detect elements that require contrast blur
+    const triggers = document.querySelectorAll<HTMLElement>(".contrast-trigger");
 
-        const currentY = window.scrollY;
-        const goingDown = currentY > lastScrollY.current;
+    triggers.forEach((el) => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top top", // when element hits top (navbar zone)
+        end: "bottom top", // until it passes above
+        onEnter: () => nav.classList.add("blurred"),
+        onLeaveBack: () => nav.classList.remove("blurred"),
+        onLeave: () => nav.classList.remove("blurred"),
+      });
+    });
 
-        if (goingDown && currentY > window.innerHeight * 0.5) {
-            hideNavbar();
-        } else if (!goingDown) {
-            showNavbar();
-        }
+    // ---- Existing Scroll Hide/Show Logic ----
+    const showNavbar = () => {
+      if (!isHidden.current) return;
+      isHidden.current = false;
+      gsap.to(nav, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      });
+    };
 
-        lastScrollY.current = currentY;
-        };
-      
+    const hideNavbar = () => {
+      if (isHidden.current) return;
+      isHidden.current = true;
+      gsap.to(nav, {
+        opacity: 0,
+        y: -60,
+        duration: 0.4,
+        ease: "power2.in",
+      });
+    };
 
-        window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const goingDown = currentY > lastScrollY.current;
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-        }, []);
+      if (goingDown && currentY > window.innerHeight * 0.5) {
+        hideNavbar();
+      } else if (!goingDown) {
+        showNavbar();
+      }
 
-    return (
-        <>
-        <nav className='nav-body' ref={navRef}>
-        
-        {/* Left: Logo */}
-        <div className="nav-header">
-            <Link href="/" className="nav-logo">
-              <Image src="/logodezzdev.svg" alt="Logo" width={110} height={50} />
-            </Link>
-        </div>
+      lastScrollY.current = currentY;
+    };
 
+    window.addEventListener("scroll", handleScroll);
 
-        {/* Right: Contact + Hamburger */}
-        <div className="nav-actions">
-            {/* contact-page link */}
-        <button
-            className="contact-btn btn"
-            onClick={openContact}
-            >
-                Contact Me
-            </button>
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-        {/* Nav-toggle btn */}
-         <NavToggle />
-        </div>
+  return (
+    <nav className="nav-body" ref={navRef}>
+      {/* Left: Logo */}
+      <div className="nav-header">
+        <Link href="/" className="nav-logo">
+          <Image src="/logodezzdev.svg" alt="Logo" width={110} height={50} />
+        </Link>
+      </div>
 
-        
-        </nav>
-        </>
-    )
-    }
+      {/* Right: Contact + Hamburger */}
+      <div className="nav-actions">
+        <button className="contact-btn btn" onClick={openContact}>
+          Contact Me
+        </button>
+        <NavToggle />
+      </div>
+    </nav>
+  );
+}
 
-    export default NavbarNew
+export default NavbarNew;

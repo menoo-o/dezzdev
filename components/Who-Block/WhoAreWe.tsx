@@ -6,14 +6,14 @@ function WhoAreWe() {
     <section className="who-container">
       {/* left content */}
       <div className='left-content'>
-        <span className='who-question vertical-label'>/WHAT WE DO?/</span>
-          <p className='who-intro who-title'>
+        <span className='who-question vertical-label' data-contrast="true">/WHAT WE DO?/</span>
+          <p className='who-intro who-title' data-contrast="true">
           Design and code, perfectly in sync.
          </p>  
       </div>
       {/* right content */}
       <div className="right-content">
-        <p className='who-text'>
+        <p className='who-text' data-contrast="true">
          A web design & development studio, combining our passion for design and code. We help our clients succeed by transforming their digital presence through a personalized approach to innovative development. 
         </p>
       </div>

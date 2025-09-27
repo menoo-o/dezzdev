@@ -284,3 +284,7 @@ footer{
 }
 
 
+
+.nav-body.blurred {
+ background-color: red;
+}

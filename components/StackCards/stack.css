@@ -12,7 +12,7 @@
 .service-block {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
+
   min-height: 80vh;
   position: relative;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -23,7 +23,7 @@
   font-family: var(--font-main);
   color: var(--bg-green);
   position: relative; 
-  margin-left: var(--space-12) !important; 
+   
 }
 
 .service-number {

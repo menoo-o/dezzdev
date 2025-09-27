@@ -51,8 +51,8 @@ export default function StackService() {
 
         ScrollTrigger.create({
           trigger: section,
-          start: "top 20%",
-          end: "bottom 80%",
+          start: "top 15%",
+          end: "bottom 60%",
           pin: col1,
           pinSpacing: false,
         });
@@ -108,7 +108,7 @@ export default function StackService() {
             </div>
 
             <p className="service-text">{service.content}</p>
-            
+
             <ul>
               {service.bullets.map((b, idx) => (
                 <li key={idx}>{b}</li>
