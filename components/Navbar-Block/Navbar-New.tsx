@@ -11,6 +11,8 @@ import { useOverlayStore } from '@/stores/useOverlay';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
 
