@@ -1,5 +1,5 @@
 // components/NavToggle.tsx
-import { useOverlayStore } from "@/stores/useOverlay";
+import { useOverlayStore } from '../../stores/useOverlay';
 import './hamburger.css'
 
 function NavToggle() {

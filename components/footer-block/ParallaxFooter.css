@@ -1,0 +1,156 @@
+.parallax-footer {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 🔹 Ticker */
+.ticker {
+  background: #1a1a1a;
+  color: white;
+  padding: 1.5rem 0;
+  overflow: hidden;
+}
+.ticker-content {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.ticker-item {
+  display: flex;
+  align-items: center;
+}
+.ticker-item .service {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0 2rem;
+}
+.ticker-item .arrow {
+  color: #ff5733;
+  font-size: 2rem;
+  padding: 0 1rem;
+}
+
+/* 🔹 Main footer */
+.footer-main {
+  background: #ff5733;
+  color: white;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+}
+.footer-inner {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-heading {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 3rem;
+}
+.footer-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.footer-email {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-email:hover {
+  color: white;
+}
+.footer-btn {
+  border: 2px solid white;
+  border-radius: 999px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+}
+.footer-btn .dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  background: white;
+  border-radius: 50%;
+}
+.footer-btn:hover {
+  background: white;
+  color: #ff5733;
+}
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+/* 🔹 Bottom section */
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.footer-logo .logo-dot {
+  width: 1rem;
+  height: 1rem;
+  background: white;
+  border-radius: 50%;
+}
+.footer-logo .logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.footer-section h3 {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+.footer-section a {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.footer-section a:hover {
+  opacity: 0.8;
+}
+.footer-meta {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.footer-meta a {
+  text-decoration: none;
+  color: white;
+  transition: opacity 0.3s;
+}
+.footer-meta a:hover {
+  opacity: 0.8;
+}

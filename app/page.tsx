@@ -1,11 +1,14 @@
-import NewHeroPage from "@/components/Hero-Block/NewHero";
+import NewHeroPage from "../components/Hero-Block/NewHero";
 import React from "react";
-import FaqBlock from "@/components/FAQs/FaqBlock";
-import WhoAreWe from "@/components/Who-Block/WhoAreWe";
+import FAQSection from "../components/FAQs/FaqBlock";
+import WhoAreWe from "../components/Who-Block/WhoAreWe";
 // import Services from "@/components/Services-Block/Service";
-import StackService from "@/components/StackCards/stack";
-import ServiceExport from "@/components/ServicesBlock/Service";
-import ServicesCarousel from "@/components/carousel-block/carousel";
+import StackService from "../components/ServicesBlock/ServiceCards/stack";
+import ServiceExport from "../components/ServicesBlock/Service";
+////////////////////////////////////////////////////////////////////////////
+import CarouselText from "../components/carousel-block/carousel";
+import ApproachBlock from "../components/Approach-Intro/approach-intro-block";
+
 
 export default function App() {
   return (
@@ -13,15 +16,20 @@ export default function App() {
   
       <NewHeroPage />
       <WhoAreWe />
-      {/* SERVICES CAROUSEL */}
-      <ServicesCarousel />
+      {/*CAROUSEL = Transform your digital experiences */}
+      <CarouselText />
       {/* INTRO TO SERVICES */}
       <ServiceExport />
 
-      {/* STACK SERVICE (CARDS) */} 
+      {/* STACK SERVICE (CARDS=webdesign/web dev) */} 
        <StackService />
+
+      <ApproachBlock />
+      
       {/* Assuming FaqBlock is a component that renders FAQs */}
-      <FaqBlock />
+      <FAQSection />
+
+    
   
 
 

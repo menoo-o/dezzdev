@@ -6,7 +6,7 @@ import { NavToggle } from '../Buttons/NavToggle';
 import Link from 'next/link';
 import Image from 'next/image';
 import './newNav.css'
-import { useOverlayStore } from '@/stores/useOverlay';
+// import { useOverlayStore } from '@/stores/useOverlay';
 
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -21,7 +21,7 @@ function NavbarNew() {
   const navRef = useRef<HTMLElement | null>(null);
   const lastScrollY = useRef(0);
   const isHidden = useRef(false);
-  const openContact = useOverlayStore((s) => s.openContact);
+  // const openContact = useOverlayStore((s) => s.openContact);
 
   useGSAP(() => {
     if (!navRef.current) return;
@@ -95,9 +95,9 @@ function NavbarNew() {
 
       {/* Right: Contact + Hamburger */}
       <div className="nav-actions">
-        <button className="contact-btn btn" onClick={openContact}>
+        {/* <button className="contact-btn btn" onClick={openContact}>
           Contact Me
-        </button>
+        </button> */}
         <NavToggle />
       </div>
     </nav>

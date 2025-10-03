@@ -3,13 +3,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRef} from 'react';
-import { useOverlayStore } from '@/stores/useOverlay';
+import { useOverlayStore } from '../../stores/useOverlay';
 import { NavToggle } from '../Buttons/NavToggle';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import './nav-overlay.css'
-import useLockScroll from '@/lib/hooks/useLockScroll';
-import useEscapeKey from '@/lib/hooks/useEscapeKey';
+import "./nav-overlay.css";
+import useLockScroll from '../../lib/hooks/useLockScroll';
+import useEscapeKey from '../../lib/hooks/useEscapeKey';
 
 export default function NavOverlay() {
   const isOpen = useOverlayStore((s) => s.isNavOpen);

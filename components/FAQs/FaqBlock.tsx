@@ -7,9 +7,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
-
-import faqData from '@/data/faq'; // Adjust the import path as necessary
-
+import faqData from '../../utils/faq';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function FAQSection() {

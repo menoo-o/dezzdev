@@ -11,7 +11,7 @@ import Image from 'next/image'
 
 gsap.registerPlugin(SplitText, useGSAP)
 
-const ServicesCarousel = () => {
+const CarouselText = () => {
   const containerRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLHeadingElement>(null)
@@ -68,4 +68,4 @@ const ServicesCarousel = () => {
   )
 }
 
-export default ServicesCarousel
+export default CarouselText

@@ -109,6 +109,7 @@
   --space-10: 2.5rem;  /* 40px */
   --space-12: 3rem;    /* 48px */
   --space-16: 4rem;    /* 64px */
+  --space-20: 6rem;    /* 64px */
 
   /* Z-Index Layers */
   --z-base: 1;
@@ -284,3 +285,18 @@ footer{
 }
 
 
+/* Applies globally */
+html {
+  scrollbar-width: thin;        /* Firefox: thinner scrollbar */
+  scrollbar-color: var(--moss) var(--text); /* Firefox: makes it invisible-ish */
+  overflow-y: overlay;          /* Chrome/Edge: overlay instead of push */
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;                   /* can set to 0 for fully invisible */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;      /* makes track invisible */
+}

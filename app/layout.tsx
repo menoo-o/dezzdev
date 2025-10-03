@@ -1,11 +1,12 @@
 
 import type { Metadata } from "next";
-import "./globals.css";
-
-import NavbarNew from "@/components/Navbar-Block/Navbar-New";
-import NavOverlay from "@/components/Nav-Overlay/NavOverlay";
-import ContactOverlay from "@/components/ContactOverlay/Contact-form";
+import NavbarNew from "../components/Navbar-Block/Navbar-New";
+import NavOverlay from "../components/Nav-Overlay/NavOverlay";
+import ContactOverlay from "../components/ContactOverlay/Contact-form";
 import Script from "next/script";
+import './globals.css'
+import ParallaxFooter from "@/components/footer-block/footer";
+
 
 export const metadata: Metadata = {
   title: "DezzDev",
@@ -41,7 +42,7 @@ export default function RootLayout({
         <ContactOverlay />
       
         {children}
-   
+        <ParallaxFooter />
       </body>
     </html>
   );

@@ -5,16 +5,15 @@ import styles from './contactoverlay.module.css'
 import { useRef, useState } from 'react';
 import { useForm, Controller } from "react-hook-form"
 
-import { useOverlayStore } from '@/stores/useOverlay';
-import useEscapeKey from '@/lib/hooks/useEscapeKey';
-import useLockScroll from '@/lib/hooks/useLockScroll';
-import useClickOutside from '@/lib/hooks/useClickOutside';
-
+import { useOverlayStore } from '../../stores/useOverlay';
+import useEscapeKey from '../../lib/hooks/useEscapeKey';
+import useLockScroll from '../../lib/hooks/useLockScroll';
+import useClickOutside from '../../lib/hooks/useClickOutside';
 import emailjs from '@emailjs/browser';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import SpinnerLoader from '@/ui/SpinnerGSAP/Spinner';
+import SpinnerLoader from '../../ui/SpinnerGSAP/Spinner';
 
 gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
 
