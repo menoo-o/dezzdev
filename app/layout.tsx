@@ -10,7 +10,9 @@ import ParallaxFooter from "@/components/footer-block/footer";
 
 export const metadata: Metadata = {
   title: "DezzDev",
-  description: "Generated DezzDev with Next.js",
+  description: "Web Design & Development Studio for Small Businesses and Startups",
+  themeColor: "#072e23", // your brand light background color
+  colorScheme: "light",  // 👈 important
 };
 
 export default function RootLayout({
