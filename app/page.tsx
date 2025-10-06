@@ -8,6 +8,7 @@ import ServiceExport from "../components/ServicesBlock/Service";
 ////////////////////////////////////////////////////////////////////////////
 import ApproachBlock from "../components/Approach-Intro/approach-intro-block";
 import BridgeSection from "../components/Bridge-Block/Bridge";
+import PricingTakeover from "@/components/pricing-section/Pricing";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
       <ServiceExport /> {/* INTRO TO SERVICES */}
       <StackService /> {/* STACK SERVICE (CARDS=webdesign/web dev) */} 
       <ApproachBlock /> {/* APPROACH BLOCK */}
+      <PricingTakeover /> {/* PRICING SECTION */}
       <FAQSection /> {/* FAQ SECTION */}
 
     

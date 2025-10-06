@@ -4,7 +4,7 @@
 .techniques {
   min-height: 100vh;
   box-sizing: border-box;
-  padding: var(--space-12) var(--space-6) !important;
+  
   font-family: var(--font-main);
 }
 
@@ -46,18 +46,21 @@
    Headings
 ================================= */
 .techniques-heading {
- font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--leading-normal, 1.5);
-  color: var(--jungle);
+ font-size: var(--font-size-md);
+ font-weight: var(--font-weight-regular);
+ line-height: var(--leading-normal, 1.5);
+ background: linear-gradient(90deg, #2ac5c2 0%, #169976 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: var(--font-accent);
+  letter-spacing: 0.05em;
 
-  color: var(--text);
 }
 
 .techniques-subheading {
 font-size: var(--font-size-xl);
-    line-height: var(--leading-normal, 1.5);
- color: var(--moss);
+line-height: var(--leading-normal, 1.5);
+ color: var(--bg-green);
 
 }
 
@@ -68,13 +71,19 @@ font-size: var(--font-size-xl);
    Sections
 ================================= */
 .techniques-section {
-  border-top: 1px solid var(--aqua, #e0e0e0);
+  border-top: 1px solid var(--jungle, #e0e0e0);
   padding: var(--space-16) 0; 
 }
 
-.last-techniques-section{
+.techniques-section:first-of-type {
+    padding-top: var(--space-6);
+    border-top: none; /* No top border for the first section */
+}
+
+/* last section -create to convert */
+.last-section {
     border-bottom: 1px solid var(--aqua, #e0e0e0);
-    padding: var(--space-10) 0; 
+    padding-bottom: var(--space-16); 
 }
 
 /* ===============================
@@ -89,14 +98,14 @@ font-size: var(--font-size-xl);
 }
 
 .techniques-para {
-  text-align: right;
+  text-align: right; 
 }
 
 .techniques-para p {
-  font-size: 1.25rem;
-  line-height: 1.7;
-  color: var(--foreground, #111);
-  opacity: 0.9;
+  font-size: var(--font-size-reg);
+  line-height: var(--leading-loose, 1.75);
+  color: var(--moss);
+  max-width: 50ch;
 }
 
 /* ===============================
@@ -120,15 +129,16 @@ font-size: var(--font-size-xl);
 
    .techniques-index {
     top: 15rem;
-    right: 0rem;
+    left: 0rem;
     font-size: var(--font-size-xl);
   }
 
   .last-index {
-    top: 18rem;
+    top: 14.5rem;
   }
 
+  .first-index{
+    top: 12rem;
+  }
 
-
-  
 }

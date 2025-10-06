@@ -5,14 +5,11 @@
   padding: var(--space-12) var(--space-6);
   max-width: 1440px;
   margin: 0 auto;
-  
-  
 }
 
 .service-block {
   display: grid;
   grid-template-columns: 1fr;
-
   min-height: 80vh;
   position: relative;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -133,3 +130,6 @@
     max-width: calc(50% - var(--space-4));
   }
 }
+
+
+

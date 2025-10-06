@@ -3,9 +3,11 @@
   grid-template-columns: 1fr; /* Mobile: stack */
   color: var(--text);
   font-family: var(--font-main);
+   padding: var(--space-12) var(--space-6) !important;
   align-items: start;
   justify-items: start;
   overflow-x: hidden;
+  min-height: 55vh;
   background-color: var(--text) !important;
 }
 
@@ -63,10 +65,9 @@
    .who-container {
      grid-template-columns: 1fr 1fr;
      max-width: var(--max-width, 1440px);
-     padding: var(--space-12) var(--space-6);
+    
      margin: 0 auto;
      grid-template-areas: 
-     
       "intro text"
       "intro text";
     }

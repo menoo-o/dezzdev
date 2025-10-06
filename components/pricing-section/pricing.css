@@ -1,0 +1,61 @@
+/* ===============================
+   Section Layout
+================================= */
+.pricing-takeover {
+  position: relative;
+  height: 200vh;
+  background-color: #2a2a2a;
+  overflow: hidden;
+  padding: var(--space-12) var(--space-6) !important;
+  border-radius: 0; /* Animated via GSAP */
+  transform: translateZ(0); /* Prevent flickering on scroll */
+}
+
+/* ===============================
+   Content Layout
+================================= */
+.pricing-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 2rem;
+  text-align: center;
+  will-change: opacity, transform;
+}
+
+/* ===============================
+   Text Styles
+================================= */
+.pricing-title {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.pricing-subtitle {
+  margin-top: 2rem;
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ===============================
+   Responsive Tweaks
+================================= */
+@media (min-width: 768px) {
+  .pricing-content {
+    padding: 0 4rem;
+  }
+
+  .pricing-title {
+    font-size: clamp(3rem, 5vw, 7rem);
+  }
+
+  .pricing-subtitle {
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  }
+}

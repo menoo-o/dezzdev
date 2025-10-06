@@ -54,17 +54,11 @@ export default function StackService() {
         <div className={`service-block service-block-${i}`} key={i}>
           {/* Left Column */}
           <div className="service-col1">
-
             <span className="service-number">{service.number}</span>
             <h2 className="service-title">{service.title}</h2>
-
           </div>
-
-       
-
           {/* Right Column */}
           <div className="service-col2">
-
             {/* 4 Images with curved borders-flexbox */}
             <div className="image-bloc">
               {service.images && service.images.map((imgSrc, idx) => (
@@ -78,9 +72,7 @@ export default function StackService() {
               </div>
               ))}
             </div>
-
             <p className="service-text">{service.content}</p>
-
             <ul>
               {service.bullets.map((b, idx) => (
                 <li key={idx}>{b}</li>

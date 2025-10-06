@@ -6,15 +6,14 @@ import { NavToggle } from '../Buttons/NavToggle';
 import Link from 'next/link';
 import Image from 'next/image';
 import './newNav.css'
-// import { useOverlayStore } from '@/stores/useOverlay';
 
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
+
 
 
 function NavbarNew() {
@@ -31,7 +30,7 @@ function NavbarNew() {
     const showNavbar = () => {
       if (!isHidden.current) return;
       isHidden.current = false;
-      nav.classList.add("blurred");
+    
       gsap.to(nav, {
         opacity: 1,
         y: 0,
@@ -43,7 +42,7 @@ function NavbarNew() {
     const hideNavbar = () => {
       if (isHidden.current) return;
       isHidden.current = true;
-      nav.classList.remove("blurred");
+     
       gsap.to(nav, {
         opacity: 0,
         y: -60,
@@ -83,9 +82,6 @@ function NavbarNew() {
 
       {/* Right: Contact + Hamburger */}
       <div className="nav-actions">
-        {/* <button className="contact-btn btn" onClick={openContact}>
-          Contact Me
-        </button> */}
         <NavToggle />
       </div>
     </nav>
