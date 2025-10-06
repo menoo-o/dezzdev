@@ -144,7 +144,9 @@
   --leading-normal: 1.5;
   --leading-loose: 1.75;
 
-  --max-width: 1440px;
+  
+  --max-width: 1440px; /* General max width for large screens */
+  --max-width-desktop: 1480px; /* Max width for desktop layouts */
   --max-width-sections: 1300px;
   
 
@@ -164,9 +166,10 @@ html, body {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   color: var(--color-text);
-  background-color: var(--text);
+  background-color: var(--text) !important;
   scroll-behavior: smooth;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 a {

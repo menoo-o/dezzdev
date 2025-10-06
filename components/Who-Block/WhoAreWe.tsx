@@ -1,15 +1,19 @@
+'use client'
 
 import React from 'react'
 import './who.css'
 
 function WhoAreWe() {
+
   
+
   return (
     <section className="who-container">
+    
       {/* left content */}
       <div className='left-content'>
         <span className='who-question vertical-label contrast-trigger' data-contrast="true">/WHAT WE DO?/</span>
-          <p className='who-intro who-title contrast-trigger' data-contrast="true">
+          <p className='who-intro contrast-trigger' data-contrast="true">
           Design and code, perfectly in sync.
          </p>  
       </div>

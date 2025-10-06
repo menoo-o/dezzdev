@@ -21,30 +21,17 @@ function NavbarNew() {
   const navRef = useRef<HTMLElement | null>(null);
   const lastScrollY = useRef(0);
   const isHidden = useRef(false);
-  // const openContact = useOverlayStore((s) => s.openContact);
 
   useGSAP(() => {
     if (!navRef.current) return;
     const nav = navRef.current;
 
-    // 🔹 Detect elements that require contrast blur
-    const triggers = document.querySelectorAll<HTMLElement>(".contrast-trigger");
-
-    triggers.forEach((el) => {
-      ScrollTrigger.create({
-        trigger: el,
-        start: "top top", // when element hits top (navbar zone)
-        end: "bottom top", // until it passes above
-        onEnter: () => nav.classList.add("blurred"),
-        onLeaveBack: () => nav.classList.remove("blurred"),
-        onLeave: () => nav.classList.remove("blurred"),
-      });
-    });
-
-    // ---- Existing Scroll Hide/Show Logic ----
+ 
+   // ---- Existing Scroll Hide/Show Logic ----
     const showNavbar = () => {
       if (!isHidden.current) return;
       isHidden.current = false;
+      nav.classList.add("blurred");
       gsap.to(nav, {
         opacity: 1,
         y: 0,
@@ -56,6 +43,7 @@ function NavbarNew() {
     const hideNavbar = () => {
       if (isHidden.current) return;
       isHidden.current = true;
+      nav.classList.remove("blurred");
       gsap.to(nav, {
         opacity: 0,
         y: -60,

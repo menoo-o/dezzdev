@@ -1,13 +1,12 @@
 .who-container {
   display: grid;
   grid-template-columns: 1fr; /* Mobile: stack */
-  padding: 0 var(--space-6);
   color: var(--text);
   font-family: var(--font-main);
-  min-height: 55vh;
   align-items: start;
   justify-items: start;
   overflow-x: hidden;
+  background-color: var(--text) !important;
 }
 
 .left-content {
@@ -64,8 +63,10 @@
    .who-container {
      grid-template-columns: 1fr 1fr;
      max-width: var(--max-width, 1440px);
+     padding: var(--space-12) var(--space-6);
      margin: 0 auto;
      grid-template-areas: 
+     
       "intro text"
       "intro text";
     }
@@ -95,9 +96,11 @@
 
 
 
-/* 
+
 @media (min-width: 1600px) {
-  
+    .who-container{
+      max-width: var(--max-width-desktop) !important; 
+    }
 
 
-} */
+}

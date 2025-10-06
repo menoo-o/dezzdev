@@ -1,3 +1,5 @@
+/* ==================== BASE LAYOUT ==================== */
+
 .container {
   display: flex;
   justify-content: center;
@@ -7,55 +9,64 @@
   padding: 2rem;
   box-sizing: border-box;
   text-align: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll issues */
 }
 
 .main {
   width: 100%;
-  max-width: 1350px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+/* ==================== HERO SECTION ==================== */
 
 .heroSection {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
   align-items: center;
+  gap: 2.5rem;
 }
 
 .headlineRow {
   display: flex;
-  flex-direction: row;
-  gap: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 1.5rem;
 }
+
+/* ==================== TYPOGRAPHY ==================== */
 
 .word {
   font-family: 'RadioGrotesk', sans-serif;
   font-size: 9.5rem;
   font-weight: 900;
   line-height: 1;
-  color:var(--bg-green);
+  color: var(--bg-green);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
+/* ==================== GRADIENT TEXT ==================== */
+
 .highlight {
+  display: inline-block;
   background: linear-gradient(90deg, #072e23, #18ffc1, #1aa882);
   background-size: 500%;
+  background-position: var(--bg-position, 0%);
   background-clip: text;
-  /* ✅ Core gradient text effect */
-   -webkit-background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
-   --bg-position: 0%;
-  background-position: var(--bg-position);
-  display: inline-block;
 }
 
 .highlight h1 {
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
 /* Fallback for browsers without background-clip support */
 @supports not (background-clip: text) {
   .highlight h1 {
@@ -63,41 +74,33 @@
   }
 }
 
-
-
-/* ==================== MEDIA QUERIES ==================== */
+/* ==================== RESPONSIVE ==================== */
 
 @media (max-width: 768px) {
-  .contentWrapper {
-    flex-direction: column;
-    align-items: flex-start;
-  }
   .word {
-  font-size: 8rem;
+    font-size: 8rem;
   }
-
 }
 
 @media (max-width: 480px) {
   .container {
-  padding: 1.5rem;
-}
-  .main {
-    padding: 1rem 0rem;
-    max-width: 100%;
+    padding: 1.5rem;
+    overflow-x: hidden !important; /* Prevent horizontal scroll issues */
   }
-   .word {
-  font-size: 6.5rem;
+
+  .main {
+    padding: 1rem 0;
+  }
+
+  .word {
+    font-size: 6.5rem;
+  }
 }
 
- 
-}
+/* ==================== LARGE SCREENS ==================== */
 
-/* LG SCREENS */
 @media (min-width: 1400px) {
-    .word {
-    font-family: 'RadioGrotesk', sans-serif;
+  .word {
     font-size: 11rem;
-}
-
+  }
 }

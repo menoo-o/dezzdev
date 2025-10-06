@@ -1,0 +1,134 @@
+/* ===============================
+   Root Layout
+================================= */
+.techniques {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: var(--space-12) var(--space-6) !important;
+  font-family: var(--font-main);
+}
+
+.techniques-container {
+  max-width: var(--max-width-sections, 1440px);
+  margin: 0 auto;
+}
+
+.techniques-section {
+  position: relative;
+  border-top: 1px solid var(--border, #e0e0e0);
+  padding: var(--space-16) 0;
+  overflow: hidden; /* Prevents the number from overflowing on smaller screens */
+}
+
+.techniques-index {
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  font-weight: 700;
+  font-size: 6rem;
+  line-height: 1;
+  color: var(--bg-green);
+  opacity: 0.07;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+
+.techniques-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* ===============================
+   Headings
+================================= */
+.techniques-heading {
+ font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-normal, 1.5);
+  color: var(--jungle);
+
+  color: var(--text);
+}
+
+.techniques-subheading {
+font-size: var(--font-size-xl);
+    line-height: var(--leading-normal, 1.5);
+ color: var(--moss);
+
+}
+
+.techniques-section, .techniques-heading{
+    margin-left: var(--space-6);
+}
+/* ===============================
+   Sections
+================================= */
+.techniques-section {
+  border-top: 1px solid var(--aqua, #e0e0e0);
+  padding: var(--space-16) 0; 
+}
+
+.last-techniques-section{
+    border-bottom: 1px solid var(--aqua, #e0e0e0);
+    padding: var(--space-10) 0; 
+}
+
+/* ===============================
+   Row Layout
+================================= */
+.techniques-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 3rem 0;
+
+}
+
+.techniques-para {
+  text-align: right;
+}
+
+.techniques-para p {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--foreground, #111);
+  opacity: 0.9;
+}
+
+/* ===============================
+   Responsive Layouts (≥768px)
+================================= */
+@media (min-width: 768px) {
+  .techniques {
+    padding: var(--space-12) var(--space-6);
+  }
+
+.techniques-row {
+    grid-template-columns: 2fr 2fr; /* heading takes natural width, paragraph takes rest */
+    align-items: center;
+    gap: var(--space-16);
+   
+  }
+
+  .techniques-para {
+    text-align: right;
+  }
+
+   .techniques-index {
+    top: 15rem;
+    right: 0rem;
+    font-size: var(--font-size-xl);
+  }
+
+  .last-index {
+    top: 18rem;
+  }
+
+
+
+  
+}

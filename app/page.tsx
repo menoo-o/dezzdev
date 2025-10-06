@@ -6,28 +6,21 @@ import WhoAreWe from "../components/Who-Block/WhoAreWe";
 import StackService from "../components/ServicesBlock/ServiceCards/stack";
 import ServiceExport from "../components/ServicesBlock/Service";
 ////////////////////////////////////////////////////////////////////////////
-import CarouselText from "../components/carousel-block/carousel";
 import ApproachBlock from "../components/Approach-Intro/approach-intro-block";
-
+import BridgeSection from "../components/Bridge-Block/Bridge";
 
 export default function App() {
   return (
     <div>
   
-      <NewHeroPage />
-      <WhoAreWe />
-      {/*CAROUSEL = Transform your digital experiences */}
-      <CarouselText />
-      {/* INTRO TO SERVICES */}
-      <ServiceExport />
-
-      {/* STACK SERVICE (CARDS=webdesign/web dev) */} 
-       <StackService />
-
-      <ApproachBlock />
-      
-      {/* Assuming FaqBlock is a component that renders FAQs */}
-      <FAQSection />
+     
+      <NewHeroPage /> {/* HERO SECTION */}
+      <WhoAreWe /> {/* WHO ARE WE SECTION */}
+      <BridgeSection /> {/* BRIDGE SECTION */}
+      <ServiceExport /> {/* INTRO TO SERVICES */}
+      <StackService /> {/* STACK SERVICE (CARDS=webdesign/web dev) */} 
+      <ApproachBlock /> {/* APPROACH BLOCK */}
+      <FAQSection /> {/* FAQ SECTION */}
 
     
   
