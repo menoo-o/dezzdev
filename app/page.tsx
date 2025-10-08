@@ -15,14 +15,14 @@ export default function App() {
     <div>
   
      
-      <NewHeroPage /> {/* HERO SECTION */}
-      <WhoAreWe /> {/* WHO ARE WE SECTION */}
-      <BridgeSection /> {/* BRIDGE SECTION */}
-      <ServiceExport /> {/* INTRO TO SERVICES */}
-      <StackService /> {/* STACK SERVICE (CARDS=webdesign/web dev) */} 
-      <ApproachBlock /> {/* APPROACH BLOCK */}
-      <PricingTakeover /> {/* PRICING SECTION */}
-      <FAQSection /> {/* FAQ SECTION */}
+    <NewHeroPage />
+    <WhoAreWe />
+    <BridgeSection />
+    <ServiceExport/>
+    <StackService />
+    <ApproachBlock />
+    <PricingTakeover />
+    <FAQSection /> 
 
     
   

@@ -1,10 +1,6 @@
 /* ----------------------------------
    Global: Lock Scroll
 ---------------------------------- */
-.lock-scroll {
-  overflow: hidden;
-  height: 100vh;
-}
 
 /* ----------------------------------
    Base Navbar Styles
@@ -13,31 +9,27 @@
   font-family: var(--font-main);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
+
   position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   z-index: var(--z-fixed); /* should be below overlay z-index */
+  
   width: 100%;
-  z-index: 1000;
-  padding: var(--space-6) var(--space-12);
-  padding-bottom: var(--space-4);
-  margin: 0 auto;    
+  max-width: 1600px;
+
+
+  padding: var(--space-12);
+  padding-top: var(--space-8);
+  
   background-color: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(6px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: background-color 0.3s ease;
 }
 
-/* 
-.nav-body.blurred {
-  background-color: rgba(var(--background-rgb, 250, 250, 250), 0.8);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border, #e0e0e0);
-
-} */
 
 
 /* Left: Logo */
@@ -59,26 +51,6 @@
   align-items: center;
   gap: var(--space-2); /* You can increase to space-6 if needed */
 }
-
-/* Contact Me CTA */
-.contact-btn {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  padding: var(--space-2) var(--space-4);
-  box-shadow: rgba(19, 24, 16, 0.05) 0 0 8px;
-  cursor: pointer;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
-  background-color: white;
-  transition: background-color 0.3s var(--ease-in-out);
-}
-
-
-.contact-btn:hover {
-  background-color: var(--aqua);
-  color: var(--bg-green);
-}
-
 /* Hamburger Button */
 .nav-toggle {
   background: none;
@@ -114,14 +86,5 @@
   .nav-actions {
    gap: var(--space-1); /* You can increase to space-6 if needed */
  }
-  /* Contact Me CTA */
-.contact-btn {
-  font-size: var(--font-size-xs);
-  padding: var(--space-1) var(--space-3);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
-  background-color: transparent;
-}
 
 }
-

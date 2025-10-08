@@ -23,10 +23,11 @@ export default function StackService() {
 
         ScrollTrigger.create({
           trigger: section,
-          start: "top 15%",
-          end: "bottom 60%",
+         start: "top top+=30%",
+          end: "80% top+=30%",
           pin: col1,
           pinSpacing: false,
+          anticipatePin: 1,
         });
 
         // Reveal animations for col2

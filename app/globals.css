@@ -287,19 +287,3 @@ footer{
   }
 }
 
-
-/* Applies globally */
-html {
-  scrollbar-width: thin;        /* Firefox: thinner scrollbar */
-  scrollbar-color: var(--moss) var(--text); /* Firefox: makes it invisible-ish */
-  overflow-y: overlay;          /* Chrome/Edge: overlay instead of push */
-}
-
-/* Chrome, Edge, Safari */
-::-webkit-scrollbar {
-  width: 8px;                   /* can set to 0 for fully invisible */
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;      /* makes track invisible */
-}
