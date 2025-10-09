@@ -14,10 +14,10 @@ gsap.registerPlugin(useGSAP); // register the hook to avoid React version discre
 
 
 function NavbarNew() {
-    //   const [isOpen, setIsOpen] = useState(false);
       const navRef = useRef<HTMLElement | null>(null);
       const lastScrollY = useRef(0);
       const isHidden = useRef(false);
+      
       useGSAP(()=>{
         const nav = navRef.current;
           // Slide the navbar back down into view (if it was hidden).
@@ -47,7 +47,6 @@ function NavbarNew() {
         // Watch how the user scrolls — and decide what animations to trigger
         const handleScroll = () => {
         // if (isOpen) return;
-
         const currentY = window.scrollY;
         const goingDown = currentY > lastScrollY.current;
 
@@ -71,22 +70,17 @@ function NavbarNew() {
     return (
         <>
         <nav className='nav-body' ref={navRef}>
-        
-        {/* Left: Logo */}
-        <div className="nav-header">
-            <Link href="/" className="nav-logo">
-              <Image src="/logodezzdev.svg" alt="Logo" width={110} height={50} priority />
-            </Link>
-        </div>
-
-
-        {/* Right: Contact + Hamburger */}
-        <div className="nav-actions">
-       {/* Nav-toggle btn */}
-         <NavToggle />
-        </div>
-
-        
+            {/* Left: Logo */}
+            <div className="nav-header">
+                <Link href="/" className="nav-logo">
+                <Image src="/logodezzdev.svg" alt="Logo" width={110} height={50} priority />
+                </Link>
+            </div>
+            {/* Right: Contact + Hamburger */}
+            <div className="nav-actions">
+        {/* Nav-toggle btn */}
+            <NavToggle />
+            </div>
         </nav>
         </>
     )

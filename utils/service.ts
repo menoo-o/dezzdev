@@ -1,32 +1,69 @@
-const services = [
-  {
-    number: "/01/",
-    title: "Web Design",
-    content: `
-     In today's digital-first world, a website's design is crucial for making impactful first impressions. Through strategic visual communication and user-centered design principles, transform ideas into engaging digital experiences that resonate with target audiences.
-    `,
-    bullets: ["User Interface Design", "Brand Integration", "User Experience Strategy", "Interactive Prototyping", "Visual Communication"],
-    images: [ "/placeholder.png", "/placeholder.png", "/placeholder.png" , "/placeholder.png" ],
-  },
-  {
-    number: "/02/",
-    title: "Web Development",
-    content: `
-      Transform design concepts into high-performing digital realities. Using cutting-edge technologies like the Astro framework and modern development practices to build lightning-fast, partially hydrated websites that excel in both functionality and technical performance.
-    `,
-    bullets: ["Custom Development", "Single Page Applications", "Responsive Implementation", "Performance Optimization", "Technical SEO"],
-    images: [ "/placeholder.png", "/placeholder.png", "/placeholder.png" , "/placeholder.png" ],
-  },
-  {
-    number: "/03/",
-    title: "SEO Profiling",
-    content: `
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-      Pellentesque euismod ligula nec tortor hendrerit, at faucibus nisl ultrices.
-    `,
-    bullets: ["SEO Audits", "Keyword Strategy", "Performance Reports"],
-    images: [ "/placeholder.png", "/placeholder.png", "/placeholder.png" , "/placeholder.png" ],
-  },
-];
+type Service = {
+  id: string
+  num: string
+  title: string
+  body: string
+  images: { src: string; alt: string }[]
+  features: string[]
+}
 
+const services: Service[] = [
+  {
+    id: "web-design",
+    num: "01",
+    title: "Web Design",
+    body: "We craft modern, accessible interfaces that communicate clearly and convert effectively. Strategy, visual systems and micro‑interactions come together for memorable experiences.",
+    images: [
+      { src: "/placeholder.png", alt: "Landing page mock" },
+      { src: "/placeholder.png", alt: "Style tiles" },
+      { src: "/placeholder.png", alt: "Component library" },
+      { src: "/placeholder.png", alt: "Responsive layouts" },
+    ],
+    features: [
+      "Fully bespoke web design",
+      "Animated & interactive",
+      "Engaging user experience",
+      "Accessible by design (WCAG)",
+      "Design systems & components",
+    ],
+  },
+  {
+    id: "web-dev",
+    num: "02",
+    title: "Web Development",
+    body: "We build fast Next.js apps and robust APIs with performance, security and a11y baked in. Production‑grade code, automated CI/CD and observability for confidence at scale.",
+    images: [
+      { src: "/placeholder.png", alt: "Next.js code" },
+      { src: "/placeholder.png", alt: "API routes diagram" },
+      { src: "/placeholder.png", alt: "Core Web Vitals" },
+      { src: "/placeholder.png", alt: "Deployment pipeline" },
+    ],
+    features: [
+      "Next.js App Router",
+      "TypeScript + testing",
+      "Edge-ready APIs",
+      "Analytics & observability",
+      "CI/CD automation",
+    ],
+  },
+  {
+    id: "seo",
+    num: "03",
+    title: "SEO Optimization",
+    body: "Technical foundations, structured content and search strategy. We improve discoverability, site health, and convert relevant traffic into measurable growth.",
+    images: [
+      { src: "/placeholder.png", alt: "Search rankings" },
+      { src: "/placeholder.png", alt: "Site audit report" },
+      { src: "/placeholder.png", alt: "Keyword clusters" },
+      { src: "/placeholder.png", alt: "Structured data" },
+    ],
+    features: [
+      "Technical audits",
+      "Keyword & content strategy",
+      "Structured data (Schema.org)",
+      "Site speed improvements",
+      "Measurement & reporting",
+    ],
+  },
+]
 export default services

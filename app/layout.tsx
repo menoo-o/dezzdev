@@ -47,7 +47,7 @@ export default function RootLayout({
         <ContactOverlay />
       
         {children}
-        <ParallaxFooter />
+        {/* <ParallaxFooter /> */}
       </body>
     </html>
   );
