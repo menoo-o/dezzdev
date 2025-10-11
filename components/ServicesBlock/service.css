@@ -50,7 +50,7 @@
 }
 
 .service-who-text {
-  font-size: var(--font-size-base);
+   font-size: var(--font-size-reg);
   line-height: var(--leading-loose, 1.75);
   color: var(--moss);
   max-width: 50ch;

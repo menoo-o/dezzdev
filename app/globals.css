@@ -120,11 +120,11 @@
   --z-contact-overlay: 1150; /* Contact overlay */
 
   /* Colors (set your palette early) */
-  --bg-green: #072e23; /*used most */
-  --text: #EAF4F1; /*used most */
+  --bg-green: rgb(7, 46, 35); /*used most */
+  --text: #eaf4f1; /*used most */
   --aqua: #04ffbc; /*less use */
   --jungle: #169976; /*less use  */
-  --moss: #3E4A28; /*used moderate */
+  --moss: rgb(62, 74, 40); /*used moderate */
 
   /* Border radius (if you plan to use rounded elements) */
   --radius-sm: 4px;

@@ -4,66 +4,89 @@ type Service = {
   title: string
   body: string
   images: { src: string; alt: string }[]
-  features: string[]
+  featureGroups?: { label: string; items: string[] }[]
 }
 
 const services: Service[] = [
   {
-    id: "web-design",
+    id: "webdev",
     num: "01",
-    title: "Web Design",
-    body: "We craft modern, accessible interfaces that communicate clearly and convert effectively. Strategy, visual systems and micro‑interactions come together for memorable experiences.",
-    images: [
-      { src: "/placeholder.png", alt: "Landing page mock" },
-      { src: "/placeholder.png", alt: "Style tiles" },
-      { src: "/placeholder.png", alt: "Component library" },
-      { src: "/placeholder.png", alt: "Responsive layouts" },
-    ],
-    features: [
-      "Fully bespoke web design",
-      "Animated & interactive",
-      "Engaging user experience",
-      "Accessible by design (WCAG)",
-      "Design systems & components",
-    ],
-  },
-  {
-    id: "web-dev",
-    num: "02",
-    title: "Web Development",
-    body: "We build fast Next.js apps and robust APIs with performance, security and a11y baked in. Production‑grade code, automated CI/CD and observability for confidence at scale.",
+    title: "Web Developement",
+    body: "Precision-crafted digital experiences. From front-end visuals to optimized back-end code, we build fast, functional websites where every pixel and line is designed for performance, perfect brand alignment, and maximum visitor conversion.",
     images: [
       { src: "/placeholder.png", alt: "Next.js code" },
       { src: "/placeholder.png", alt: "API routes diagram" },
       { src: "/placeholder.png", alt: "Core Web Vitals" },
       { src: "/placeholder.png", alt: "Deployment pipeline" },
     ],
-    features: [
-      "Next.js App Router",
-      "TypeScript + testing",
-      "Edge-ready APIs",
-      "Analytics & observability",
-      "CI/CD automation",
+    featureGroups: [
+      {
+        label: "Design",
+        items: ["UX/UI Crafting", "Visual Storytelling", "Brand Consistency"],
+      },
+      {
+        label: "Developement",
+        items: ["Custom Code", "Single Page Applications", "CMS Integration"],
+      },
+      {
+        label: "Performance",
+        items: ["Responsive Design", "Fast Load Times", "SEO Foundations"],
+      },
     ],
   },
   {
     id: "seo",
-    num: "03",
-    title: "SEO Optimization",
-    body: "Technical foundations, structured content and search strategy. We improve discoverability, site health, and convert relevant traffic into measurable growth.",
+    num: "02",
+    title: "SEO & Profile Building",
+    body: "We help your business get discovered online — not just on Google, but through modern AI-powered platforms like ChatGPT and Gemini. From optimizing your website and profiles to improving local visibility and brand trust, we make sure your customers find you first.",
     images: [
-      { src: "/placeholder.png", alt: "Search rankings" },
-      { src: "/placeholder.png", alt: "Site audit report" },
-      { src: "/placeholder.png", alt: "Keyword clusters" },
-      { src: "/placeholder.png", alt: "Structured data" },
+      { src: "/placeholder.png", alt: "Next.js code" },
+      { src: "/placeholder.png", alt: "API routes diagram" },
+      { src: "/placeholder.png", alt: "Core Web Vitals" },
+      { src: "/placeholder.png", alt: "Deployment pipeline" },
     ],
-    features: [
-      "Technical audits",
-      "Keyword & content strategy",
-      "Structured data (Schema.org)",
-      "Site speed improvements",
-      "Measurement & reporting",
+    featureGroups: [
+      {
+        label: "Search Optimization",
+        items: ["SEO Audits", "Keyword Strategy", "On-Page Optimization"],
+      },
+      {
+        label: "Off-site Growth",
+        items: ["Link Building", "Local SEO", "Reputation Management"],
+      },
+      {
+        label: "Next-gen Visibility",
+        items: ["AEO (AI Search)", "Schema Markup", "Google Reviews"],
+      },
+    ],
+  },
+  {
+    id: "webmaintain",
+    num: "03",
+    title: "Website Maintenance",
+    body: "Website is not something that you just build and forget. Be adding new features, updating content, renewing designs or fixing bugs, we are here to do the annoying part and to keep your website fresh and up-to-date so you can focus on your business.",
+    images: [
+      { src: "/placeholder.png", alt: "Next.js code" },
+      { src: "/placeholder.png", alt: "API routes diagram" },
+      { src: "/placeholder.png", alt: "Core Web Vitals" },
+      { src: "/placeholder.png", alt: "Deployment pipeline" },
+    ],
+   
+    featureGroups: [
+      {
+        label: "Technical Care",
+        items: ["Code Refactoring", "Security Patches", "Speed Optimization"],
+      },
+      {
+        label: "Creative Updates",
+        items: ["Imagery & Media", "Interactive Features", "Promotional Design"],
+      },
+      {
+        label: "Content Support",
+        items: ["Blog Uploads", "Product Updates", "UI Adjustments"],
+      },
     ],
   },
 ]
+
 export default services
