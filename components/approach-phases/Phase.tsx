@@ -44,8 +44,8 @@ export default function ApproachStackCards() {
 
         if (!isLast) {
           gsap.to(card, {
-            scale: 0.9,
-            opacity: 0.7,
+            scale: 0.8,
+            opacity: 0.02,
             scrollTrigger: {
               trigger: card,
               start: "top top",
@@ -61,68 +61,68 @@ export default function ApproachStackCards() {
 
   return (
    <div className="process-stack" ref={containerRef}>
-  <div className="process-container">
-    <div className="process-grid">
-      {/* Left Column */}
-      <aside className="phase-nav">
-        <p className="phase-label">Process Phases</p>
-        {phases.map((phase:Phase) => (
-          <div
-            key={phase.id}
-            className={`phase-item ${activePhase === phase.id ? "active" : ""}`}
-          >
-            {activePhase === phase.id && <div className="phase-indicator" />}
-            <p className="phase-title">{phase.title}</p>
-            <p className="phase-subtitle">{phase.subtitle}</p>
-          </div>
-        ))}
-      </aside>
+    <div className="process-container">
+      <div className="process-grid">
+        {/* Left Column */}
+        <aside className="phase-nav">
+          <p className="phase-label">Process Phases</p>
+          {phases.map((phase:Phase) => (
+            <div
+              key={phase.id}
+              className={`phase-item ${activePhase === phase.id ? "active" : ""}`}
+            >
+              {activePhase === phase.id && <div className="phase-indicator" />}
+              <p className="phase-title">{phase.title}</p>
+              <p className="phase-subtitle">{phase.subtitle}</p>
+            </div>
+          ))}
+        </aside>
 
-      {/* Right Column */}
-      <section className="phase-cards">
-        {phases.map((phase:Phase, index:number) => (
-          <div
-            key={phase.id}
-            ref={(el) => {
-                  cardsRef.current[index] = el
-                }}
-            className="phase-card-wrapper"
-          >
-            <div className="phase-card">
-              <div className="phase-card-inner">
-                {/* Phase Info */}
-                <div className="phase-info">
-                  <p className="phase-info-title">{phase.title}</p>
-                  <h3 className="phase-info-subtitle">{phase.subtitle}</h3>
-                  <p className="phase-info-desc">{phase.description}</p>
-                </div>
+        {/* Right Column */}
+        <section className="phase-cards">
+          {phases.map((phase:Phase, index:number) => (
+            <div
+              key={phase.id}
+              ref={(el) => {
+                    cardsRef.current[index] = el
+                  }}
+              className="phase-card-wrapper"
+            >
+              <div className="phase-card">
+                <div className="phase-card-inner">
+                  {/* Phase Info */}
+                  <div className="phase-info">
+                    <p className="phase-info-title">{phase.title}</p>
+                    <h3 className="phase-info-subtitle">{phase.subtitle}</h3>
+                    <p className="phase-info-desc">{phase.description}</p>
+                  </div>
 
-                {/* Project Cards */}
-                <div className="project-list">
-                  {phase.projects.map((project, idx:number) => (
-                    <div key={idx} className="project-card">
-                      <div className={`project-overlay ${project.color}`} />
-                      <Image 
-                        src={project.image || "/placeholder.svg"} 
-                        alt={project.title} 
-                        className="project-image" 
-                        width={100}
-                        height={100}
-                      />
-                      <div className="project-content">
-                        <p className="project-subtitle">{project.subtitle}</p>
-                        <h4 className="project-title">{project.title}</h4>
+                  {/* Project Cards */}
+                  <div className="project-list">
+                    {phase.projects.map((project, idx:number) => (
+                      <div key={idx} className="project-card">
+                        <div className={`project-overlay ${project.color}`} />
+                        <Image 
+                          src={project.image || "/placeholder.svg"} 
+                          alt={project.title} 
+                          className="project-image" 
+                          width={100}
+                          height={100}
+                        />
+                        <div className="project-content">
+                          <p className="project-subtitle">{project.subtitle}</p>
+                          <h4 className="project-title">{project.title}</h4>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </section>
+          ))}
+        </section>
+      </div>
     </div>
-  </div>
 </div>
 
   )

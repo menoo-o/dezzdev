@@ -5,7 +5,7 @@ import NavOverlay from "../components/Nav-Overlay/NavOverlay";
 import ContactOverlay from "../components/ContactOverlay/Contact-form";
 import Script from "next/script";
 import './globals.css'
-// import ParallaxFooter from "@/components/footer-block/footer";
+import ParallaxFooter from "@/components/footer-block/footer";
 
 
 export const metadata: Metadata = {
@@ -47,7 +47,7 @@ export default function RootLayout({
         <ContactOverlay />
       
         {children}
-        {/* <ParallaxFooter /> */}
+        <ParallaxFooter />
       </body>
     </html>
   );

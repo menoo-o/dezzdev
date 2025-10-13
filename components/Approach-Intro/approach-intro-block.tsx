@@ -1,5 +1,5 @@
  import './approach-intro.css'
-//  import ApproachStackCards from '../approach-phases/Phase'
+ import ApproachStackCards from '../approach-phases/Phase'
 function ApproachBlock() {
   return (
     <div className='approach-block'>
@@ -20,7 +20,7 @@ function ApproachBlock() {
       
       </section>
 
-      {/* <ApproachStackCards /> */}
+      <ApproachStackCards />
     </div>
     
   )

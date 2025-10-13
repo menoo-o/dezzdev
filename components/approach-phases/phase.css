@@ -1,6 +1,7 @@
 .process-stack {
   position: relative;
   padding: var(--space-12) var(--space-6);
+  z-index: var(--z-overlay);
 }
 
 .process-container {
@@ -11,8 +12,9 @@
 
 .process-grid {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: var(--space-12);
+  grid-template-columns: 280px 1fr; /* give a bit more width to right side */
+  gap: var(--space-10);
+
 }
 
 /* === Left Column (Nav) === */
@@ -79,13 +81,13 @@
 /* === Right Column (Cards) === */
 .phase-card-wrapper {
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 .phase-card {
   position: sticky !important;
-  top: var(--space-24);
-  height: calc(100vh - var(--space-24) * 2);
+  top: calc(var(--space-24) + 3rem); 
+  height: calc(90vh - var(--space-24) * 2);
   display: flex;
   align-items: center;
 }
@@ -97,7 +99,7 @@
   box-shadow: var(--shadow-2xl);
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+   grid-template-columns: 1.1fr 0.9fr; /* phase-info slightly larger than project-list */
   gap: var(--space-8);
   padding: var(--space-12);
 }
@@ -106,7 +108,7 @@
 .phase-info-title {
   font-size: var(--font-size-sm);
   font-weight: 500;
-  color: var(--color-secondary);
+  color: var(--moss);
   margin-bottom: var(--space-2);
 }
 
@@ -120,6 +122,7 @@
   font-size: var(--font-size-base);
   color: var(--color-muted-foreground);
   line-height: 1.6;
+  
 }
 
 /* === Project Cards === */

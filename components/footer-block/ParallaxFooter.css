@@ -1,15 +1,17 @@
 .parallax-footer {
   position: relative;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 /* 🔹 Ticker */
 .ticker {
-  background: #1a1a1a;
-  color: white;
+  background-color: var(--aqua);
   padding: 1.5rem 0;
   overflow: hidden;
+ border-radius: 50px 50px 0 0; /* only bottom corners rounded */
+  padding: 0.51rem;
 }
+
 .ticker-content {
   display: flex;
   align-items: center;
@@ -21,22 +23,22 @@
 }
 .ticker-item .service {
   font-size: 2rem;
+  color: var(--jungle);
   font-weight: bold;
-  padding: 0 2rem;
+  padding: 0.5rem 2rem 0 2rem;
 }
 .ticker-item .arrow {
-  color: #ff5733;
   font-size: 2rem;
   padding: 0 1rem;
+
 }
 
 /* 🔹 Main footer */
 .footer-main {
-  background: #ff5733;
-  color: white;
-  min-height: calc(100vh - 80px);
+  background: var(--bg-green);
+  color: var(--text);
+  min-height: calc(85vh - 80px);
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
 }
@@ -60,12 +62,12 @@
 .footer-email {
   font-size: 2rem;
   font-weight: bold;
-  color: #1a1a1a;
+  color: var(--jungle);
   text-decoration: none;
   transition: color 0.3s;
 }
 .footer-email:hover {
-  color: white;
+  color: var(--aqua);
 }
 .footer-btn {
   border: 2px solid white;
@@ -89,7 +91,7 @@
 }
 .footer-btn:hover {
   background: white;
-  color: #ff5733;
+  color: var(--bg-green);
 }
 .footer-divider {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -153,4 +155,21 @@
 }
 .footer-meta a:hover {
   opacity: 0.8;
+}
+
+.arrow {
+  display: inline-flex; /* center the image nicely */
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  position: relative;
+ 
+}
+
+.arrow img {
+  width: 120% !important;
+  height: 120% !important;
+  object-fit: cover;
+ 
 }
