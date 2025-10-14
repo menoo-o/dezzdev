@@ -161,16 +161,6 @@
   padding: 0;
 }
 
-html, body {
-  font-family: var(--font-main);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-regular);
-  color: var(--color-text);
-  background-color: var(--text) !important;
-  scroll-behavior: smooth;
-  line-height: 1.6;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -196,7 +186,9 @@ body {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   font-optical-sizing: auto;
-  background-color: #ffffff;
+  background-color: var(--text);
+  scroll-behavior: smooth;
+  line-height: var(--leading-normal);
   height: 100vh;
 }
 
@@ -286,3 +278,9 @@ footer{
   }
 }
 
+@media screen and (min-width: 300px) and (max-width: 1024px) {
+
+ html, body{
+    overflow-x: hidden;
+  }
+}

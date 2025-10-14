@@ -10,6 +10,7 @@ import ParallaxFooter from "@/components/footer-block/footer";
 
 export const metadata: Metadata = {
   title: "DezzDev",
+   icons: null,
   description: "Web Design & Development Studio for Small Businesses and Startups",
   // themeColor: [
   //   { media: "(prefers-color-scheme: light)", color: "#072e23" },
