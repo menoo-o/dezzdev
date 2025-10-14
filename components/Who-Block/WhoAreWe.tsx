@@ -8,8 +8,8 @@ function WhoAreWe() {
     <section className="who-container">
       {/* left content */}
       <div className='left-content'>
-        <span className='who-question vertical-label contrast-trigger' data-contrast="true">/WHAT WE DO?/</span>
-          <p className='who-intro contrast-trigger' data-contrast="true">
+        <span className='who-question vertical-label'>/WHAT WE DO?/</span>
+          <p className='who-intro'>
           Design and code, perfectly in sync.
          </p>  
       </div>

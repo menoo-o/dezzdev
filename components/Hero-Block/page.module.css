@@ -6,6 +6,7 @@
   align-items: center;
   min-height: 100vh;
   background-color: var(--text);
+  padding: var(--space-12) var(--space-6);
   padding: 2rem;
   box-sizing: border-box;
   text-align: center;
@@ -28,23 +29,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
+  gap: var(--space-10);
 }
 
 .headlineRow {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: var(--space-6);
+  
 }
 
 /* ==================== TYPOGRAPHY ==================== */
 
 .word {
   font-family: 'RadioGrotesk', sans-serif;
-  font-size: 9.5rem;
-  font-weight: 900;
-  line-height: 1;
+  font-weight: var(--font-weight-extrabold);
+  line-height: var(--leading-tight);
   color: var(--bg-green);
   word-break: break-word;
   overflow-wrap: break-word;
@@ -78,22 +79,18 @@
 
 @media (max-width: 768px) {
   .word {
-    font-size: 8rem;
+    font-size: var(--font-size-xl);
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 1.5rem;
+    min-height: 80vh;
     overflow-x: hidden !important; /* Prevent horizontal scroll issues */
   }
 
-  .main {
-    padding: 1rem 0;
-  }
-
   .word {
-    font-size: 6.5rem;
+   font-size: var(--font-size-xxl);
   }
 }
 
@@ -101,6 +98,6 @@
 
 @media (min-width: 1400px) {
   .word {
-    font-size: 11rem;
+   font-size: var(--font-size-xxxl);
   }
 }

@@ -14,9 +14,7 @@
   display: block;
   position: relative;
   transition: all 0.3s ease;
-  background: var(--bg-green);
-
-
+  background: var(--moss);
 }
 
 .hamburger::before,
@@ -24,7 +22,7 @@
   content: '';
   width: 30px;
   height: 2px;
-  background: var(--bg-green);  
+  background: var(--moss);  
   display: block;
   position: absolute;
   transition: all 0.3s ease;
