@@ -1,7 +1,4 @@
-.approach-block{
-  min-height: 100vh;
-  padding: var(--space-12) var(--space-6);
-}
+
 .approach-intro-container {
   display: grid;
   grid-template-columns: 1fr; /* Mobile: stack */
@@ -11,6 +8,7 @@
   min-height: 55vh;
   align-items: start;
   justify-items: start;
+  position: relative;
   overflow-x: hidden;
   ;
 }
@@ -54,11 +52,8 @@
 }
 
 .approach-text {
-  font-size: var(--font-size-base);
   line-height: var(--leading-loose, 1.75);
   color: var(--moss);
-  max-width: 50ch;
-
 }
 
 
@@ -72,33 +67,85 @@
       "intro text"
       "intro text";
     }
-  
   .left-content-approach { grid-area: intro; }
   .right-content-approach{ grid-area: text; }
-
-  
-  
 
   .approach-question {
     margin-top: var(--space-6);
     font-size: var(--font-size-xs);
-  
   }
 
   .approach-intro {
     font-size: var(--font-size-xl);
     line-height: var(--leading-normal, 1.5);
-        
   }
 
   .approach-text {
     font-size: var(--font-size-reg);
     margin-top: var(--space-3);
-    
+    max-width: 50ch;
     line-height: var(--leading-loose, 1.75);
   }
 }
 
+
+/* MOBILE DEVICES */
+@media (max-width: 480px) { 
+  .left-content-approach {
+    padding-left: var(--space-12);
+  }
+  .approach-question {
+    margin-top: var(--space-1) !important;
+ } 
+ .approach-text {
+  font-size: var(--font-size-sm);
+  line-height: 2;
+  font-weight: var(--font-weight-regular);
+   max-width: 38ch;
+  justify-self: end; /* pushes it to the right side of its grid cell */
+  text-align: right; /* aligns text content inside the box */
+  
+}
+
+
+
+.right-content-approach {
+  position: absolute;
+  display: flex;
+  top: clamp(6.5rem, 10vh, 7.2rem);
+  align-items: end; /* or center */
+  justify-content: right; /* or center */
+  padding: 0 clamp(4.17rem, 6vw, 4.4rem);
+}
+
+
+
+
+}
+
+
+/* SMALL MOBILE DEVICES */
+@media (max-width: 400px) { 
+.left-content-approach{
+  padding-left: var(--space-10);
+}
+
+.right-content-approach {
+  position: absolute;
+  display: flex;
+  top: clamp(6.2rem, 10vh, 7rem);
+  align-items: end; /* or center */
+  justify-content: right; /* or center */
+  padding: 0 clamp(3rem, 6vw, 4.5rem) 0 clamp(3.47rem, 6vw, 4.5rem);
+}
+ .approach-text {
+  font-size: var(--font-size-sm);
+  line-height: 2;
+  font-weight: var(--font-weight-regular);
+  
+}
+
+}
 
 
 

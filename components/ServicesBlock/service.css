@@ -9,6 +9,7 @@
   overflow-x: hidden;
   min-height: 55vh;
   background-color: var(--text) !important;
+  position: relative;
 }
 
 .service-left-content {
@@ -86,6 +87,69 @@
     .service-who-container{
       max-width: var(--max-width-desktop) !important; 
     }
+
+
+}
+
+
+
+
+/* MOBILE DEVICES */
+@media (max-width: 480px) { 
+  .service-left-content {
+    padding-left: var(--space-12);
+  }
+
+  .service-who-question {
+    margin-top: var(--space-1) !important;
+ } 
+
+ .service-who-text {
+  font-size: var(--font-size-sm);
+  line-height: 2;
+  font-weight: var(--font-weight-regular);
+   max-width: 38ch;
+  justify-self: end; /* pushes it to the right side of its grid cell */
+  text-align: right; /* aligns text content inside the box */
+}
+
+.service-right-content {
+  position: absolute;
+  display: flex;
+  top: clamp(8.5rem, 10vh, 9.2rem);
+  align-items: end; /* or center */
+  justify-content: right; /* or center */
+  padding: 0 clamp(4.15rem, 6vw, 4.5rem);
+}
+
+
+
+
+}
+
+
+/* SMALL MOBILE DEVICES */
+@media (max-width: 400px) { 
+.service-left-content {
+  padding-left: var(--space-10);
+}
+
+.service-right-content {
+  position: absolute;
+  display: flex;
+  top: clamp(8.5rem, 10vh, 9.2rem);
+  align-items: end; /* or center */
+  justify-content: right; /* or center */
+  padding: 0 clamp(3rem, 6vw, 4.5rem) 0 clamp(3.47rem, 6vw, 4.5rem);
+}
+
+ .service-who-text {
+  font-size: var(--font-size-sm);
+  line-height: 2;
+  font-weight: var(--font-weight-regular);
+}
+
+
 
 
 }
