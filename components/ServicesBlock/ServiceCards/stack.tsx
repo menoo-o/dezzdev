@@ -152,7 +152,7 @@ export default function StackService() {
                 })}
               </div>
 
-            <p className="reveal svc-body">{svc.body}</p>
+            {/* <p className="reveal svc-body">{svc.body}</p> */}
             
              <section className="features-section reveal">
                  <div className="features-container">

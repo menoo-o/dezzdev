@@ -3,12 +3,12 @@
   grid-template-columns: 1fr; /* Mobile: stack */
   color: var(--text);
   font-family: var(--font-main);
-   padding: var(--space-12) var(--space-6) !important;
+   padding: var(--space-12) var(--space-6);
+
   align-items: start;
   justify-items: start;
   overflow-x: hidden;
   min-height: 55vh;
-  background-color: var(--text) !important;
   position: relative;
 }
 
@@ -48,8 +48,9 @@
 .service-who-text {
    font-size: var(--font-size-reg);
   line-height: var(--leading-loose, 1.75);
-  color: var(--moss);
-  max-width: 50ch;
+ color: var(--bg-green);
+ font-weight: var(--font-weight-medium);
+  max-width: 35ch;
 }
 
 @media (min-width: 768px) {
@@ -95,6 +96,11 @@
 
 /* MOBILE DEVICES */
 @media (max-width: 480px) { 
+
+  .service-who-container {
+    min-height: 35vh;
+  }
+
   .service-left-content {
     padding-left: var(--space-10);
   }
@@ -117,7 +123,6 @@
   position: absolute;
   display: flex;
   top: clamp(8.5rem, 10vh, 9.2rem);
-  background-color: red;
   justify-content: left; /* or center */
   text-align: left !important;
   padding: 0 clamp(4.15rem, 6vw, 4.5rem);
@@ -143,8 +148,9 @@
 
  .service-who-text {
   font-size: var(--font-size-sm);
-  line-height: 2;
+  line-height: var(--leading-extra);
   font-weight: var(--font-weight-regular);
+  text-align: right;
 }
 
 

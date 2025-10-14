@@ -7,15 +7,16 @@ export default function BridgeSection() {
     <main className="techniques">
       <div className="techniques-container">
         <h1 className="techniques-heading">(Strategy Meets Simplicity)</h1>
-      {techniquesData.map((technique, i) => (
-        <section
-          key={i}
-          className={`techniques-section ${i === techniquesData.length - 1 ? "last-section" : ""}`}
-        >
-       <span
-          className={`techniques-index ${
-    i === 0 ? "first-index" : i === techniquesData.length - 1 ? "last-index" : ""
-  }`}
+      
+          {techniquesData.map((technique, i) => (
+            <section
+              key={i}
+              className={`techniques-section ${i === techniquesData.length - 1 ? "last-section" : ""}`}
+            >
+          <span
+              className={`techniques-index ${
+        i === 0 ? "first-index" : i === techniquesData.length - 1 ? "last-index" : ""
+      }`}
 >
   ({String(i + 1).padStart(2, "0")})
 </span>

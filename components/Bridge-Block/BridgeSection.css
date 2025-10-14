@@ -97,6 +97,7 @@ line-height: var(--leading-normal, 1.5);
 .techniques-para p {
   font-size: var(--font-size-reg);
   line-height: var(--leading-loose, 1.75);
+  font-weight: var(--font-weight-medium) !important;
   color: var(--bg-green);
   max-width: 50ch;
 }
@@ -107,6 +108,7 @@ line-height: var(--leading-normal, 1.5);
 @media (min-width: 768px) {
   .techniques {
     padding: var(--space-12) var(--space-6);
+
   }
 .techniques-row {
     grid-template-columns: 2fr 2fr; /* heading takes natural width, paragraph takes rest */
@@ -124,12 +126,9 @@ line-height: var(--leading-normal, 1.5);
   }
 
   .last-index {
-    top: 14.5rem;
+    top: 15.5rem;
   }
 
-  .first-index{
-    top: 12rem;
-  }
 
 }
 
@@ -154,10 +153,18 @@ line-height: var(--leading-normal, 1.5);
   text-align: left;
   font-size: var(--font-size-sm);
   line-height: var(--leading-extra);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular);
   padding: 0 clamp(1.35rem, 6vw, 2.3rem);
   color: var(--moss);
+  opacity: 0.8;
 }
+
+.techniques-para p {
+  font-weight: var(--font-weight-regular) !important;
+   font-size: var(--font-size-sm);
+  line-height: var(--leading-extra);
+}
+
 
   .techniques-row {
   gap: var(--space-6);
@@ -195,9 +202,7 @@ line-height: var(--leading-normal, 1.5);
 }
 
 .techniques-para {
-  font-weight: var(--font-weight-medium);
   padding: 0 clamp(0.5rem, 3vw, 1.5rem);
-  color: var(--moss);
 }
 
 

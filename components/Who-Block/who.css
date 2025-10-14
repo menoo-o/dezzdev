@@ -85,7 +85,7 @@
 
   .who-text {
     margin-top: var(--space-3);
-    line-height: var(--leading-loose, 1.75);
+    line-height: var(--leading-loose);
     
   }
 }
@@ -100,21 +100,7 @@
     .who-container{
       max-width: var(--max-width-desktop) !important; 
     }
-
-
 }
-
-
-
-/* MOBILE DEVICES */
-@media (max-width: 768px) { 
-.who-container{
-  min-height: 40vh;
-}
-
-}
-
-
 /* MOBILE DEVICES */
 @media (max-width: 480px) { 
 
@@ -133,7 +119,7 @@
  .who-text {
   font-size: var(--font-size-sm);
   line-height: var(--leading-extra);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular) !important;
   text-align: right; /* aligns text content inside the box */
 }
 
