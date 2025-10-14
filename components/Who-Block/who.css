@@ -121,35 +121,46 @@
   font-size: var(--font-size-sm);
   line-height: 2;
   font-weight: var(--font-weight-regular);
-  max-width: 37ch;
-  position:absolute;
-  top: clamp(8.8rem, 10vh, 9.5rem);
-  left: clamp(3.17rem, 6vw, 4.5rem);
-  
+   max-width: 38ch;
+  justify-self: end; /* pushes it to the right side of its grid cell */
+  text-align: right; /* aligns text content inside the box */
+}
 
+.right-content {
+  position: absolute;
+  display: flex;
+  top: clamp(8.5rem, 10vh, 9.2rem);
+  align-items: end; /* or center */
+  justify-content: right; /* or center */
+  padding: 0 clamp(4.15rem, 6vw, 4.5rem);
 }
 
 
 
 
-
-
 }
 
 
-/* MOBILE DEVICES */
+/* SMALL MOBILE DEVICES */
 @media (max-width: 400px) { 
 .left-content {
   padding-left: var(--space-10);
 }
 
- .who-text {
-  max-width: 36ch;
-  position:absolute;
-  top: clamp(8.5rem, 10vh, 9rem);
-padding: 0 var(--space-3);  
-
+.right-content {
+  position: absolute;
+  display: flex;
+  top: clamp(8.5rem, 10vh, 9.2rem);
+  align-items: end; /* or center */
+  justify-content: right; /* or center */
+  padding: 0 clamp(3rem, 6vw, 4.5rem) 0 clamp(3.47rem, 6vw, 4.5rem);
 }
+ .who-text {
+  font-size: var(--font-size-sm);
+  line-height: 2;
+  font-weight: var(--font-weight-regular);
+}
+
 
 
 
