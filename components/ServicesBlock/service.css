@@ -45,11 +45,6 @@
   color: var(--bg-green);
 }
 
-.service-right-content {
-  justify-self: end; /* Aligns the right content to the end of its grid cell */
-  text-align: right;
-}
-
 .service-who-text {
    font-size: var(--font-size-reg);
   line-height: var(--leading-loose, 1.75);
@@ -72,9 +67,13 @@
 
   .service-who-intro {
     font-size: var(--font-size-xl);
-    line-height: var(--leading-normal, 1.5);
-        
+    line-height: var(--leading-normal, 1.5);     
   }
+
+  .service-right-content {
+  justify-self: end; /* Aligns the right content to the end of its grid cell */
+  text-align: right;
+}
 
   .service-who-text {
     font-size: var(--font-size-reg);
@@ -97,12 +96,13 @@
 /* MOBILE DEVICES */
 @media (max-width: 480px) { 
   .service-left-content {
-    padding-left: var(--space-12);
+    padding-left: var(--space-10);
   }
 
   .service-who-question {
     margin-top: var(--space-1) !important;
  } 
+
 
  .service-who-text {
   font-size: var(--font-size-sm);
@@ -117,12 +117,11 @@
   position: absolute;
   display: flex;
   top: clamp(8.5rem, 10vh, 9.2rem);
-  align-items: end; /* or center */
-  justify-content: right; /* or center */
+  background-color: red;
+  justify-content: left; /* or center */
+  text-align: left !important;
   padding: 0 clamp(4.15rem, 6vw, 4.5rem);
 }
-
-
 
 
 }
@@ -138,8 +137,7 @@
   position: absolute;
   display: flex;
   top: clamp(8.5rem, 10vh, 9.2rem);
-  align-items: end; /* or center */
-  justify-content: right; /* or center */
+  justify-content: left; /* or center */
   padding: 0 clamp(3rem, 6vw, 4.5rem) 0 clamp(3.47rem, 6vw, 4.5rem);
 }
 

@@ -43,7 +43,7 @@
 /* ==================== TYPOGRAPHY ==================== */
 
 .word {
-  font-family: 'RadioGrotesk', sans-serif;
+  font-family: var(--font-accent);
   font-weight: var(--font-weight-extrabold);
   line-height: var(--leading-tight);
   color: var(--bg-green);
@@ -85,8 +85,9 @@
 
 @media (max-width: 480px) {
   .container {
-    min-height: 80vh;
+    min-height: 70vh;
     overflow-x: hidden !important; /* Prevent horizontal scroll issues */
+
   }
 
   .word {

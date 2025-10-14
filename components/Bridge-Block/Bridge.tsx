@@ -6,7 +6,7 @@ export default function BridgeSection() {
   return (
     <main className="techniques">
       <div className="techniques-container">
-        <h1 className="techniques-heading">/Strategy Meets Simplicity/</h1>
+        <h1 className="techniques-heading">(Strategy Meets Simplicity)</h1>
       {techniquesData.map((technique, i) => (
         <section
           key={i}

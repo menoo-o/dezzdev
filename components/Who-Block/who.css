@@ -41,7 +41,7 @@
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   line-height: var(--leading-normal, 1.5);
-  color: var(--bg-green);
+  color: var(--jungle);
 }
 
 .right-content {
@@ -51,11 +51,11 @@
 }
 
 .who-text {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-reg);
   line-height: var(--leading-loose, 1.75);
-  color: var(--moss);
-  max-width: 50ch;
-
+  color: var(--bg-green);
+  font-weight: var(--font-weight-medium) !important;
+  max-width: 43ch;
 }
 
 
@@ -84,31 +84,28 @@
   }
 
   .who-text {
-    font-size: var(--font-size-reg);
     margin-top: var(--space-3);
-    
     line-height: var(--leading-loose, 1.75);
+    
   }
 }
 
-
-
-
-
-
-
+/* XXL Screens */
 @media (min-width: 1600px) {
     .who-container{
       max-width: var(--max-width-desktop) !important; 
     }
-
-
 }
-
 
 
 /* MOBILE DEVICES */
 @media (max-width: 480px) { 
+
+  .who-container {
+    min-height: 50vh;
+   
+  }
+
   .left-content {
     padding-left: var(--space-12);
   }
@@ -120,19 +117,14 @@
  .who-text {
   font-size: var(--font-size-sm);
   line-height: 2;
-  font-weight: var(--font-weight-regular);
-   max-width: 38ch;
-  justify-self: end; /* pushes it to the right side of its grid cell */
-  text-align: right; /* aligns text content inside the box */
+  font-weight: var(--font-weight-medium);
+  text-align: left; /* aligns text content inside the box */
 }
 
 .right-content {
   position: absolute;
-  display: flex;
   top: clamp(8.5rem, 10vh, 9.2rem);
-  align-items: end; /* or center */
-  justify-content: right; /* or center */
-  padding: 0 clamp(4.15rem, 6vw, 4.5rem);
+  padding: 0 clamp(4.35rem, 6vw, 4.5rem);
 }
 
 
@@ -156,9 +148,9 @@
   padding: 0 clamp(3rem, 6vw, 4.5rem) 0 clamp(3.47rem, 6vw, 4.5rem);
 }
  .who-text {
-  font-size: var(--font-size-sm);
   line-height: 2;
-  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-reg);
+
 }
 
 

@@ -7,7 +7,7 @@ function ApproachBlock() {
       {/* left content */}
       <div className='left-content-approach'>
         <span className='approach-question'>/OUR APPROACH/</span>
-          <p className='approach-intro approach-title'>
+          <p className='approach-intro'>
           Fixed Process, Fluid Potential.
          </p>  
       </div>

@@ -4,8 +4,8 @@
 .techniques {
   min-height: 100vh;
   box-sizing: border-box;
-  
   font-family: var(--font-main);
+ 
 }
 
 .techniques-container {
@@ -24,7 +24,7 @@
   position: absolute;
   top: 2rem;
   right: 2.5rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-extrabold);
   font-size: 6rem;
   line-height: 1;
   color: var(--bg-green);
@@ -46,33 +46,28 @@
    Headings
 ================================= */
 .techniques-heading {
- font-size: var(--font-size-md);
- font-weight: var(--font-weight-regular);
- line-height: var(--leading-normal, 1.5);
- background: linear-gradient(90deg, #2ac5c2 0%, #169976 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   font-family: var(--font-accent);
-  letter-spacing: 0.05em;
-
+  font-weight: var(--font-weight-extrabold);
+  font-size: var(--font-size-xxl);
+  line-height: var(--leading-normal, 1.75);
+  color: var(--jungle);
+  letter-spacing: 0.03em;
+  margin-bottom: var(--space-10);
+  
 }
 
 .techniques-subheading {
 font-size: var(--font-size-xl);
 line-height: var(--leading-normal, 1.5);
  color: var(--bg-green);
-
 }
 
-.techniques-section, .techniques-heading{
-    margin-left: var(--space-6);
-}
 /* ===============================
    Sections
 ================================= */
 .techniques-section {
   border-top: 1px solid var(--jungle, #e0e0e0);
-  padding: var(--space-16) 0; 
+  padding: var(--space-16) var(--space-2); 
 }
 
 .techniques-section:first-of-type {
@@ -94,11 +89,10 @@ line-height: var(--leading-normal, 1.5);
   grid-template-columns: 1fr;
   gap: 2rem;
   padding: 3rem 0;
-
 }
 
 .techniques-para {
-  text-align: right; 
+  text-align: right;
 }
 
 .techniques-para p {
@@ -142,3 +136,50 @@ line-height: var(--leading-normal, 1.5);
   }
 
 }
+
+
+@media (max-width: 468px) {
+
+ .techniques-section {
+    padding: var(--space-12) var(--space-6);
+}
+
+  .techniques-heading{
+    font-size: var(--font-size-lg);
+    text-align: center;
+  }
+
+  .techniques-subheading {
+     padding: 0 clamp(1.35rem, 6vw, 4.5rem);
+    font-size: var(--font-size-lg);
+}
+
+.techniques-para {
+  text-align: left;
+   font-size: var(--font-size-sm);
+  line-height: 2;
+  font-weight: var(--font-weight-medium);
+  padding: 0 clamp(1.35rem, 6vw, 2.3rem);
+}
+
+  .techniques-row {
+  gap: var(--space-6);
+  padding: 0;
+ }
+
+  .techniques-index {
+    font-weight: var(--font-weight-bold);
+    right: var(--space-10);
+    font-size: var(--font-size-lg);
+    top: 3.6rem;
+}
+
+.first-index {
+  top: 2.2rem;
+}
+
+
+
+
+}
+
