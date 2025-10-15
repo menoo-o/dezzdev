@@ -3,12 +3,12 @@
   grid-template-columns: 1fr; /* Mobile: stack */
   color: var(--text);
   font-family: var(--font-main);
-   padding: var(--space-12) var(--space-6);
-
+  padding: var(--space-12) var(--space-6);
+  
   align-items: start;
   justify-items: start;
   overflow-x: hidden;
-  min-height: 55vh;
+  min-height: 40vh;
   position: relative;
 }
 
@@ -58,6 +58,8 @@
      grid-template-columns: 1fr 1fr;
      max-width: var(--max-width, 1440px);
      margin: 0 auto;
+    
+     margin-top: var(--space-12);
      grid-template-areas: 
       "intro text"
       "intro text";

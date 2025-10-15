@@ -65,23 +65,7 @@ export default function StackService() {
               )
             }
 
-            // Image reveal
-            const reveals = right.querySelectorAll<HTMLElement>(".reveal")
-            if (!prefersReduced) {
-              gsap.from(reveals, {
-                opacity: 0,
-                y: 26,
-                duration: 0.6,
-                ease: "power2.out",
-                stagger: 0.12,
-                scrollTrigger: {
-                  trigger: right,
-                  start: "top 80%",
-                  end: "bottom 35%",
-                  toggleActions: "play none none reverse",
-                },
-              })
-            }
+           
 
             // Subtle fade handoff
             ScrollTrigger.create({
