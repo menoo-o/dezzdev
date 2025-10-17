@@ -187,3 +187,98 @@
   font-size: var(--font-size-2xl);
   font-weight: 700;
 }
+
+
+@media (max-width: 768px) {
+
+  .process-stack {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .process-container {
+    padding: 0;
+  }
+
+  /* === GRID LAYOUT === */
+  .process-grid {
+    grid-template-columns: 1fr; /* collapse into single column */
+    gap: var(--space-8);
+  }
+
+  /* === PHASE NAVIGATION === */
+  .phase-nav {
+    position: relative; /* remove sticky on mobile */
+    top: auto;
+    flex-direction: row; /* optional: make nav scroll horizontally */
+    overflow-x: auto;
+    gap: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .phase-label {
+    display: none; /* hide label to save vertical space */
+  }
+
+  .phase-item {
+    flex: 0 0 auto; /* keep items in a row */
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-xs);
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+  }
+
+  .phase-indicator {
+    display: none; /* too narrow for this indicator */
+  }
+
+  /* === PHASE CARDS === */
+  .phase-card-wrapper {
+    min-height: auto; /* let cards flow normally */
+    position: relative;
+  }
+
+  .phase-card {
+    position: relative !important;
+    top: auto;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .phase-card-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--space-6);
+  }
+
+  /* === PHASE INFO === */
+  .phase-info-subtitle {
+    font-size: var(--font-size-2xl);
+  }
+
+  .phase-info-desc {
+    font-size: var(--font-size-sm);
+  }
+
+  /* === PROJECTS === */
+  .project-list {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: var(--space-4);
+    padding-bottom: var(--space-4);
+  }
+
+  .project-card {
+    flex: 0 0 250px; /* horizontal scroll cards */
+    aspect-ratio: 4 / 3;
+  }
+
+  .project-content {
+    padding: var(--space-4);
+  }
+
+  .project-title {
+    font-size: var(--font-size-lg);
+  }
+}
