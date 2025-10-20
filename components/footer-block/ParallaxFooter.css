@@ -147,11 +147,6 @@
 
 .footer-input {
   flex: 1;
-  border: none;
-  border-bottom: 1px solid var(--moss, #111);
-  background: transparent;
-  padding: var(--space-3) 0;
-  color: var(--aqua);
   outline: none;
 }
 
@@ -202,7 +197,6 @@
 .footer-input,
 .footer-textarea {
   width: 100%;
-  background: transparent;
   border-bottom: 1px solid var(--moss, #ccc);
   padding: var(--space-3) 0rem;
   color: var(--jungle, #fff);
