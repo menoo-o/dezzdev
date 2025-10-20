@@ -1,5 +1,6 @@
  import './approach-intro.css'
  import ApproachStackCards from '../approach-phases/Phase'
+ 
 function ApproachBlock() {
   return (
     <div className='approach-block'>

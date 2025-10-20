@@ -18,45 +18,66 @@ export default function ApproachStackCards() {
 
   useGSAP(
     () => {
-      const cards = cardsRef.current.filter(Boolean)
+      const mm = gsap.matchMedia()
+         mm.add(
+        {
+          small: "(max-width: 768px)",
+          large: "(min-width: 769px)",
+        },
 
-      cards.forEach((card, index) => {
-        if (!card) return
+        (ctx) => {
+          const { small, large } = ctx.conditions ?? {}
 
-        const isLast = index === cards.length - 1
+      if (large) {
+         const cards = cardsRef.current.filter(Boolean)
+         cards.forEach((card, index) => {
+          if (!card) return
+          
+          const isLast = index === cards.length - 1
+            ScrollTrigger.create({
+              trigger: card,
+              start: "top center",
+              end: "bottom center",
+              onEnter: () => setActivePhase(phases[index].id),
+              onEnterBack: () => setActivePhase(phases[index].id),
+            })
 
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top center",
-          end: "bottom center",
-          onEnter: () => setActivePhase(phases[index].id),
-          onEnterBack: () => setActivePhase(phases[index].id),
-        })
-
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top top",
-          end: isLast ? "bottom top" : "+=100%",
-          pin: !isLast,
-          pinSpacing: false,
-          scrub: true,
-        })
-
-        if (!isLast) {
-          gsap.to(card, {
-            scale: 0.8,
-            opacity: 0.02,
-            scrollTrigger: {
+            ScrollTrigger.create({
               trigger: card,
               start: "top top",
-              end: "+=100%",
+              end: isLast ? "bottom top" : "+=100%",
+              pin: !isLast,
+              pinSpacing: false,
               scrub: true,
-            },
-          })
+            })
+
+            if (!isLast) {
+              gsap.to(card, {
+                scale: 0.8,
+                opacity: 0.02,
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top top",
+                  end: "+=100%",
+                  scrub: true,
+                  },
+                })
+              }
+            })
+          }
+          if (small) {
+            // === Mobile: disable animations for performance ===
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+            gsap.globalTimeline.clear()
+
+            document.querySelectorAll(".phase-card").forEach(el => {
+              el.removeAttribute("style")
+            })
+          }
         }
-      })
+      )
     },
-    { scope: containerRef, dependencies: [] },
+    { scope: containerRef }
   )
 
   return (

@@ -191,50 +191,64 @@
 
 @media (max-width: 768px) {
 
+  /* === WRAPPER SPACING === */
   .process-stack {
     padding: var(--space-8) var(--space-4);
   }
 
   .process-container {
-    padding: 0;
+    padding: 0 var(--space-4);
   }
 
-  /* === GRID LAYOUT === */
+  /* === SINGLE COLUMN GRID === */
   .process-grid {
-    grid-template-columns: 1fr; /* collapse into single column */
+    display: flex;
+    flex-direction: column;
     gap: var(--space-8);
   }
 
-  /* === PHASE NAVIGATION === */
+  /* === PHASE NAVIGATION ROW === */
   .phase-nav {
-    position: relative; /* remove sticky on mobile */
-    top: auto;
-    flex-direction: row; /* optional: make nav scroll horizontally */
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 5;
     overflow-x: auto;
-    gap: var(--space-4);
-    padding-bottom: var(--space-4);
+    padding: var(--space-4) 0;
+    background: var(--color-background);
+    gap: var(--space-3);
     border-bottom: 1px solid var(--color-border);
+    scroll-snap-type: x mandatory;
+    display: none;
   }
 
   .phase-label {
-    display: none; /* hide label to save vertical space */
+    display: none;
   }
 
   .phase-item {
-    flex: 0 0 auto; /* keep items in a row */
-    padding: var(--space-3) var(--space-4);
-    font-size: var(--font-size-xs);
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--font-size-sm);
     border-radius: var(--radius-full);
     white-space: nowrap;
+    background: var(--color-muted);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .phase-item.active {
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
   }
 
   .phase-indicator {
-    display: none; /* too narrow for this indicator */
+    display: none;
   }
 
-  /* === PHASE CARDS === */
+  /* === PHASE CARD LAYOUT === */
   .phase-card-wrapper {
-    min-height: auto; /* let cards flow normally */
+    min-height: auto;
     position: relative;
   }
 
@@ -243,6 +257,7 @@
     top: auto;
     height: auto;
     align-items: flex-start;
+    margin-bottom: var(--space-10);
   }
 
   .phase-card-inner {
@@ -250,28 +265,44 @@
     flex-direction: column;
     gap: var(--space-6);
     padding: var(--space-6);
+    border-radius: var(--radius-2xl);
+    background: var(--color-card);
+    box-shadow: var(--shadow-lg);
   }
 
   /* === PHASE INFO === */
+  .phase-info-title {
+    font-size: var(--font-size-xs);
+  }
+
   .phase-info-subtitle {
     font-size: var(--font-size-2xl);
+    line-height: 1.2;
   }
 
   .phase-info-desc {
     font-size: var(--font-size-sm);
+    line-height: 1.5;
   }
 
   /* === PROJECTS === */
   .project-list {
+    display: flex;
     flex-direction: row;
-    overflow-x: auto;
     gap: var(--space-4);
-    padding-bottom: var(--space-4);
+    overflow-x: auto;
+    padding: var(--space-2) var(--space-1) var(--space-4);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
 
   .project-card {
-    flex: 0 0 250px; /* horizontal scroll cards */
+    flex: 0 0 80%;
+    max-width: 320px;
     aspect-ratio: 4 / 3;
+    scroll-snap-align: center;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
   }
 
   .project-content {
