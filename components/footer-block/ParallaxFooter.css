@@ -197,7 +197,7 @@
 .footer-input,
 .footer-textarea {
   width: 100%;
-  border-bottom: 1px solid var(--moss, #ccc);
+  border-bottom: 1px solid var(--moss);
   padding: var(--space-3) 0rem;
   color: var(--jungle, #fff);
   font-size: var(--font-size-sm);
