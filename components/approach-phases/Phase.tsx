@@ -66,12 +66,15 @@ export default function ApproachStackCards() {
             })
           }
           if (small) {
-            // === Mobile: disable animations for performance ===
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-            gsap.globalTimeline.clear()
-
-            document.querySelectorAll(".phase-card").forEach(el => {
-              el.removeAttribute("style")
+            cardsRef.current.forEach((card, index) => {
+              if (!card) return
+              ScrollTrigger.create({
+                trigger: card,
+                start: "top center",
+                end: "bottom center",
+                onEnter: () => setActivePhase(phases[index].id),
+                onEnterBack: () => setActivePhase(phases[index].id),
+              })
             })
           }
         }
