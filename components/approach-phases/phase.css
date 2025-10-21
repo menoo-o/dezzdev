@@ -1,7 +1,7 @@
 .process-stack {
   position: relative;
   padding: var(--space-12) var(--space-6);
-  z-index: var(--z-overlay);
+
 }
 
 .process-container {

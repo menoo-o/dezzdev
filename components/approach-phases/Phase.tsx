@@ -11,77 +11,86 @@ import Image from "next/image"
 import { Phase } from "../../types"
 
 
+
 export default function ApproachStackCards() {
-   const containerRef = useRef<HTMLDivElement>(null)
-   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
-   const [activePhase, setActivePhase] = useState(1)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([])
+  const [activePhase, setActivePhase] = useState(1)
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia()
-         mm.add(
+      const localTriggers: ScrollTrigger[] = [] // 🧩 local tracker for cleanup
+
+      mm.add(
         {
           small: "(max-width: 768px)",
           large: "(min-width: 769px)",
         },
-
         (ctx) => {
           const { small, large } = ctx.conditions ?? {}
 
-      if (large) {
-         const cards = cardsRef.current.filter(Boolean)
-         cards.forEach((card, index) => {
-          if (!card) return
-          
-          const isLast = index === cards.length - 1
-            ScrollTrigger.create({
-              trigger: card,
-              start: "top center",
-              end: "bottom center",
-              onEnter: () => setActivePhase(phases[index].id),
-              onEnterBack: () => setActivePhase(phases[index].id),
-            })
+          // 🖥️ Desktop / Large Screens
+          if (large) {
+            const cards = cardsRef.current.filter(Boolean)
 
-            ScrollTrigger.create({
-              trigger: card,
-              start: "top top",
-              end: isLast ? "bottom top" : "+=100%",
-              pin: !isLast,
-              pinSpacing: false,
-              scrub: true,
-            })
-
-            if (!isLast) {
-              gsap.to(card, {
-                scale: 0.8,
-                opacity: 0.02,
-                scrollTrigger: {
-                  trigger: card,
-                  start: "top top",
-                  end: "+=100%",
-                  scrub: true,
-                  },
-                })
-              }
-            })
-          }
-          if (small) {
-            cardsRef.current.forEach((card, index) => {
+            cards.forEach((card, index) => {
               if (!card) return
-              ScrollTrigger.create({
+              const isLast = index === cards.length - 1
+
+              const triggerA = ScrollTrigger.create({
                 trigger: card,
                 start: "top center",
                 end: "bottom center",
-                onEnter: () => setActivePhase(phases[index].id),
-                onEnterBack: () => setActivePhase(phases[index].id),
+                onEnter: () => setActivePhase(index + 1),
+                onEnterBack: () => setActivePhase(index + 1),
               })
+              localTriggers.push(triggerA)
+
+              const triggerB = ScrollTrigger.create({
+                trigger: card,
+                start: "top top",
+                end: isLast ? "bottom top" : "+=100%",
+                pin: !isLast,
+                pinSpacing: false,
+                scrub: true,
+              })
+              localTriggers.push(triggerB)
+
+              if (!isLast) {
+                const tween = gsap.to(card, {
+                  scale: 0.8,
+                  opacity: 0.02,
+                  scrollTrigger: {
+                    trigger: card,
+                    start: "top top",
+                    end: "+=100%",
+                    scrub: true,
+                  },
+                })
+                localTriggers.push(tween.scrollTrigger!)
+              }
             })
+          }
+
+          // 📱 Mobile — only disable *this component’s* triggers
+          if (small) {
+            localTriggers.forEach((t) => t.kill())
+            document
+              .querySelectorAll(".phase-card")
+              .forEach((el) => el.removeAttribute("style"))
+          }
+
+          // 🧹 Return cleanup to run automatically when conditions change/unmount
+          return () => {
+            localTriggers.forEach((t) => t.kill())
           }
         }
       )
     },
     { scope: containerRef }
   )
+
 
   return (
    <div className="process-stack" ref={containerRef}>

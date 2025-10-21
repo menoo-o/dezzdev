@@ -13,92 +13,95 @@ ScrollTrigger.defaults({ anticipatePin: 2 })
 
 export default function StackService() {
   const rootRef = useRef<HTMLDivElement | null>(null)
-  
 
   useGSAP(
     () => {
+      const mm = gsap.matchMedia()
+      const localTriggers: ScrollTrigger[] = [] // 🧩 Track triggers created here
+
       const root = rootRef.current!
       const sections = gsap.utils.toArray<HTMLElement>(root.querySelectorAll(".svc"))
-
       const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
-      ScrollTrigger.matchMedia({
-        "(min-width: 768px)": () => {
-          sections.forEach((section) => {
-            const left = section.querySelector<HTMLElement>(".svc-left")!
-            const titleWrap = section.querySelector<HTMLElement>(".svc-title")!
-            const right = section.querySelector<HTMLElement>(".svc-right")!
-
-            const endDistance = () => {
-              const base = Math.max(360, right.scrollHeight * 0.8)
-              return "+=" + base
-            }
-
-            // Pin left column
-            ScrollTrigger.create({
-              trigger: section,
-              start: "top 40%",
-              end: endDistance,
-              pin: left,
-              pinSpacing: false,
-              pinReparent: true,
-              anticipatePin: 2,
-              invalidateOnRefresh: true,
-            })
-
-            // Title reveal
-            if (!prefersReduced) {
-              gsap.fromTo(
-                titleWrap,
-                { y: 48, opacity: 0.85 },
-                {
-                  y: 0,
-                  opacity: 1,
-                  ease: "power3.out",
-                  scrollTrigger: {
-                    trigger: section,
-                    start: "top 56%",
-                    end: "top 40%",
-                    scrub: 0.25,
-                  },
-                },
-              )
-            }
-
-           
-
-            // Subtle fade handoff
-            ScrollTrigger.create({
-              trigger: section,
-              start: "bottom 45%",
-              end: "bottom 30%",
-              onLeave: () => gsap.to(section, { opacity: 0.98, y: -10, duration: 0.32, ease: "power2.out" }),
-              onEnterBack: () => gsap.to(section, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }),
-            })
-          })
+      mm.add(
+        {
+          small: "(max-width: 767px)",
+          large: "(min-width: 768px)",
         },
+        (ctx) => {
+          const { small, large } = ctx.conditions ?? {}
 
-        // Mobile fallback
-        "(max-width: 767px)": () => {
-          if (prefersReduced) return
-          sections.forEach((section) => {
-            const right = section.querySelector<HTMLElement>(".svc-right")!
-            const reveals = right.querySelectorAll<HTMLElement>(".reveal")
-            gsap.from(reveals, {
-              opacity: 0,
-              y: 18,
-              duration: 0.5,
-              ease: "power2.out",
-              stagger: 0.08,
-              scrollTrigger: {
+          // 🖥️ Desktop / Large Screen
+          if (large) {
+            sections.forEach((section) => {
+              const left = section.querySelector<HTMLElement>(".svc-left")!
+              const titleWrap = section.querySelector<HTMLElement>(".svc-title")!
+              const right = section.querySelector<HTMLElement>(".svc-right")!
+
+              const endDistance = () => {
+                const base = Math.max(360, right.scrollHeight * 0.8)
+                return "+=" + base
+              }
+
+              // Pin left column
+              const pinTrigger = ScrollTrigger.create({
                 trigger: section,
-                start: "top 85%",
-                toggleActions: "play none none reverse",
-              },
+                start: "top 40%",
+                end: endDistance,
+                pin: left,
+                pinSpacing: false,
+                pinReparent: true,
+                anticipatePin: 2,
+                invalidateOnRefresh: true,
+              })
+              localTriggers.push(pinTrigger)
+
+              // Title reveal
+              if (!prefersReduced) {
+                const titleTween = gsap.fromTo(
+                  titleWrap,
+                  { y: 48, opacity: 0.85 },
+                  {
+                    y: 0,
+                    opacity: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                      trigger: section,
+                      start: "top 56%",
+                      end: "top 40%",
+                      scrub: 0.25,
+                    },
+                  },
+                )
+                localTriggers.push(titleTween.scrollTrigger!)
+              }
+
+              // Subtle fade handoff
+              const fadeTrigger = ScrollTrigger.create({
+                trigger: section,
+                start: "bottom 45%",
+                end: "bottom 30%",
+                onLeave: () =>
+                  gsap.to(section, { opacity: 0.98, y: -10, duration: 0.32, ease: "power2.out" }),
+                onEnterBack: () =>
+                  gsap.to(section, { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }),
+              })
+              localTriggers.push(fadeTrigger)
             })
-          })
+          }
+
+          // 📱 Mobile: Disable local animations
+          if (small) {
+            localTriggers.forEach((t) => t.kill())
+            gsap.set(".svc", { clearProps: "all" }) // Remove inline gsap styles
+          }
+
+          // ♻️ Cleanup on context revert (when breakpoint changes)
+          return () => {
+            localTriggers.forEach((t) => t.kill())
+          }
         },
-      })
+      )
     },
     { scope: rootRef, dependencies: [] },
   )
