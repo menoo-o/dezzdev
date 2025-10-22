@@ -19,7 +19,9 @@
 
 .who-question {
   font-family: var(--font-accent);
-  color: var(--moss);
+  background: linear-gradient(45deg, #072e23 0%, #04ffbc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: var(--font-size-xs);
   opacity: 0.5;
   margin-top: var(--space-2) !important;
@@ -41,7 +43,7 @@
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-regular);
   line-height: var(--leading-normal, 1.5);
-  color: var(--jungle);
+  color: var(--bg-green);
 }
 
 .right-content {
@@ -53,8 +55,8 @@
 .who-text {
   font-size: var(--font-size-reg);
   line-height: var(--leading-loose, 1.75);
-  color: var(--bg-green);
-  font-weight: var(--font-weight-medium) !important;
+  color: var(--moss);
+  font-weight: var(--font-weight-medium);
   max-width: 43ch;
 }
 
@@ -74,9 +76,6 @@
   .left-content { grid-area: intro; }
   .right-content { grid-area: text; }
 
-  
-
-
   .who-intro {
     font-size: var(--font-size-xl);
     line-height: var(--leading-normal, 1.5);
@@ -86,6 +85,7 @@
   .who-text {
     margin-top: var(--space-3);
     line-height: var(--leading-loose);
+    font-weight: var(--font-weight-medium);
     
   }
 }
@@ -119,7 +119,8 @@
  .who-text {
   font-size: var(--font-size-sm);
   line-height: var(--leading-extra);
-  font-weight: var(--font-weight-regular) !important;
+  font-weight: var(--font-weight-regular);
+ 
   text-align: right; /* aligns text content inside the box */
 }
 

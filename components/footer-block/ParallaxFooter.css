@@ -73,6 +73,10 @@
     padding-left: var(--space-12);
   }
 
+  .vertical-label{
+    margin-top: var(--space-2);
+  }
+
   
 }
 
@@ -183,6 +187,11 @@
   .footer-heading {
     font-size: var(--font-size-lg);
   }
+
+  .footer-legal p{
+  text-align: center;
+}
+
  
 }
 

@@ -138,12 +138,14 @@
 .feature-label {
   grid-column: span 1;
   align-self: center;
+  color: var(--bg-green);
 }
 .feature-label-text {
   font-size: var(--font-size-sm); /* text-sm */
   text-transform: uppercase;
+  font-weight: var(--font-weight-regular);
   letter-spacing: 0.15em;
-  color: var(--moss);
+  color: var(--bg-green);
 }
 /* ================================
    Pills (Right)

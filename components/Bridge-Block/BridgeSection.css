@@ -15,7 +15,7 @@
 
 .techniques-section {
   position: relative;
-  border-top: 1px solid var(--border, #e0e0e0);
+  border-top: 1px solid var(--jungle, #e0e0e0);
   padding: var(--space-16) 0;
   overflow: hidden; /* Prevents the number from overflowing on smaller screens */
 }
@@ -26,7 +26,7 @@
   font-weight: var(--font-weight-extrabold);
   font-size: var(--font-size-xs);
   line-height: 1;
- background: linear-gradient(45deg, #072e23 0%, #04ffbc 100%);
+  background: linear-gradient(45deg, #072e23 0%, #04ffbc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   opacity: 0.2;
@@ -53,21 +53,18 @@
   color: var(--jungle);
   letter-spacing: 0.04em;
   margin-bottom: var(--space-10);
-  
-  
 }
 
 .techniques-subheading {
 font-size: var(--font-size-xl);
 line-height: var(--leading-normal, 1.5);
-
 }
 
 /* ===============================
    Sections
 ================================= */
 .techniques-section {
-  border-top: 1px solid var(--aqua, #e0e0e0);
+  border-top: 1px solid var(--jungle, #e0e0e0);
   padding: var(--space-16) var(--space-2); 
 }
 
@@ -78,7 +75,7 @@ line-height: var(--leading-normal, 1.5);
 
 /* last section -create to convert */
 .last-section {
-    border-bottom: 1px solid var(--aqua, #e0e0e0);
+    border-bottom: 1px solid var(--jungle, #e0e0e0);
     padding-bottom: var(--space-16); 
 }
 
@@ -100,7 +97,7 @@ line-height: var(--leading-normal, 1.5);
   font-size: var(--font-size-reg);
   line-height: var(--leading-loose, 1.75);
   font-weight: var(--font-weight-medium) !important;
-  color: var(--bg-green);
+  color: var(--moss);
   max-width: 50ch;
 }
 

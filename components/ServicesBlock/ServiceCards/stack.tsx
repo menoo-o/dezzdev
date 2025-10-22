@@ -51,8 +51,10 @@ export default function StackService() {
                 pin: left,
                 pinSpacing: false,
                 pinReparent: true,
-                anticipatePin: 2,
+                anticipatePin: 1.15,
+              
                 invalidateOnRefresh: true,
+                fastScrollEnd: true, // 🧈 smoother finish
               })
               localTriggers.push(pinTrigger)
 
@@ -69,7 +71,7 @@ export default function StackService() {
                       trigger: section,
                       start: "top 56%",
                       end: "top 40%",
-                      scrub: 0.25,
+                      scrub: 0.85,
                     },
                   },
                 )

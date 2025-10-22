@@ -19,7 +19,9 @@
 
 .service-who-question {
   font-family: var(--font-accent);
-  color: var(--moss);
+  background: linear-gradient(45deg, #072e23 0%, #04ffbc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: var(--font-size-xs);
   opacity: 0.5;
   margin-top: var(--space-2) !important;
@@ -48,7 +50,7 @@
 .service-who-text {
    font-size: var(--font-size-reg);
   line-height: var(--leading-loose, 1.75);
- color: var(--bg-green);
+ color: var(--moss);
  font-weight: var(--font-weight-medium);
   max-width: 35ch;
 }
