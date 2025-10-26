@@ -8,7 +8,7 @@
   justify-items: start;
   overflow-x: hidden;
   min-height: 55vh;
-  background-color: var(--text) ;
+
   position: relative;
 }
 

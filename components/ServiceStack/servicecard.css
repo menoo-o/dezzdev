@@ -1,0 +1,193 @@
+/* === Services Section === */
+.services-section {
+  position: relative;
+  min-height: 100vh;
+  
+  padding: var(--space-16) var(--space-6);
+}
+
+/* === Service Cards === */
+.services-cards {
+  max-width: var(--max-width-cards);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+
+}
+
+.service-card {
+
+  overflow: hidden;
+  padding: var(--space-8);
+  background:white;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/digital/bg_img.jpg');
+  background-repeat: no-repeat; /* Usually paired with size control */
+  background-position: left;  /* Usually paired with size control */
+  background-size: contain;
+  opacity: 0.25; /* Control transparency here (0.0 is invisible, 1.0 is solid) */
+  z-index: -1;  /* Send the background behind the content */
+}
+
+.service-card-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 2rem;
+  align-items: center;
+
+}
+
+/* Left Side */
+.service-info h3 {
+ font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-normal, 1.5);
+  color: var(--bg-green);
+  margin-bottom: 1rem;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-tag {
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 9999px;
+  color: var(--moss);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid rgba(7, 53, 26, 0.4);
+
+}
+
+.service-desc {
+ font-size: var(--font-size-reg);
+ line-height: var(--leading-loose, 1.75);
+ color: var(--moss);
+ font-weight: var(--font-weight-medium);
+  max-width: 490px;
+
+}
+
+
+/* Right Visual */
+.service-visual {
+  position: relative;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 235px;
+  gap: var(--space-2);
+  width: 80%;
+}
+
+.bento-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.bento-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  border-radius: 20px;
+}
+
+
+/* Layout adjustments for landscape balance */
+/* Default size rules */
+.bento-item.small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-item.wide {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-item.tall {
+  grid-row: span 2;
+  grid-column: span 1;
+}
+
+/* 🔧 Service-specific overrides */
+
+.webdev-bento .bento-item.tall {
+  grid-row: span 2;
+}
+
+/* Optional responsive tweak */
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 150px;
+  }
+
+  .bento-item.large,
+  .bento-item.small {
+    grid-column: span 1;
+  }
+}
+
+
+/* .service-visual-index {
+ font-size: var(--font-size-mini-xxl);
+  opacity: 0.3;
+ font-weight: var(--font-weight-extrabold);
+  background: linear-gradient(45deg, #072e23 0%, #04ffbc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+  user-select: none;
+ transition: opacity 0.3s ease, transform 0.4s ease;
+  
+} */
+
+/* === Mobile (no GSAP) === */
+@media (max-width: 768px) {
+  .services-header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .service-card-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .service-visual {
+    display: none;
+  }
+
+  .services-progress {
+    display: none;
+  }
+}

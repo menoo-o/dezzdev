@@ -1,91 +1,51 @@
-type Service = {
+interface Service {
   id: string
-  num: string
   title: string
-  body: string
-  images: { src: string; alt: string }[]
-  featureGroups?: { label: string; items: string[] }[]
+  tags: string[]
+  description: string
+  images: { src: string; alt: string; size?: string }[] // optional size control per image
+  customClass?: string // optional CSS hook for service-specific layout
 }
 
 const services: Service[] = [
   {
     id: "webdev",
-    num: "01",
-    title: "Web Developement",
-    body: "Precision-crafted digital experiences. From front-end visuals to optimized back-end code, we build fast, functional websites where every pixel and line is designed for performance, perfect brand alignment, and maximum visitor conversion.",
+    title: "Web Design & Development",
+    tags: ["Creative Web Design", "Web Dev", "eCommerce", "One Page Wonder","Copywriting", ],
+    description:
+      "We craft beautiful, functional websites that engage users and drive results. Every pixel is purposeful, every interaction intentional.",
     images: [
-      { src: "/placeholder.png", alt: "Next.js code" },
-      { src: "/placeholder.png", alt: "API routes diagram" },
-      { src: "/placeholder.png", alt: "Core Web Vitals" },
-      { src: "/placeholder.png", alt: "Deployment pipeline" },
+      { src: "/port4.jpg", alt: "Brand strategy", size:"wide" },
+       { src: "/pic4.jpg", alt: "Logo concept", size: "tall" },
+      { src: "/port1.png", alt: "Visual moodboard", size: "wide" },
     ],
-    featureGroups: [
-      {
-        label: "Design",
-        items: ["UX/UI Crafting", "Visual Storytelling", "Brand Consistency"],
-      },
-      {
-        label: "Developement",
-        items: ["Custom Code", "Single Page Applications", "CMS Integration"],
-      },
-      {
-        label: "Performance",
-        items: ["Responsive Design", "Fast Load Times", "SEO Foundations"],
-      },
-    ],
+    customClass: "webdev-bento",
   },
   {
-    id: "seo",
-    num: "02",
-    title: "SEO & Profile Building",
-    body: "We help your business get discovered online — not just on Google, but through modern AI-powered platforms like ChatGPT and Gemini. From optimizing your website and profiles to improving local visibility and brand trust, we make sure your customers find you first.",
-    images: [
-      { src: "/placeholder.png", alt: "Next.js code" },
-      { src: "/placeholder.png", alt: "API routes diagram" },
-      { src: "/placeholder.png", alt: "Core Web Vitals" },
-      { src: "/placeholder.png", alt: "Deployment pipeline" },
+    id: "strategy",
+    title: "Digital Strategy",
+    tags: ["Research", "Planning", "Analytics", "Technical architecture"],
+    description:
+      "Strategic thinking guides every decision. We analyze, plan, and execute digital strategies that align with your business goals.",
+   images: [
+      { src: "/digital/img.png", alt: "Brand strategy", size:"wide" },
+      { src: "/digital/img_3.png", alt: "Visual moodboard", size: "tall" },
+       { src: "/digital/img_4.png", alt: "Logo concept", size: "wide" },
     ],
-    featureGroups: [
-      {
-        label: "Search Optimization",
-        items: ["SEO Audits", "Keyword Strategy", "On-Page Optimization"],
-      },
-      {
-        label: "Off-site Growth",
-        items: ["Link Building", "Local SEO", "Reputation Management"],
-      },
-      {
-        label: "Next-gen Visibility",
-        items: ["AEO (AI Search)", "Schema Markup", "Google Reviews"],
-      },
-    ],
+    customClass: "webdev-bento",
   },
   {
-    id: "webmaintain",
-    num: "03",
-    title: "Website Maintenance",
-    body: "Website is not something that you just build and forget. Be adding new features, updating content, renewing designs or fixing bugs, we are here to do the annoying part and to keep your website fresh and up-to-date so you can focus on your business.",
-    images: [
-      { src: "/placeholder.png", alt: "Next.js code" },
-      { src: "/placeholder.png", alt: "API routes diagram" },
-      { src: "/placeholder.png", alt: "Core Web Vitals" },
-      { src: "/placeholder.png", alt: "Deployment pipeline" },
+    id: "optimization",
+    title: "Performance & SEO",
+    tags: ["Optimization", "SEO", "Content optimisation"],
+    description:
+      "Speed and visibility go hand in hand. We fine-tune every element of your website to deliver lightning-fast performance and optimize it for search engines—ensuring your business ranks higher.",
+     images: [
+      { src: "/seo/post1.png", alt: "Brand strategy", size:"wide" },
+      { src: "/seo/tall.png", alt: "Visual moodboard", size: "tall" },
+       { src: "/seo/post2.png", alt: "Logo concept", size: "wide" },
     ],
-   
-    featureGroups: [
-      {
-        label: "Technical Care",
-        items: ["Code Refactoring", "Security Patches", "Speed Optimization"],
-      },
-      {
-        label: "Creative Updates",
-        items: ["Imagery & Media", "Interactive Features", "Promotional Design"],
-      },
-      {
-        label: "Content Support",
-        items: ["Blog Uploads", "Product Updates", "UI Adjustments"],
-      },
-    ],
+    customClass: "webdev-bento",
   },
 ]
 

@@ -3,11 +3,11 @@ import React from "react";
 import FAQSection from "../components/FAQs/FaqBlock";
 import WhoAreWe from "../components/Who-Block/WhoAreWe";
 // import Services from "@/components/Services-Block/Service";
-import StackService from "../components/ServicesBlock/ServiceCards/stack";
 import ServiceExport from "../components/ServicesBlock/Service";
 ////////////////////////////////////////////////////////////////////////////
-import ApproachBlock from "../components/Approach-Intro/approach-intro-block";
+// import ApproachBlock from "../components/Approach-Intro/approach-intro-block";
 import BridgeSection from "../components/Bridge-Block/Bridge";
+import ServicesShowcase from "@/components/ServiceStack/Cards";
 
 
 export default function App() {
@@ -19,9 +19,9 @@ export default function App() {
     <WhoAreWe />
     <BridgeSection />
     <ServiceExport/>
-    <StackService />
-    <ApproachBlock />
-    
+    <ServicesShowcase />
+    {/* <ApproachBlock /> */}
+
     <FAQSection /> 
 
     

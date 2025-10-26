@@ -127,7 +127,7 @@
 
   /* Colors (set your palette early) */
   --bg-green: #072e23; /*used most */
-  --text: #eaf4f1; /*used most */
+  --text: #FAFFFD; /*used most */
   --aqua: #04ffbc; /*less use */
   --jungle: #169976; /*less use  */
   --moss: rgb(62, 74, 40); /*used moderate */
@@ -155,6 +155,8 @@
   --max-width: 1440px; /* General max width for large screens */
   --max-width-desktop: 1480px; /* Max width for desktop layouts */
   --max-width-sections: 1300px;
+  --max-width-cards: 1350px;
+  
   
 
 
@@ -193,7 +195,7 @@ body {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   font-optical-sizing: auto;
-  background-color: var(--text);
+  background-color: #FAFFFD;
   scroll-behavior: smooth;
   line-height: var(--leading-normal);
   height: 100vh;
