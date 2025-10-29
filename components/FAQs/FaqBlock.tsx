@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import './FaqSection.css'
+import { MinimalistContactBox } from '../More-ques-box/ContactBox';
 
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -60,23 +61,7 @@ export default function FAQSection() {
               </li>
             ))}
           </ul>
-          <div className="more-questions-box">
-            <h3 className="mq-title">Still have questions?</h3>
-            <p className="mq-text">
-              Let’s connect and create something wonderful together. Reach out anytime!
-            </p>
-            <div className="mq-links">
-              <a href="#" className="mq-link">
-                💬 Chat on WhatsApp
-              </a>
-              <a href="#" className="mq-link">
-                📸 Instagram
-              </a>
-              <a href="mailto:hello@dezzdev.com" className="mq-link">
-                ✉️ Gmail
-              </a>
-             </div>
-         </div>
+         <MinimalistContactBox />
         </div>
       </div>
     </section>

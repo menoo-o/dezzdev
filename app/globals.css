@@ -127,7 +127,8 @@
 
   /* Colors (set your palette early) */
   --bg-green: #072e23; /*used most */
-  --text: #FAFFFD; /*used most */
+  --texts: #FAFFFD; /*used most */
+   --text: #eaf4f1; /*used most */
   --aqua: #04ffbc; /*less use */
   --jungle: #169976; /*less use  */
   --moss: rgb(62, 74, 40); /*used moderate */

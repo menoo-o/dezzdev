@@ -46,7 +46,7 @@ export default function ServicesShowcase() {
               </div>
 
               {/* Right visual */}
-            <div className="service-visual">
+             <div className="service-visual">
                 <div className={`bento-grid ${service.customClass || ""}`}>
                     {service.images.map((image, i) => (
                     <div key={i} className={`bento-item ${image.size || "small"}`}>
@@ -55,6 +55,7 @@ export default function ServicesShowcase() {
                     ))}
                 </div>
              </div>
+
             </div>
           </div>
         ))}

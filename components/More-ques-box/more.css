@@ -1,0 +1,119 @@
+/* Outer wrapper */
+.contact-wrapper {
+  width: 100%;
+  max-width: 650px;
+  transition: all 0.7s ease-in-out;
+  margin-top: var(--space-12);
+}
+
+/* Box container */
+.contact-box {
+  padding: var(--space-8);
+  border-radius: var(--space-4);
+  border: 1px solid var(--text);
+  background-color: var(--text);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.7s ease;
+}
+
+/* Hovered state */
+.contact-box.hovered {
+  background-color: var(--bg-green);
+  border-color: var(--moss);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+.contact-header {
+  margin-bottom: var(--space-8);
+}
+
+.contact-title {
+  font-size: var(--font-size-lg);
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  color: var(--bg-green);
+  letter-spacing: -0.02em;
+  transition: color 0.7s ease;
+}
+
+.contact-box.hovered .contact-title {
+  color: var(--texts);
+}
+
+.contact-subtext {
+  font-size: var(--font-size-sm);
+  color: var(--moss);
+  transition: color 0.7s ease;
+}
+
+.contact-box.hovered .contact-subtext {
+  color: var(--jungle);
+}
+
+/* Buttons */
+.contact-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-btn {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--space-2);
+  border: none;
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  background-color: var(--texts);
+  color: var(--bg-green);
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.contact-btn:hover {
+  background-color: var(--jungle);
+}
+
+.contact-box.hovered .contact-btn {
+  background-color: var(--jungle);
+  color: var(--texts);
+}
+
+.contact-box.hovered .contact-btn:hover {
+  background-color: var(--aqua);
+  color: var(--bg-green);
+}
+
+/* Icons and dot */
+.contact-icon {
+  flex-shrink: 0;
+}
+
+.contact-label {
+  flex: 1;
+  text-align: left;
+}
+
+
+.contact-box.hovered {
+  transform: scale(1);
+}
+
+/* Footer accent */
+.contact-footer {
+  height: 2px;
+  width: 33%;
+  background-color: var(--bg-green);
+  margin-top: 1.5rem;
+  transition: all 0.7s ease;
+}
+
+.contact-box.hovered .contact-footer {
+  width: 100%;
+  background-color: var(--text);
+}
