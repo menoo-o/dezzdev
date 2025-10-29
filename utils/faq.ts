@@ -5,8 +5,8 @@ interface FaqItem {
 
 const faqData: FaqItem[] = [
   {
-    question: "What's your design process like?",
-    answer: "We move from design to development in clear, collaborative steps. We share wireframes and design prototypes before moving ahead, ensuring everything aligns with your vision. Revisions are part of the process — we refine during design, and even after deployment, we’re open to making improvements to achieve the perfect final result."
+    question: "“What does your design-to-development process look like?",
+    answer: "Our process flows smoothly from design to development. We share wireframes and prototypes early on to make sure everything aligns with your vision. Revisions are built in — during design and even after launch — so we can fine-tune until it’s just right."
   },
   {
     question: "How long does it typically take to complete a website project?",
