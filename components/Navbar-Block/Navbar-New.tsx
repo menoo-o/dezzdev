@@ -8,7 +8,7 @@ import Image from 'next/image';
 import './newNav.css'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-
+import useScreenSize from '@/lib/hooks/useWindowSize';
 
 gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
 
@@ -17,6 +17,7 @@ function NavbarNew() {
       const navRef = useRef<HTMLElement | null>(null);
       const lastScrollY = useRef(0);
       const isHidden = useRef(false);
+      const { width } = useScreenSize();
       
       useGSAP(()=>{
         const nav = navRef.current;
@@ -73,7 +74,11 @@ function NavbarNew() {
             {/* Left: Logo */}
             <div className="nav-header">
                 <Link href="/" className="nav-logo">
-                <Image src="/logodezzdev.svg" alt="Logo" width={110} height={50} priority />
+                {width < 600 ? (
+                    <Image src="/logo-png.png" alt="Logo" width={120} height={60} priority />
+                ): (
+                    <Image src="/logodezzdev.svg" alt="Logo" width={150} height={50} priority />
+                )}
                 </Link>
             </div>
             {/* Right: Contact + Hamburger */}

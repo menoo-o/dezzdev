@@ -61,7 +61,6 @@
   transform: rotate(-90deg) translate(-50%, -100%);
   transform-origin: top left;
   white-space: nowrap;
-  letter-spacing: 0.3em;
   margin-top: -0.5rem;
   opacity: 0.8;
 }

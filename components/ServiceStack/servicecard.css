@@ -2,7 +2,6 @@
 .services-section {
   position: relative;
   min-height: 100vh;
-  
   padding: var(--space-16) var(--space-6);
 }
 

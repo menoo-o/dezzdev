@@ -109,7 +109,9 @@
     padding-top: var(--space-6);
   }
   .nav-logo img {
-    width: 70px;
+    width: 80px;
+    
+
   }
   .nav-actions {
    gap: var(--space-1); /* You can increase to space-6 if needed */
