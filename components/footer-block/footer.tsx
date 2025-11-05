@@ -52,8 +52,8 @@ export function ParallaxFooter() {
             <div className="footer-block">
               
               <div className="footer-socials">
-                <a href="#"><Mail size={25} /></a>
-                <a href="#"><Twitter  size={25} /></a>
+                <a href="mailto:menosuper6@gmail.com"><Mail size={25} /></a>
+                <a href="https://x.com/Thisismeeno" target="_blank"><Twitter  size={25} /></a>
                 
               </div>
             </div>
