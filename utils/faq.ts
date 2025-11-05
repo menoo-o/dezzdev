@@ -13,7 +13,7 @@ const faqData: FaqItem[] = [
     answer: "It really depends on the scope and complexity of the project. A simple website with basic animations usually takes around 2–3 weeks—from design to development to deployment. For larger projects, we can also launch in phases to ensure a smooth rollout."
   },
   {
-    question: "Do you offer website maintenance services after the site is launched?",
+    question: "Do you offer maintenance services after the site is launched?",
     answer: "Yeah, I stick around after launch. I offer different levels of ongoing support - could be just keeping things updated and running smoothly, or we can keep iterating and improving the design based on how users are actually using the site. We'll figure out what makes sense for your situation."
   },
   {
