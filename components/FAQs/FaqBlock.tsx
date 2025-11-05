@@ -7,19 +7,23 @@ import './FaqSection.css'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-
+import useScreenSize from '@/lib/hooks/useWindowSize';
 import faqData from '../../utils/faq';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const faqRightRef = useRef<HTMLDivElement>(null);
+  const { width } = useScreenSize();
 
   const toggle = (i: number): void => {
     setOpenIndex(openIndex === i ? null : i);
   };
 
   useGSAP(() => {
+    // ✅ Stop immediately on mobile — but do NOT kill or unregister ScrollTrigger globally.
+    if (width < 768) return;
+
     if (!faqRightRef.current) return;
 
     gsap.fromTo(
@@ -29,15 +33,16 @@ export default function FAQSection() {
         opacity: 1,
         x: 0,
         duration: 1,
-        ease: 'power2.out',
+        ease: "power2.out",
         scrollTrigger: {
           trigger: faqRightRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none reset',
+          start: "top 80%",
+          toggleActions: "play none none reset",
         },
       }
     );
-  }, []);
+  }, [width]); // ✅ re-run only when screen width changes
+
 
   return (
     <section className="faq-block" id='faq'>
