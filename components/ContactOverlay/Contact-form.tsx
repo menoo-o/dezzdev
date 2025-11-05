@@ -115,7 +115,7 @@ const onSubmit = (data: ContactFormData) => {
           &times;
         </button>
 
-        <h1 className={styles.title}>Let’s get started</h1>
+        <h1 className={styles.title}>Get in Touch</h1>
         <p className={styles.subtitle}>What services are you interested in?</p>
 
       <Controller

@@ -90,11 +90,17 @@ export default function NavOverlay() {
       <div className="overlay-content">
         <nav className="overlay-content__left">
           <ul className="overlay-content__list" ref={navListRef}>
-            <li className="overlay-content__item">Work</li>
-            <li className="overlay-content__item">Services</li>
-            <li className="overlay-content__item">About</li>
-            <li className="overlay-content__item">Insights</li>
-            <li className="overlay-content__item">FAQs</li>
+
+           <li className="overlay-content__item">
+            <Link href="#services" onClick={toClose}>Services</Link>
+          </li>
+          <li className="overlay-content__item">
+            <Link href="#about" onClick={toClose}>About</Link>
+          </li>
+          <li className="overlay-content__item">
+            <Link href="#faq" onClick={toClose}>FAQs</Link>
+          </li>
+
           </ul>
         </nav>
 
@@ -103,9 +109,9 @@ export default function NavOverlay() {
           <p className="overlay-content__email">hello@dezzdev.com</p>
 
           <div className="overlay-content__social-links">
-            <a href="#" className="overlay-content__social-link">Twitter</a>
-            <a href="#" className="overlay-content__social-link">LinkedIn</a>
-            <a href="#" className="overlay-content__social-link">GitHub</a>
+            <Link href="https://x.com/Thisismeeno" className="overlay-content__social-link" target='_blank'>Twitter</Link>
+            <Link href="https://www.instagram.com/muhammadmobeen_/" className="overlay-content__social-link" target='_blank'>Instagram</Link>
+            <Link href="https://github.com/menoo-o" className="overlay-content__social-link" target='_blank' >GitHub</ Link>
           </div>
         </div>
       </div>

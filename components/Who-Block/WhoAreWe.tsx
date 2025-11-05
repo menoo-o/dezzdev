@@ -5,7 +5,7 @@ import './who.css'
 
 function WhoAreWe() {
   return (
-    <section className="who-container">
+    <section className="who-container" id='about'>
       {/* left content */}
       <div className='left-content'>
         <span className='who-question vertical-label'>/WHAT WE DO?/</span>

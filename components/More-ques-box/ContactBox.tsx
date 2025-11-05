@@ -21,7 +21,8 @@ export function MinimalistContactBox() {
   }, [])
 
   return (
-    <div
+   <div className="parent-more-ques">
+     <div
       className="contact-wrapper"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -56,5 +57,6 @@ export function MinimalistContactBox() {
         <div className="contact-footer" />
       </div>
     </div>
+   </div>
   )
 }

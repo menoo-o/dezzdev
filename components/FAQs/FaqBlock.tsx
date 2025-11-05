@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import './FaqSection.css'
-import { MinimalistContactBox } from '../More-ques-box/ContactBox';
+
 
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -40,7 +40,7 @@ export default function FAQSection() {
   }, []);
 
   return (
-    <section className="faq-block">
+    <section className="faq-block" id='faq'>
       <div className="faq-inner">
         <div className="faq-left">
           <h2 className="faq-title">Frequently Asked Questions</h2>
@@ -61,7 +61,7 @@ export default function FAQSection() {
               </li>
             ))}
           </ul>
-         <MinimalistContactBox />
+         
         </div>
       </div>
     </section>

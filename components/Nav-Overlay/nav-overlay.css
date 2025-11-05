@@ -5,7 +5,7 @@
    Base Overlay Styles
 ---------------------------------- */
 .overlay-container {
-  font-family: var(--font-main);
+
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   position: fixed;
@@ -51,7 +51,7 @@
 .overlay-actions {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-8);
   
 }
 
@@ -59,12 +59,12 @@
 .contact-btn {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  padding: var(--space-2) var(--space-4);
-  box-shadow: rgba(19, 24, 16, 0.05) 0 0 8px;
+  padding: var(--space-2) var(--space-6);
+  font-family: inherit;
   cursor: pointer;
   border-radius: var(--radius-xl);
   border: 1px solid var(--color-border);
-  background-color: white;
+  background-color: var(--text);
   transition: background-color 0.3s var(--ease-in-out);
 }
 
@@ -90,8 +90,6 @@
   overflow: hidden;
   height: 100vh;
 }
-
-
 
 /* ----------------------------------
    Responsive Behavior
@@ -143,6 +141,7 @@
   color: var(--text);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
+  line-height: var(--leading-extra);
   transition: color 0.3s ease;
 }
 

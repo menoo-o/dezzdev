@@ -8,7 +8,7 @@ import ServiceExport from "../components/ServicesBlock/Service";
 // import ApproachBlock from "../components/Approach-Intro/approach-intro-block";
 import BridgeSection from "../components/Bridge-Block/Bridge";
 import ServicesShowcase from "@/components/ServiceStack/Cards";
-
+// import { MinimalistContactBox } from "@/components/More-ques-box/ContactBox";
 
 export default function App() {
   return (
@@ -23,7 +23,7 @@ export default function App() {
     {/* <ApproachBlock /> */}
 
     <FAQSection /> 
-
+    {/* <MinimalistContactBox /> */}
     
   
 

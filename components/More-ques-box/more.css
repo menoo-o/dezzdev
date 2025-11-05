@@ -1,4 +1,12 @@
 /* Outer wrapper */
+.parent-more-ques{
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding: var(--space-12) var(--space-6);
+}
+
 .contact-wrapper {
   width: 100%;
   max-width: 650px;

@@ -1,6 +1,5 @@
 .faq-block {
   width: 100%;
-  min-height: 150vh;
   font-family: var(--font-main);
   color: var(--bg-green);
   z-index: var(--z-base);
@@ -14,6 +13,7 @@
   margin: 0 auto;
   gap: var(--space-10);
   padding: var(--space-12) var(--space-6);
+  padding-bottom: 0;
 }
 
 .faq-left {
@@ -53,7 +53,6 @@ ul {
 
 .faq-question {
   width: 100%;
-  
   text-align: left;
   padding: var(--space-6) var(--space-2);
   border: none;
@@ -95,7 +94,6 @@ ul {
 .rotate {
   transform: rotate(45deg);
   color: var(--moss);
-  
 }
 
 /* === Desktop Split Layout === */
@@ -112,6 +110,7 @@ ul {
     align-self: flex-start;
     height: fit-content;
     padding-right: var(--space-6);
+
   }
 
   .faq-right {

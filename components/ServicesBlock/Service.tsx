@@ -4,7 +4,7 @@ import './service.css'
 
 function ServiceExport() {
   return (
-    <section className="service-who-container">
+    <section className="service-who-container" id='services'>
       {/* left content */}
       <div className='service-left-content'>
        <span className='service-who-question service-vertical-label'>/SERVICES/</span>

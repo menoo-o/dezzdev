@@ -27,7 +27,7 @@
   color: var(--text);
   border-radius: var(--radius-lg);
   padding: var(--space-8);
-  width: min(100%, 900px);
+  width: min(100%, 1080px);
   max-height: 95vh;
   overflow-y: auto;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -52,7 +52,7 @@
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--space-4);
-  font-family: var(--font-accent);
+  font-family: var(--font-main);
 }
 
 .subtitle {
