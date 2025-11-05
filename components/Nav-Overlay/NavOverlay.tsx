@@ -65,7 +65,7 @@ export default function NavOverlay() {
       <div className="overlay-header">
         <Link href="/" className="overlay-logo">
           <Image 
-            src="/logodezzdevlight.svg"
+            src="/light.png"
             alt="overlay-logo"
             width={110}
             height={50}
@@ -106,7 +106,11 @@ export default function NavOverlay() {
 
         <div className="overlay-content__right" ref={socialRef}>
           <span>dezzdev</span>
-          <p className="overlay-content__email">hello@dezzdev.com</p>
+        <a href="mailto:menosuper6@gmail.com">
+              <p className="overlay-content__email">hello@dezzdev.com</p>
+          </a>   
+       
+       
 
           <div className="overlay-content__social-links">
             <Link href="https://x.com/Thisismeeno" className="overlay-content__social-link" target='_blank'>Twitter</Link>

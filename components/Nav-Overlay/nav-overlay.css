@@ -200,3 +200,12 @@
 
 
 
+
+@media (max-width: 768px) {
+  .overlay-container{
+    padding: var(--space-6);
+  }
+  .contact-btn{
+    display: none;
+  }
+}

@@ -183,6 +183,11 @@ ul {
 
 /* 🔹 Responsive tweak for smaller screens */
 @media (max-width: 600px) {
+
+  .faq-block {
+   min-height: 85vh;
+}
+
   .more-questions-box {
     margin: 2rem 1rem;
     padding: 1.5rem;
