@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 
 function useScreenSize() {
-  // State for width & height
   const [screenSize, setScreenSize] = useState({
-    width: typeof window !== "undefined" ? window.innerWidth : 0,
-    height: typeof window !== "undefined" ? window.innerHeight : 0,
+    width: 1024,   // same on server and client for the first render
+    height: 768,
   });
 
   useEffect(() => {
@@ -15,13 +14,8 @@ function useScreenSize() {
       });
     }
 
-    // Add listener on mount
+    handleResize(); // sync to the real size after hydration
     window.addEventListener("resize", handleResize);
-
-    // Run once so state matches current size
-    handleResize();
-
-    // Clean up listener on unmount
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
