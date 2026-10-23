@@ -33,7 +33,7 @@ function NavbarNew() {
             });
         };
 
-        // Slide the navbar up and out of sight.
+        // Slide the navbar up and out of sight. //
         const hideNavbar = () => {
             if (isHidden.current) return;
             isHidden.current = true;
