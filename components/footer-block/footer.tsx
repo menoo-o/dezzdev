@@ -2,7 +2,8 @@
 
 import type React from "react";
 import './ParallaxFooter.css'
-import { ArrowRight, Twitter, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
+import Link from "next/link";
 
 export function ParallaxFooter() {
   const services = [
@@ -52,8 +53,10 @@ export function ParallaxFooter() {
             <div className="footer-block">
               
               <div className="footer-socials">
-                <a href="mailto:menosuper6@gmail.com"><Mail size={25} /></a>
-                <a href="https://x.com/Thisismeeno" target="_blank"><Twitter  size={25} /></a>
+                <Link href="mailto:menosuper6@gmail.com"><Mail size={25} /></Link>
+                <Link href="https://x.com/Thisismeeno" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" stroke="currentColor"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 4l11.733 16H20L8.267 4zm0 16l6.768-6.768m2.46-2.46L20 4"/></svg>
+                </Link>
                 
               </div>
             </div>
@@ -91,10 +94,14 @@ export function ParallaxFooter() {
                     className="footer-input"
                   />
 
-                  {/* Submit Button */}
-                  <button type="submit" className="footer-submit">
-                    <ArrowRight size={20} />
-                  </button>
+                          {/* Submit Button */}
+              <button 
+                type="submit" 
+                className="footer-submit"
+                aria-label="Submit message"
+              >
+                <ArrowRight size={20} aria-hidden="true" />
+              </button>
             </form>
           
           
