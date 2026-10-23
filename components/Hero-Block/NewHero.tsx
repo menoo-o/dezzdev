@@ -132,7 +132,8 @@ export default function NewHeroPage() {
             <h1 className={styles.word}>Build.</h1>
           </div>
           <div className={styles.highlight} ref={growRef}>
-            <h1 className={styles.word} >Grow.</h1>
+            <h1 className={styles.word} >Grow.</h1> 
+            {/* grow */}
           </div>
           
         </section>

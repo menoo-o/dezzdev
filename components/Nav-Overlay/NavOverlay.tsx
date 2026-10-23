@@ -106,9 +106,9 @@ export default function NavOverlay() {
 
         <div className="overlay-content__right" ref={socialRef}>
           <span>dezzdev</span>
-        <a href="mailto:menosuper6@gmail.com">
+        <Link href="mailto:menosuper6@gmail.com">
               <p className="overlay-content__email">hello@dezzdev.com</p>
-          </a>   
+          </Link>   
        
        
 
