@@ -4,7 +4,7 @@ import { Hanken_Grotesk } from "next/font/google";
 import NavbarNew from "../components/Navbar-Block/Navbar-New";
 import NavOverlay from "../components/Nav-Overlay/NavOverlay";
 import ContactOverlay from "../components/ContactOverlay/Contact-form";
-import Script from "next/script";
+// import Script from "next/script";
 import "./globals.css";
 import { ParallaxFooter } from "@/components/footer-block/footer";
 
@@ -61,9 +61,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${ppFormula.variable} ${radioGrotesk.variable} ${hankenGrotesk.variable}`}
+      className={`${ppFormula.variable} ${radioGrotesk.variable}`}
     >
       <body>
+        {/* Google Analytics temporarily disabled for testing */}
+        {/*
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-Y85V7NCFVQ`}
@@ -78,6 +80,7 @@ export default function RootLayout({
             });
           `}
         </Script>
+        */}
 
         <NavbarNew />
         <NavOverlay />
