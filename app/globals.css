@@ -57,8 +57,6 @@
 
 :root {
   /* Fonts */
-  --font-main: 'PPFormula', monospace;
-  --font-accent: 'RadioGrotesk', monospace;
 
   /* Font Sizes */
   --font-size-xxxl: clamp(11rem, 11vw, 13rem);    
