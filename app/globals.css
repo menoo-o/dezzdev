@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -54,29 +53,7 @@
 }
 
 /* styles/fonts.css */
-@font-face {
-  font-family: 'PPFormula';
-  src: url('/fonts/PPFormula-ExtendedBold.otf') format('opentype');
-  font-weight: 700;
-}
 
-@font-face {
-  font-family: 'PPFormula';
-  src: url('/fonts/PPFormula-Medium.otf') format('opentype');
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: 'PPFormula';
-  src: url('/fonts/PPFormula-NarrowRegular.otf') format('opentype');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'RadioGrotesk';
-  src: url('/fonts/RadioGrotesk-Regular.otf') format('opentype');
-  font-weight: 400;
-}
 
 :root {
   /* Fonts */

@@ -1,12 +1,52 @@
-
 import type { Metadata } from "next";
+import localFont from "next/font/local";
+import { Hanken_Grotesk } from "next/font/google";
 import NavbarNew from "../components/Navbar-Block/Navbar-New";
 import NavOverlay from "../components/Nav-Overlay/NavOverlay";
 import ContactOverlay from "../components/ContactOverlay/Contact-form";
 import Script from "next/script";
-import './globals.css'
+import "./globals.css";
 import { ParallaxFooter } from "@/components/footer-block/footer";
 
+const hankenGrotesk = Hanken_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-hanken",
+  display: "swap",
+});
+
+const ppFormula = localFont({
+  src: [
+    {
+      path: "../public/fonts/PPFormula-NarrowRegular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PPFormula-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PPFormula-ExtendedBold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-main",
+  display: "swap",
+});
+
+const radioGrotesk = localFont({
+  src: [
+    {
+      path: "../public/fonts/RadioGrotesk-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-accent",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "DezzDev",
@@ -19,9 +59,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${ppFormula.variable} ${radioGrotesk.variable} ${hankenGrotesk.variable}`}
+    >
       <body>
-         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-Y85V7NCFVQ`}
@@ -40,7 +82,7 @@ export default function RootLayout({
         <NavbarNew />
         <NavOverlay />
         <ContactOverlay />
-      
+
         {children}
         <ParallaxFooter />
       </body>
