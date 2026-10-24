@@ -133,7 +133,8 @@ export default function NewHeroPage() {
           </div>
           <div className={styles.highlight} ref={growRef}>
             <h1 className={styles.word} >Grow.</h1> 
-            {/* grow */}
+
+            {/* grow- no aria */}
           </div>
           
         </section>
