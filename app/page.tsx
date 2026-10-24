@@ -19,7 +19,7 @@ export default function App() {
     <WhoAreWe />
     <BridgeSection />
     <ServiceExport/>
-    <ServicesShowcase />
+    {/* <ServicesShowcase /> */}
     {/* <ApproachBlock /> */}
 
     <FAQSection /> 

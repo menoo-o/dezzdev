@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Hanken_Grotesk } from "next/font/google";
+// import { Hanken_Grotesk } from "next/font/google";
+
 import NavbarNew from "../components/Navbar-Block/Navbar-New";
 import NavOverlay from "../components/Nav-Overlay/NavOverlay";
 import ContactOverlay from "../components/ContactOverlay/Contact-form";
@@ -8,11 +9,11 @@ import ContactOverlay from "../components/ContactOverlay/Contact-form";
 import "./globals.css";
 import { ParallaxFooter } from "@/components/footer-block/footer";
 
-const hankenGrotesk = Hanken_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-hanken",
-  display: "swap",
-});
+// const hankenGrotesk = Hanken_Grotesk({
+//   subsets: ["latin"],
+//   variable: "--font-hanken",
+//   display: "swap",
+// });
 
 const ppFormula = localFont({
   src: [
