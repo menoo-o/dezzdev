@@ -1,252 +1,252 @@
-'use client';
+"use client";
 
-import styles from './contactoverlay.module.css'
+import React, { useRef, useState } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { useOverlay } from "@/stores/useOverlay";
+import "./contactOverlay.css";
 
-import { useRef, useState } from 'react';
-import { useForm, Controller } from "react-hook-form"
+gsap.registerPlugin(useGSAP);
 
-import { useOverlayStore } from '../../stores/useOverlay';
-import useEscapeKey from '../../lib/hooks/useEscapeKey';
-import useLockScroll from '../../lib/hooks/useLockScroll';
-import useClickOutside from '../../lib/hooks/useClickOutside';
-import emailjs from '@emailjs/browser';
-
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import SpinnerLoader from '../../ui/SpinnerGSAP/Spinner';
-
-gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
-
-type ContactFormData = {
-  name: string;
-  email: string;
-  company?: string;
-  message: string;
-  selectedServices: string[];
-};
-
-const services = [
-  'Web Design',
-  'Web Development',
-  'Web App',
-  'E-commerce',
-  'SEO',
-  'Other',
+const SERVICES = [
+  "UGC",
+  "Brand Photography",
+  "Short-Form Video",
+  "Content Strategy",
+  "Identity",
+  "Account Management",
+  "Other",
 ];
 
+const BUDGETS = ["Under $500", "$500-$1k", "$1k-$2.5k", "$2.5k-$5k", "$5k+"];
 
 export default function ContactOverlay() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [statusMsg, setStatusMsg] = useState(''); 
-  const [statusType, setStatusType] = useState<'success' | 'error'>('success');
-  // 🔹 React Hook Form setup
-  const { register, handleSubmit, reset , control, formState:{errors}, } = useForm<ContactFormData>({
-    defaultValues:{
-      name: '',
-      email: '',
-      company: '',
-      message: '',
-      selectedServices: [], 
-    }
-  });
-  const isContactOpen = useOverlayStore((s) => s.isContactOpen);
-  const closeContact = useOverlayStore((s) => s.closeContact);
-  const contactOverlayRef = useRef<HTMLDivElement | null>(null);
-  useClickOutside(contactOverlayRef, isContactOpen, closeContact);
+  const { isContactOpen, closeContact } = useOverlay();
 
-const onSubmit = (data: ContactFormData) => {
-  const templateParams = {
-    name: data.name,
-    email: data.email,
-    company: data.company || 'N/A',
-    message: data.message,
-    selectedServices: data.selectedServices.join(', '), // <- include this!
+  const overlayRootRef = useRef<HTMLDivElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const sheetRef = useRef<HTMLDivElement>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
+
+  // Interactive pill states (Multi-select for services, Single-select for budget)
+  const [selectedServices, setSelectedServices] = useState<string[]>(["Other"]);
+  const [selectedBudget, setSelectedBudget] = useState<string>("");
+
+  const toggleService = (service: string) => {
+    setSelectedServices((prev) =>
+      prev.includes(service)
+        ? prev.filter((item) => item !== service)
+        : [...prev, service]
+    );
   };
 
-  emailjs
-    .send(
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-      templateParams,
-      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-    )
-    .then(
-      () => {
-        setIsSubmitting(true);
-       
-        setStatusMsg('✅ Message sent successfully!');
-        // setStatusMsg(null); // clear previous
-        reset({
-          name: '',
-          email: '',
-          company: '',
-          message: '',
-          selectedServices: [],
-        }); // Reset form fields
-        closeContact(); // Optionally reset form here
-      },
-      () => {   
-        setStatusType('error');
-        setStatusMsg('❌ Something went wrong. Please try again.');
-        closeContact(); // Close overlay on error
-      }
-    );
-};
+  // Build the reversible GSAP timeline once
+  useGSAP(
+    () => {
+      const root = overlayRootRef.current;
+      const backdrop = backdropRef.current;
+      const sheet = sheetRef.current;
+      if (!root || !backdrop || !sheet) return;
 
-  useLockScroll(isContactOpen);
-  useEscapeKey(isContactOpen, closeContact);
+      // Initial hidden state
+      gsap.set(root, { autoAlpha: 0, pointerEvents: "none" });
+      gsap.set(backdrop, { opacity: 0 });
+      gsap.set(sheet, { yPercent: 105 });
 
-  
+      const tl = gsap.timeline({
+        paused: true,
+        onReverseComplete: () => {
+          gsap.set(root, { autoAlpha: 0, pointerEvents: "none" });
+          document.body.style.overflow = "";
+        },
+      });
 
-  // ✅ Only now: short-circuit rendering
-  if (!isContactOpen) return null;
+      // Step 1: Enable container & dim/blur the background FIRST
+      tl.set(root, { autoAlpha: 1, pointerEvents: "auto" })
+        .to(backdrop, {
+          opacity: 1,
+          duration: 0.35,
+          ease: "power2.out",
+        })
+        // Step 2: Slowly slide the form sheet up from the bottom
+        .to(
+          sheet,
+          {
+            yPercent: 0,
+            duration: 0.65,
+            ease: "power3.out",
+          },
+          "-=0.1" // Slight overlap after dim begins
+        );
+
+      tlRef.current = tl;
+    },
+    { scope: overlayRootRef }
+  );
+
+  // Play or reverse when `isContactOpen` changes
+  useGSAP(() => {
+    const tl = tlRef.current;
+    if (!tl) return;
+
+    if (isContactOpen) {
+      document.body.style.overflow = "hidden"; // Lock page scroll behind modal
+      tl.play();
+    } else {
+      tl.reverse(); // Reverses: Form slides down -> Backdrop unblurs/undims
+    }
+  }, [isContactOpen]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Intentionally does nothing for now!
+  };
 
   return (
-    <section 
-      className={`${styles.overlay} ${isContactOpen ? styles.active : ''}`}
-      
-    >
-      <div className={styles.panel} ref={contactOverlayRef}>
-        <button 
-          className={styles.closeBtn} 
-          onClick={closeContact}
-          aria-label="Close contact form"
-          >
-          &times;
-        </button>
-
-        <h1 className={styles.title}>Get in Touch</h1>
-        <p className={styles.subtitle}>What services are you interested in?</p>
-
-      <Controller
-        control={control}                         // comes from useForm()
-        name="selectedServices"                  // the field name to register
-        rules={{                                 // validation rules
-          validate: v => v.length > 0 || "Please select at least one service."
-        }}
-        render={({ field, fieldState }) => (     // the custom rendering logic
-          <>
-            <div 
-              className={`${styles.services} ${
-             fieldState.error ? styles.servicesError : ''
-            }`}
-             >
-              {services.map((service) => (
-                <button
-                  key={service}
-                  type="button"
-                   aria-pressed={field.value.includes(service)}
-                  aria-label={`Select service ${service}`}
-                  onClick={() => {
-                    const updated = field.value.includes(service)
-                      ? field.value.filter((s: string) => s !== service)
-                      : [...field.value, service];
-                    field.onChange(updated);    // update RHF value manually
-                  }}
-                  className={`${styles.serviceBtn} ${
-                    field.value.includes(service) ? styles.active : ''
-                  }`}
-                >
-                  {service}
-                </button>
-              ))}
-            </div>
-            {fieldState.error && (
-              <p className={styles.error}>{fieldState.error.message}</p>
-            )}
-          </>
-        )}
+    <div ref={overlayRootRef} className="contact-overlay-root" aria-hidden={!isContactOpen}>
+      {/* Dim & Blur Backdrop */}
+      <div
+        ref={backdropRef}
+        className="contact-backdrop"
+        onClick={closeContact}
       />
 
-
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-          <div className={styles.inputRow}>
-            <input
-              {...register('name', {
-                required: true, 
-                maxLength: 50
-              })}
-              placeholder="Your name"
-              aria-label="Your name"
-              aria-invalid={errors.name ? "true" : "false"}
-              className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
-            />
-          <input
-            {...register('email', {
-              required: true,
-              pattern: /^\S+@\S+\.\S+$/i, // simple email pattern
-            })}
-            placeholder="Your email"
-            aria-label="Your Email"
-            aria-invalid={errors.email ? "true" : "false"}
-            className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
-          />
-          </div>
-          <input
-            {...register('company', {
-              required: false,
-              maxLength: 50,
-            })}
-            placeholder="Your company (optional)"
-            aria-label="Your Company"
-            className={styles.input}
-          />
-          <textarea
-            {...register('message',{
-              required: true,
-              minLength: 10,
-              maxLength: 500,
-            })}
-            placeholder="Tell about your project"
-            aria-label="Your Message"
-            aria-invalid={errors.message ? "true" : "false"}
-            className={`${styles.textarea} ${errors.message ? styles.textareaError : ''}`}
-          />
-          <button 
-            type="submit" 
-            className={styles.submitBtn}
-            aria-label="Send contact message"
-            disabled={isSubmitting}
-            >
-             {isSubmitting ? <SpinnerLoader /> : 'Send'}
-          </button>
-        </form>
-        
-        {statusMsg && (
-        <p 
-          className={
-            statusType === 'success' ? styles.successMsg : styles.errorMsg
-          }
+      {/* Sliding Form Sheet */}
+      <div ref={sheetRef} className="contact-sheet no-scrollbar">
+        {/* Top-Right Close Button */}
+        <button
+          type="button"
+          className="contact-close-btn"
+          onClick={closeContact}
+          aria-label="Close contact form"
         >
-          {statusMsg}
-        </p>
-        )}
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
 
+        {/* Heading */}
+        <h2 className="contact-heading">
+          <span className="heading-muted">Get in</span>{" "}
+          <span className="heading-bold">touch</span>
+        </h2>
+
+        {/* Form Body */}
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <div className="contact-bento-grid">
+            {/* Row 1, Col 1: Full Name */}
+            <label className="bento-card bento-input-card">
+              <span className="bento-label">Full name</span>
+              <input
+                type="text"
+                placeholder="Fiona Wong"
+                className="bento-input"
+              />
+            </label>
+
+            {/* Row 1, Col 2: Email */}
+            <label className="bento-card bento-input-card">
+              <span className="bento-label">Email</span>
+              <input
+                type="email"
+                placeholder="fionawong@gmail.com"
+                className="bento-input"
+              />
+            </label>
+
+            {/* Row 1, Col 3: Company */}
+            <label className="bento-card bento-input-card">
+              <span className="bento-label">Company</span>
+              <input
+                type="text"
+                placeholder="Fifi Vintage"
+                className="bento-input"
+              />
+            </label>
+
+            {/* Row 2, Col 1: Project Details */}
+            <label className="bento-card bento-textarea-card">
+              <span className="bento-label">Project details</span>
+              <textarea
+                placeholder="Tell me your goals"
+                className="bento-textarea no-scrollbar"
+              />
+            </label>
+
+            {/* Row 2, Col 2: Services Pill Selector */}
+            <div className="bento-card bento-pills-card">
+              <span className="bento-label">What can I do for you?</span>
+              <div className="pills-container">
+                {SERVICES.map((service) => {
+                  const isActive = selectedServices.includes(service);
+                  return (
+                    <button
+                      key={service}
+                      type="button"
+                      onClick={() => toggleService(service)}
+                      className={`choice-pill ${isActive ? "is-active" : ""}`}
+                    >
+                      {service}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Row 2, Col 3: Budget Pill Selector */}
+            <div className="bento-card bento-pills-card">
+              <span className="bento-label">Do you have a budget range?</span>
+              <div className="pills-container">
+                {BUDGETS.map((budget) => {
+                  const isActive = selectedBudget === budget;
+                  return (
+                    <button
+                      key={budget}
+                      type="button"
+                      onClick={() => setSelectedBudget(budget)}
+                      className={`choice-pill ${isActive ? "is-active" : ""}`}
+                    >
+                      {budget}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Floating Bottom-Center Submit Pill */}
+          <div className="contact-submit-wrapper">
+            <button type="submit" className="contact-submit-btn">
+              <span className="submit-icon-circle">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M22 2L11 13" />
+                  <path d="M22 2L15 22L11 13L2 9L22 2Z" />
+                </svg>
+              </span>
+              <span className="submit-text">Submit</span>
+            </button>
+          </div>
+        </form>
       </div>
-    </section>
+    </div>
   );
 }
-
-
-
-// useGSAP(() => {
-  //   if (!contactOverlayRef.current || !isContactOpen) return;
-  //   gsap.fromTo(
-  //     contactOverlayRef.current,
-  //     { y: -100, opacity: 0 },
-  //     { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }
-  //   );
-  // }, { dependencies: [isContactOpen], revertOnUpdate: true });
-
-  // useEffect(() => {
-  //   if (!isContactOpen || !contactOverlayRef.current) return;
-  //   gsap.to(contactOverlayRef.current, {
-  //     y: -100,
-  //     opacity: 0,
-  //     duration: 0.4,
-  //     ease: 'power3.in',
-  //     onComplete: () => {
-  //       gsap.set(contactOverlayRef.current, { clearProps: 'all' });
-  //     },
-  //   });
-  // }, [isContactOpen]);

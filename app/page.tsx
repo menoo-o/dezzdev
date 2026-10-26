@@ -3,11 +3,11 @@ import React from "react";
 import FAQSection from "../components/FAQs/FaqBlock";
 import WhoAreWe from "../components/Who-Block/WhoAreWe";
 // import Services from "@/components/Services-Block/Service";
-import ServiceExport from "../components/ServicesBlock/Service";
+// import ServiceExport from "../components/ServicesBlock/Service";
 ////////////////////////////////////////////////////////////////////////////
 // import ApproachBlock from "../components/Approach-Intro/approach-intro-block";
 import BridgeSection from "../components/Bridge-Block/Bridge";
-import ServicesShowcase from "@/components/ServiceStack/Cards";
+// import ServicesShowcase from "@/components/ServiceStack/Cards";
 // import { MinimalistContactBox } from "@/components/More-ques-box/ContactBox";
 
 export default function App() {
@@ -18,7 +18,7 @@ export default function App() {
     <NewHeroPage />
     <WhoAreWe />
     <BridgeSection />
-    <ServiceExport/>
+    {/* <ServiceExport/> */}
     {/* <ServicesShowcase /> */}
     {/* <ApproachBlock /> */}
 

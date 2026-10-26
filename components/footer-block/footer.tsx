@@ -55,9 +55,25 @@ export function ParallaxFooter() {
               <div className="footer-socials">
                 {/* links changed */}
                 <Link href="mailto:menosuper6@gmail.com"><Mail size={25} /></Link>
-                <Link href="https://x.com/Thisismeeno" target="_blank">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" stroke="currentColor"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m4 4l11.733 16H20L8.267 4zm0 16l6.768-6.768m2.46-2.46L20 4"/></svg>
-                </Link>
+            <Link href="https://x.com/Thisismeeno" target="_blank" rel="noopener noreferrer">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                viewBox="0 0 25 25"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m4 4l11.733 16H20L8.267 4zm0 16l6.768-6.768m2.46-2.46L20 4"
+                />
+              </svg>
+          </Link>
                 
               </div>
             </div>

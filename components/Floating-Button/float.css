@@ -1,0 +1,87 @@
+/* components/Buttons/floatingBtn.css */
+
+.floating-btn-wrapper {
+  position: fixed;
+  right: var(--site-gutter-x);
+  bottom: 1.75rem; /* Aligns right onto the bottom border of the middle form card! */
+  z-index: 10005;  /* Higher than ContactOverlay (9999) so it stays visible on top */
+  
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.floating-btn {
+  pointer-events: auto;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  background-color: #18181b;
+  color: #faf9f6;
+  font-family: inherit;
+  font-weight: 700;
+  border-radius: 9999px;
+  
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  
+  /* Mobile sizing */
+  padding: 0.45rem 1.4rem 0.45rem 0.45rem;
+  font-size: 1rem;
+}
+
+.floating-btn:hover {
+  transform: scale(1.03);
+}
+
+.floating-btn-icon {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 9999px;
+  background-color: #faf9f6;
+  color: #18181b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.floating-btn.is-scrolling {
+  pointer-events: none !important;
+  touch-action: pan-y !important;
+}
+
+@media (min-width: 768px) {
+  .floating-btn {
+    padding: 0.5rem 1.65rem 0.5rem 0.5rem;
+    font-size: 1.15rem;
+  }
+  .floating-btn-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .floating-btn-wrapper {
+    bottom: 2.1rem; /* Sits right over the bottom edge of the middle bento card */
+  }
+  .floating-btn {
+    padding: 0.55rem 1.85rem 0.55rem 0.55rem;
+    font-size: 1.35rem;
+  }
+  .floating-btn-icon {
+    width: 2.85rem;
+    height: 2.85rem;
+  }
+}

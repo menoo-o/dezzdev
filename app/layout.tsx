@@ -3,17 +3,12 @@ import localFont from "next/font/local";
 // import { Hanken_Grotesk } from "next/font/google";
 
 import NavbarNew from "../components/Navbar-Block/Navbar-New";
-import NavOverlay from "../components/Nav-Overlay/NavOverlay";
-import ContactOverlay from "../components/ContactOverlay/Contact-form";
-// import Script from "next/script";
+// import NavOverlay from "../components/Nav-Overlay/NavOverlay";
+// import ContactOverlay from "../components/ContactOverlay/Contact-form";
+import ContactOverlay from "../components/Floating-Button/ContactForm";
 import "./globals.css";
 import { ParallaxFooter } from "@/components/footer-block/footer";
-
-// const hankenGrotesk = Hanken_Grotesk({
-//   subsets: ["latin"],
-//   variable: "--font-hanken",
-//   display: "swap",
-// });
+import FloatingBtn from "@/components/Floating-Button/FloatingBtn";
 
 const ppFormula = localFont({
   src: [
@@ -65,29 +60,15 @@ export default function RootLayout({
       className={`${ppFormula.variable} ${radioGrotesk.variable}`}
     >
       <body>
-        {/* Google Analytics temporarily disabled for testing */}
-        {/*
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-Y85V7NCFVQ`}
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-Y85V7NCFVQ', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
-        */}
+     
 
         <NavbarNew />
-        <NavOverlay />
-        <ContactOverlay />
+        {/* <NavOverlay /> */}
+        {/* <ContactOverlay /> */}
 
         {children}
+        <ContactOverlay />
+        <FloatingBtn />
         <ParallaxFooter />
       </body>
     </html>

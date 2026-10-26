@@ -1,0 +1,299 @@
+/* components/ContactOverlay/contactOverlay.css */
+
+:root {
+  --neutral-sheet-bg: #faf9f6;       /* Crisp warm white sheet */
+  --neutral-card-bg: #ece8e1;        /* Subtle stone card fill */
+  --neutral-card-border: #52525b;    /* Crisp visible border like reference */
+  --neutral-card-focus: #18181b;     /* Deep charcoal focus border */
+  --neutral-text-dark: #18181b;      /* Primary dark text */
+  --neutral-text-muted: #71717a;     /* "Get in" muted tone */
+  --neutral-placeholder: #a1a1aa;    /* Placeholder text */
+  --z-contact-overlay: 9999;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* =========================================
+   ROOT & BACKDROP (Tight Edge Frame)
+   ========================================= */
+.contact-overlay-root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-contact-overlay);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  /* Tight frame around the sheet like reference img */
+  padding: 0.65rem;
+  visibility: hidden;
+}
+
+.contact-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(18, 18, 18, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  will-change: opacity;
+}
+
+/* =========================================
+   BASE SHEET (MOBILE < 768px)
+   ========================================= */
+.contact-sheet {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 93dvh;
+  max-height: 93dvh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: var(--neutral-sheet-bg);
+  border-radius: 1.5rem;
+  padding: 1.5rem 1.25rem 5.25rem; /* Bottom space for the shared FloatingBtn */
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.22);
+  will-change: transform;
+}
+
+/* Close 'X' Button */
+.contact-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 9999px;
+  border: none;
+  background-color: var(--neutral-text-dark);
+  color: var(--neutral-sheet-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-close-btn:hover {
+  transform: scale(1.06);
+}
+
+/* Heading ("Get in touch") */
+.contact-heading {
+  font-size: clamp(2.75rem, 6.8vw, 6.25rem);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  margin: 0 0 1.35rem 0;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.heading-muted {
+  color: var(--neutral-text-muted);
+}
+
+.heading-bold {
+  color: var(--neutral-text-dark);
+}
+
+/* Form stretches to fill the remaining height of the sheet */
+.contact-form {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-bento-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+/* Individual Bento Cards */
+.bento-card {
+  background-color: var(--neutral-card-bg);
+  border: 2px solid var(--neutral-card-border);
+  border-radius: 0.95rem;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: border-color 0.2s ease;
+}
+
+/* REFERENCE MATCH: The 5th card (bottom-middle "What can I do for you?") has NO border! */
+.bento-card:nth-child(5) {
+  border-color: transparent;
+}
+
+.bento-card:focus-within {
+  border-color: var(--neutral-card-focus);
+}
+
+.bento-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--neutral-text-dark);
+  margin-bottom: 0.45rem;
+}
+
+.bento-input,
+.bento-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--neutral-text-dark);
+}
+
+.bento-input::placeholder,
+.bento-textarea::placeholder {
+  color: var(--neutral-placeholder);
+}
+
+.bento-textarea-card {
+  min-height: 160px;
+}
+
+.bento-textarea {
+  resize: none;
+  flex: 1;
+  margin-top: 0.35rem;
+}
+
+/* Choice Pills */
+.pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.65rem;
+}
+
+.choice-pill {
+  background: transparent;
+  border: 1.5px solid var(--neutral-card-border);
+  color: var(--neutral-text-dark);
+  border-radius: 9999px;
+  padding: 0.45rem 1rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.choice-pill:hover {
+  border-color: var(--neutral-text-dark);
+}
+
+.choice-pill.is-active {
+  background-color: var(--neutral-text-dark);
+  border-color: var(--neutral-text-dark);
+  color: var(--neutral-sheet-bg);
+}
+
+/* =========================================
+   TABLET BREAKPOINT (768px - 1023px)
+   ========================================= */
+@media (min-width: 768px) {
+  .contact-overlay-root {
+    padding: 1rem;
+  }
+
+  .contact-sheet {
+    height: 92dvh;
+    padding: 2rem 2rem 5rem;
+    border-radius: 1.75rem;
+  }
+
+  .contact-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .bento-input-card:nth-child(3),
+  .bento-textarea-card {
+    grid-column: span 2;
+  }
+}
+
+/* =========================================
+   LAPTOP / DESKTOP BREAKPOINT (1024px+)
+   Full-Viewport Edge-to-Edge Sheet like Reference
+   ========================================= */
+@media (min-width: 1024px) {
+  .contact-overlay-root {
+    /* Thin outer border gap around the white sheet */
+    padding: 1.25rem 1.5rem 1.15rem;
+  }
+
+  .contact-sheet {
+    width: 100%;
+    max-width: none; /* Fills the screen horizontally like jazzicreates.tv */
+    height: calc(100dvh - 2.4rem);
+    max-height: none;
+    border-radius: 1.85rem;
+    padding: 2.5rem 3.25rem 2.75rem;
+    overflow: hidden; /* Zero scrollbars on laptop */
+  }
+
+  .contact-close-btn {
+    top: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .contact-heading {
+    margin-bottom: 2rem;
+  }
+
+  .contact-bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    /* Top row takes ~28% height, bottom row takes remaining ~72% height */
+    grid-template-rows: minmax(120px, 0.36fr) 1fr;
+    gap: 1.15rem;
+  }
+
+  .bento-input-card:nth-child(3),
+  .bento-textarea-card {
+    grid-column: span 1;
+  }
+
+  .bento-input-card {
+    justify-content: center;
+    padding: 1.5rem 1.85rem;
+  }
+
+  .bento-textarea-card,
+  .bento-pills-card {
+    padding: 2.25rem 1.85rem 3rem;
+  }
+
+  .bento-label {
+    font-size: 1.15rem;
+  }
+
+  .bento-input,
+  .bento-textarea {
+    font-size: 1.15rem;
+  }
+
+  .choice-pill {
+    font-size: 0.95rem;
+    padding: 0.5rem 1.1rem;
+  }
+}

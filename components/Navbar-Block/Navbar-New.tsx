@@ -2,7 +2,7 @@
 
 import React, { useRef} from 'react';
 // zustand store for contact page overlay
-import { NavToggle } from '../Buttons/NavToggle';
+// import { NavToggle } from '../Buttons/NavToggle';
 import Link from 'next/link';
 import Image from 'next/image';
 import './newNav.css'
@@ -84,7 +84,7 @@ function NavbarNew() {
             {/* Right: Contact + Hamburger */}
             <div className="nav-actions">
         {/* Nav-toggle btn */}
-            <NavToggle />
+            {/* <NavToggle /> */}
             </div>
         </nav>
         </>
