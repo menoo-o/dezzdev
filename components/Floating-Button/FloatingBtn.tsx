@@ -232,7 +232,7 @@ export default function FloatingBtn() {
           </svg>
         </span>
         <span className="floating-btn-text">
-          {isContactOpen ? "Submit" : "BTN"}
+          {isContactOpen ? "Submit" : "Contact"}
         </span>
       </button>
     </div>
