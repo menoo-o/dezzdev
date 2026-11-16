@@ -120,7 +120,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <PageLoader />
+        {/* <PageLoader /> */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
