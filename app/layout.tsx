@@ -127,7 +127,7 @@ export default function RootLayout({
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
-        <Navbar />
+        {/* <Navbar /> */}
         {children}
       </body>
     </html>
