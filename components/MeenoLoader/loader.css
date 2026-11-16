@@ -1,0 +1,180 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   page-loader.css — meeno bracket loader
+   [ | ]  →  brackets breathe around a blinking cursor
+   [ meeno | ]  →  the word types in, brackets widen to hold it
+   then the whole screen slides up and the site is revealed.
+
+   WHAT LIVES WHERE
+   • CSS (this file): layout, colours, sizing, cursor blink, reduced-motion.
+   • GSAP (PageLoader.tsx): the sequencing — breathing, typing, exit, and
+     waiting until the page + fonts are really ready.
+
+   SIZING MODEL
+   Everything inside `.loader__stage` is in `em`, so the whole loader scales
+   from ONE number: the stage's `font-size` (see section 5).
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* ── 1. Tokens (fall back to the brand hex if globals aren't loaded) ────── */
+.loader {
+  --loader-bg: var(--color-ink, #192420);
+  --loader-fg: var(--color-paper, #fffafa);       /* word + cursor */
+  --loader-bracket: var(--color-pop, #00ca85);    /* brackets */
+  --loader-z: var(--z-loader, 9999);              /* above your fixed navbar */
+}
+
+/* ── 2. Full-screen overlay ─────────────────────────────────────────────── */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--loader-z);
+  display: grid;
+  place-items: center;
+  height: 100dvh; /* dvh = no jump when mobile browser bars collapse */
+  overflow: hidden;
+  background: var(--loader-bg);
+  color: var(--loader-fg);
+  will-change: transform; /* GSAP slides this up at the end */
+  user-select: none;
+  cursor: progress;
+}
+
+/* Lock page scroll while the loader is up (added/removed from JS). */
+html.is-loading {
+  overflow: hidden;
+}
+
+/* Returning visitors (set by the tiny inline script in layout.tsx):
+   skip the loader with no flash. */
+html[data-loader="seen"] .loader {
+  display: none;
+}
+
+/* Visually hidden text for screen readers. */
+.loader__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ── 3. Stage: [ brackets + word ] ──────────────────────────────────────── */
+.loader__stage {
+  display: flex;
+  align-items: center;
+  gap: 0.28em;
+  font-size: clamp(2.75rem, 6vw + 1rem, 6rem); /* ← the ONE size knob */
+  line-height: 1;
+}
+
+/* Brackets: one SVG drawing stretched to the box. non-scaling-stroke keeps
+   the line weight even; the stroke is in em so it scales with the stage. */
+.loader__bracket {
+  flex: none;
+  width: 0.34em;
+  height: 1.2em;
+  overflow: visible;
+  color: var(--loader-bracket);
+  will-change: transform; /* GSAP breathes + spreads these */
+}
+
+.loader__bracket path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.075em;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ── 4. The word + cursor ───────────────────────────────────────────────── */
+.loader__word {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  white-space: pre;
+}
+
+/* Each letter is a clipping box that starts at width 0. GSAP grows it to the
+   letter's real width (measured after fonts load), which pushes the right
+   bracket outward — that's how the brackets "make room" for the word. */
+.loader__letter {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  padding-bottom: 0.04em; /* stops the clip from shaving glyph bottoms */
+}
+
+.loader__glyph {
+  display: inline-block; /* GSAP slides this up inside the clip */
+}
+
+/* Cursor: sits after the last letter, so it travels as letters appear.
+   Blinks with CSS; GSAP adds `.is-solid` while typing so it stays steady. */
+.loader__cursor {
+  flex: none;
+  width: 0.1em;
+  height: 0.78em;
+  margin-left: 0.03em;
+  background: var(--loader-fg);
+  animation: loader-blink 1s steps(1) infinite;
+}
+
+.loader__cursor.is-solid {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes loader-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── 5. Responsive steps ────────────────────────────────────────────────────
+   The base size is fluid (clamp above). Extra steps cap it on very large /
+   external monitors so it doesn't feel oversized, and tame short screens.
+
+     < 480    phones          ≈ 44px
+     ≥ 768    tablet          scales fluidly
+     ≥ 1280   laptop/desktop  scales fluidly (≈ 77px)
+     ≥ 1920   large monitors  fixed 6.5rem (104px)
+     ≥ 2560   ultra-wide/4K   fixed 8.5rem (136px)
+*/
+@media (min-width: 1920px) {
+  .loader__stage {
+    font-size: 6.5rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .loader__stage {
+    font-size: 8.5rem;
+  }
+}
+
+/* Landscape phones: keep it inside the short viewport. */
+@media (max-height: 420px) {
+  .loader__stage {
+    font-size: 2.5rem;
+  }
+}
+
+/* ── 6. Reduced motion ──────────────────────────────────────────────────────
+   JS adds `.is-static`: show the finished [meeno] straight away, no cursor,
+   no breathing — then just fade the screen out. */
+.loader.is-static .loader__letter {
+  width: auto;
+  overflow: visible;
+}
+
+.loader.is-static .loader__cursor {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader__cursor {
+    animation: none;
+  }
+}

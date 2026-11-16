@@ -1,0 +1,126 @@
+/* ========================================================
+   LOGO MODULE - VANILLA CSS
+   ======================================================== */
+
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.logo-container:hover {
+  opacity: 0.85;
+}
+.logo-container:active {
+  transform: scale(0.98);
+}
+
+/* --- PNG Image Logo Variant --- */
+.logo-image {
+  display: block;
+  /* Lock exact height and preserve natural 3:1 aspect ratio */
+  height: 26px;
+  width: auto;
+  aspect-ratio: 3 / 1;
+  object-fit: contain;
+  
+  /* Disable blurry interpolation on downscaling */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+/* --- CSS Vector Geometry Logo Variant --- */
+.logo-vector {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  font-family: var(--font-main);
+  font-weight: var(--font-weight-bold);
+  
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+}
+
+/* Left & Right Bracket CSS Box Geometry */
+.logo-bracket {
+  display: inline-block;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.logo-bracket-left {
+  width: 0.33em;
+  height: 0.92em;
+  border: 0.125em solid var(--color-pop-dark);
+  border-right: 0;
+  margin-right: 0.18em;
+}
+
+.logo-bracket-right {
+  width: 0.33em;
+  height: 0.92em;
+  border: 0.125em solid var(--color-pop-dark);
+  border-left: 0;
+  margin-left: 0.18em;
+}
+
+/* Inverted / Dark Card Contexts */
+.logo-vector.variant-dark {
+  color: var(--color-paper);
+}
+
+.logo-vector.variant-dark .logo-bracket {
+  border-color: var(--color-pop);
+}
+
+/* Size Variants */
+.logo-vector.size-nav {
+  font-size: 1.375rem; /* 22px on mobile */
+}
+
+.logo-vector.size-hero {
+  font-size: clamp(3.5rem, 8vw, 9rem);
+}
+
+.logo-vector.size-favicon {
+  font-size: 1rem;
+}
+
+.logo-vector.size-favicon .logo-bracket {
+  width: 0.38em;
+  height: 1.1em;
+  border-width: 0.14em;
+}
+
+/* ========================================================
+   RESPONSIVE BREAKPOINTS & HIGH-DPI TUNING
+   ======================================================== */
+
+/* Tablets & Small Desktops (768px+) */
+@media (min-width: 768px) {
+ .logo-image {
+    height: 30px;
+  }
+  
+  .logo-vector.size-nav {
+    font-size: 1.5rem; /* 24px */
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .logo-image {
+    height: 34px;
+  }
+}
+
+/* High-DPI (Retina Displays / Apple Devices) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo-image {
+    /* Ensures rendering sharpness for 2400x800 assets */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}

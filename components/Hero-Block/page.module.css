@@ -11,6 +11,7 @@
   text-align: center;
   width: 100%;
   max-width: 100%;
+  background-color: var(--color-paper) !important;
   overflow-x: hidden; /* Prevent horizontal scroll issues */
 }
 

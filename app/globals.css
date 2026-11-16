@@ -5,11 +5,12 @@
      1. COLOR SYSTEM (Technical Mint / Paper Mono)
      ========================================= */
   /* 60% Natural Light Paper Canvas */
-  --color-paper: #ededed;
-  --color-paper-2: #dfe4e2;
+  --color-paper: #f4f3ee;
+  --color-paper-2: #f1faee;
+  
 
   /* Typography & Structure */
-  --color-ink: #192420;
+  --color-ink: #182e26;
   --color-smoke: #586660;
 
   /* Fine boundaries & layout dividers */
@@ -18,7 +19,7 @@
   /* 10% Energetic Accent Color */
   --color-pop: #00ca85;
   --color-pop-dark: #006b46;
-  --color-pop-glass: rgba(0, 202, 133, 0.12);
+  --color-pop-glass: hsla(160, 100%, 40%, 0.12);
 
   /* =========================================
      2. TYPOGRAPHY & FLUID FONT SIZES
@@ -72,10 +73,15 @@
   /* =========================================
      4. CONTAINER MAX WIDTHS
      ========================================= */
-  --max-width: 1440px;
-  --max-width-desktop: 1480px;
-  --max-width-sections: 1300px;
-  --max-width-cards: 1350px;
+
+/* Tight, responsive inline gutter */
+--gutter: clamp(0.875rem, 2vw, 1.75rem);
+
+  --max-width: 1850px; /* ultra wide monitors */  
+  --max-width-desktop: 1650px;
+  --max-width-sections: 1440px;
+  --max-width-cards: 1480px;
+
 
   /* =========================================
      5. RADII & SHADOWS
@@ -143,6 +149,7 @@ body {
   color: var(--color-ink);
   overflow-x: hidden;
   line-height: var(--leading-normal);
+
 }
 
 a {

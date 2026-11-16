@@ -1,0 +1,314 @@
+/* ──────────────────────────────────────────────────────────────────────────
+   cta-btn.css — "Roll" CTA for meeno
+   Outlined button · label rolls to a second label on hover · SVG brackets
+   grow and spread outward.
+
+   WHY VANILLA CSS (not GSAP) FOR THIS ONE
+   • Only `transform` + `border-color` animate → compositor-friendly, no JS
+     on the main thread, zero bundle cost.
+   • Hover/focus states are handled by the browser (no listeners, no cleanup).
+   • Reserve GSAP for scroll-linked or choreographed motion (e.g. the navbar).
+
+   SIZING MODEL
+   Everything is in `em`, so the whole button scales from ONE number:
+   `font-size`. Only that (and the stroke widths, which must be px) change per
+   breakpoint at the bottom of this file.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* ── 1. Design tokens ───────────────────────────────────────────────────────
+   Each token falls back to the brand hex, so the file works even if your
+   global :root variables aren't loaded yet. */
+.cta-btn {
+  /* brand colours (light tone = for Paper backgrounds) */
+  --cta-fg: var(--color-ink, #192420);
+  --cta-border: var(--color-line, #1924202b);
+  --cta-border-hover: var(--color-ink, #192420);
+  --cta-bracket: var(--color-pop-dark, #006b46);
+
+  /* geometry (em → scales with font-size) */
+  --cta-height: 3.2em;      /* 48px at the 15px base = a comfortable touch target */
+  --cta-pad-x: 1.8em;       /* space between label and the outline */
+  --cta-lh: 1.5em;          /* height of ONE label line (the roll window) */
+  --cta-bracket-w: 0.7em;   /* width of each bracket */
+  --cta-bracket-off: 1em;   /* how far OUTSIDE the outline a bracket rests */
+  --cta-spread: 0.4em;      /* extra outward travel on hover */
+  --cta-rest-scale: 0.7;    /* bracket height at rest (hover → 1) */
+
+  /* px values (non-scaling SVG stroke + border can't use em) */
+  --cta-stroke: 2px;
+  --cta-border-w: 1px;
+
+  /* motion */
+  --cta-ease-roll: cubic-bezier(0.7, 0, 0.2, 1);   /* snappy in, soft out */
+  --cta-ease-bracket: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --cta-t-roll: 0.5s;
+  --cta-t-bracket: 0.45s;
+
+  /* Space reserved for the brackets that sit outside the outline, so they
+     never get clipped or cause horizontal scroll near the viewport edge.
+     Override to 0 where the parent already provides spacing:
+       .my-nav .cta-btn { --cta-reserve: 0; } */
+  --cta-reserve: calc(var(--cta-bracket-off) + var(--cta-spread));
+}
+
+/* Dark tone (footer, dark hero): Paper text, Pop brackets. */
+.cta-btn--dark {
+  --cta-fg: var(--color-paper, #fffafa);
+  --cta-border: rgba(255, 250, 250, 0.25);
+  --cta-border-hover: var(--color-paper, #fffafa);
+  --cta-bracket: var(--color-pop, #00ca85);
+}
+
+/* ── 2. Base button ─────────────────────────────────────────────────────────
+   Resets <button> and <a> to the same look. */
+.cta-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* ONE knob for size — set per breakpoint in section 5 */
+  font-size: 0.9375rem; /* 15px */
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--cta-fg);
+
+  min-height: 44px; /* never below the WCAG/Apple touch minimum */
+  height: var(--cta-height);
+  padding: 0 var(--cta-pad-x);
+  margin-inline: var(--cta-reserve);
+
+  background: transparent;
+  border: var(--cta-border-w) solid var(--cta-border);
+  border-radius: 2px; /* square-ish, matches the logo's hard corners */
+  cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation; /* removes the 300ms double-tap delay */
+  user-select: none;
+
+  transition:
+    border-color var(--cta-t-roll) var(--cta-ease-roll),
+    transform 0.2s ease;
+}
+
+/* ── 3. Label roll ──────────────────────────────────────────────────────────
+   A window exactly one line tall (overflow hidden) with a two-line column
+   inside. Hover slides the column up by 50% of ITS OWN height = one line, so
+   the second label takes the first one's place. Works at any font-size. */
+.cta-btn__roll {
+  display: block;
+  height: var(--cta-lh);
+  overflow: hidden;
+  line-height: var(--cta-lh);
+  text-align: center;
+}
+
+.cta-btn__roll-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--cta-t-roll) var(--cta-ease-roll);
+  will-change: transform; /* tiny element, safe to promote to its own layer */
+}
+
+.cta-btn__line {
+  display: block;
+  height: var(--cta-lh);
+}
+
+/* ── 4. Brackets (SVG, stretch to the button's height) ─────────────────────
+   preserveAspectRatio="none" lets the 12×100 drawing stretch to any height,
+   and vector-effect keeps the stroke an even thickness while it stretches. */
+.cta-btn__bracket {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: var(--cta-bracket-w);
+  overflow: visible;
+  color: var(--cta-bracket);
+  pointer-events: none;
+
+  transform: scaleY(var(--cta-rest-scale));
+  transition: transform var(--cta-t-bracket) var(--cta-ease-bracket);
+  will-change: transform;
+}
+
+.cta-btn__bracket path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--cta-stroke);
+  vector-effect: non-scaling-stroke;
+}
+
+.cta-btn__bracket--l {
+  left: calc(var(--cta-bracket-off) * -1);
+}
+
+.cta-btn__bracket--r {
+  right: calc(var(--cta-bracket-off) * -1);
+}
+
+/* ── 5. States ──────────────────────────────────────────────────────────────
+   Hover only on devices that REALLY hover — otherwise touch screens get a
+   "stuck" hover after a tap. Keyboard focus gets the same animation on every
+   device, so keyboard users see the same feedback as mouse users. */
+.cta-btn:focus-visible {
+  outline: 2px solid var(--color-pop, #00ca85);
+  outline-offset: 6px;
+  border-color: var(--cta-border-hover);
+}
+.cta-btn:focus-visible .cta-btn__roll-inner {
+  transform: translateY(-50%);
+}
+.cta-btn:focus-visible .cta-btn__bracket {
+  transform: scaleY(1);
+}
+.cta-btn:focus-visible .cta-btn__bracket--l {
+  transform: scaleY(1) translateX(calc(var(--cta-spread) * -1));
+}
+.cta-btn:focus-visible .cta-btn__bracket--r {
+  transform: scaleY(1) translateX(var(--cta-spread));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cta-btn:hover {
+    border-color: var(--cta-border-hover);
+  }
+  .cta-btn:hover .cta-btn__roll-inner {
+    transform: translateY(-50%);
+  }
+  .cta-btn:hover .cta-btn__bracket--l {
+    transform: scaleY(1) translateX(calc(var(--cta-spread) * -1));
+  }
+  .cta-btn:hover .cta-btn__bracket--r {
+    transform: scaleY(1) translateX(var(--cta-spread));
+  }
+}
+
+/* Press feedback (touch + mouse). */
+.cta-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── 6. Responsive steps ────────────────────────────────────────────────────
+   Mobile-first. Only `font-size` (everything else follows in em) and the px
+   stroke/border change. rem units respect the user's browser text size.
+
+     base      < 768    mobile       15px
+     ≥ 768              tablet       16px
+     ≥ 1024             laptop       17px
+     ≥ 1440             desktop      18px
+     ≥ 1920             large / 1080p+ external monitors   21px
+     ≥ 2560             ultra-wide / 1440p-4K monitors     24px
+*/
+@media (min-width: 768px) {
+  .cta-btn {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cta-btn {
+    font-size: 1.0625rem;
+    --cta-stroke: 2.5px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .cta-btn {
+    font-size: 1.125rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  .cta-btn {
+    font-size: 1.3125rem;
+    --cta-stroke: 3px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .cta-btn {
+    font-size: 1.5rem;
+    --cta-stroke: 4px;
+    --cta-border-w: 2px;
+  }
+}
+
+/* Short-height landscape phones: tighten so it doesn't dominate the bar. */
+@media (max-height: 480px) and (orientation: landscape) {
+  .cta-btn {
+    --cta-height: 2.9em;
+  }
+}
+
+/* ── 6b. Compact size for the navbar (`size="sm"`) ──────────────────────────
+   Sized from YOUR navbar.css so it sits in the bar like a native item:
+     .nav-shell  height: 64px          → button is 40px (12px air top/bottom)
+     .nav-link   0.95rem / 500 / lh 1.4 → button text matches exactly
+     .nav-link   easing .45s cubic-bezier(0.22, 1, 0.36, 1) → same motion feel
+   `.cta-btn.cta-btn--sm` is more specific than the breakpoint rules above, so
+   it stays fixed at every screen width (no growth on big monitors).        */
+.cta-btn.cta-btn--sm {
+  --cta-sm-font: 0.95rem;   /* = .nav-link font-size */
+  --cta-sm-height: 2.5rem;  /* 40px inside the 64px .nav-shell */
+
+  --cta-height: var(--cta-sm-height);
+  --cta-pad-x: 1.2em;       /* ≈ 18px */
+  --cta-lh: 1.4em;          /* = .nav-link line-height */
+  --cta-bracket-w: 0.45em;
+  --cta-bracket-off: 0.5em; /* brackets hug the outline */
+  --cta-spread: 0.3em;
+  --cta-stroke: 2px;
+  --cta-border-w: 1px;
+  --cta-ease-roll: cubic-bezier(0.22, 1, 0.36, 1); /* = .nav-link */
+  --cta-t-roll: 0.45s;
+  /* Brackets are decorative: they sit in the navbar's own padding (20px when
+     the pill is compact) instead of adding margin around the button. */
+  --cta-reserve: 0;
+
+  font-size: var(--cta-sm-font);
+  font-weight: 500;
+  height: var(--cta-sm-height);
+  min-height: 0;     /* mouse users don't need the 44px touch minimum */
+  align-self: center; /* never stretch to the row height */
+}
+
+/* Hover label uses Pop dark, like the second label in .nav-link-flip. */
+.cta-btn--sm .cta-btn__line[aria-hidden="true"] {
+  color: var(--color-pop-dark, #006b46);
+}
+.cta-btn--dark.cta-btn--sm .cta-btn__line[aria-hidden="true"] {
+  color: var(--color-pop, #00ca85);
+}
+
+/* Touch devices keep the 44px minimum touch target. */
+@media (pointer: coarse) {
+  .cta-btn.cta-btn--sm {
+    min-height: 44px;
+  }
+}
+
+/* ── 7. Reduced motion ──────────────────────────────────────────────────────
+   Keep the state changes (label swap, brackets), drop the movement. */
+@media (prefers-reduced-motion: reduce) {
+  .cta-btn,
+  .cta-btn__roll-inner,
+  .cta-btn__bracket {
+    transition: none;
+  }
+}
+
+/* ── 8. Windows High Contrast / forced colours ──────────────────────────────
+   Make sure brackets and outline stay visible when colours are overridden. */
+@media (forced-colors: active) {
+  .cta-btn {
+    border-color: ButtonText;
+  }
+  .cta-btn__bracket {
+    color: ButtonText;
+  }
+}
