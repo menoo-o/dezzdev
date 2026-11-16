@@ -119,7 +119,7 @@ function ChefHat() {
   return (
     <svg
       viewBox="0 0 200 180"
-      className="w-[clamp(7rem,15vw,12rem)] overflow-visible"
+      className="w-[clamp(4.5rem,8vw,7rem)] overflow-visible min-[1920px]:w-32 min-[2560px]:w-40"
       aria-hidden="true"
       focusable="false"
     >
